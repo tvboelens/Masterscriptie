@@ -1,0 +1,1053 @@
+\chapter{Topological Hochschild homology}
+%\chapter{Witt Complexes}
+%\section{The $p$-typical Witt vectors}
+%The ring $\WW_n (A)$ of Witt vectors of length $n$ has as underlying set $A^n$, but with a unique ring structure such that
+%the ghost map 
+%$$w_n:\WW_n(A)\rightarrow A^n, (a_0,\ldots a_{n-1})\mapsto (w_0,\ldots w_{n-1}), w_i = \sum_{k=0}^i p^{k}a_k^{p^{i-k}},$$
+%is a natural transformation of functors from rings to rings. 
+%
+%We denote the $p$-adic valuation by $\nu_p$.
+%\begin{lem}
+%Let $n=\sum_{i=0}^r a_ip^i, ai\in \{0,\ldots, p-1\}$ be a positive integer. Then $\nu_p(n!) = \frac{n-\sum^r_{i=0}a_i}{p-1}$.
+%\end{lem}
+%\begin{lem}[Dwork]
+%Suppose there is a ring homomorphism $\phi_p:A\rightarrow A$ such that $\phi_p(a)\equiv a \bmod{pA}$
+%for all $a\in A$. Then $(a_0,\ldots , a_{n-1})$ is in the image of the ghost map $w_n:\WW_n(A)\rightarrow A^n$ iff
+%$a_i\equiv \phi_p(a_{i-1}) \bmod{p^iA}$ for all $i$.
+%\end{lem}
+%\begin{proof}
+%We assume $a\equiv b \bmod{pA}$ and write $a = b+p\epsilon$. Then
+%\begin{align*}
+%a^{p^{i-1}} &= b^{p^{i-1}} + \sum_{k=1}^{p^{i-1}-1} \binom{p^{i-1}}{k}b^kp^{p^{i-1}-k}\epsilon^{p^{i-1}-k}
+%\end{align*}
+%and using the previous lemma we that ...,  which shows that $a^{p^{i-1}}\equiv b^{p^{i-1}} \bmod{p^iA}$.
+%\end{proof}
+%
+%\begin{prop}
+%There exists a unique ring structure on $\WW_n(A)$ such that the ghost map $w_n:\WW_n(A)\rightarrow A^n$
+%is a natural transformation of functors from rings to rings.
+%\end{prop}
+%
+%\begin{proof}
+%We first consider the case $A=\ZZ[X_\alpha:\alpha\in \mathcal{A}]$ is a polynomial ring. Let $\phi_p:A\rightarrow A$ be the unique ring homomorphism such that $\phi_p(X_\alpha) = 
+%X_\alpha^p$ for all $\alpha \in \mathcal{A}$. Then $\phi_p(a)\equiv a \bmod{pA}$ for all $a\in A$. It is then easy to see that if $(a_0,\ldots, a_{n-1}),(b_,\ldots, b_{n-1})
+%\in \WW_n(A)$ then $w(a_0,\ldots, a_{n-1}) + w(b_,\ldots, b_{n-1})$ lies in the image of the ghost map, that is a vector $(s_),\ldots, s_{n-1})\in \WW_n(A)$
+%with $w(s_0,\ldots, s_{n-1}) = w(a_0,\ldots, a_{n-1}) + w(b_,\ldots, b_{n-1})$ exists. This vector is unique, since $A$ has no $p$-torsion, so we must define
+%$(a_0,\ldots, a_{n-1})+ (b_0,\ldots , b_{n-1}) = (s_0, \ldots, s_{n-1})$. Using the injectivity of the ghost map again, we see that this 
+%
+%
+%Now if $A$ is any ring, we consider the polynomial ring $\ZZ[X_a:a\in A]$ and the canonical surjection 
+%$\varphi:\ZZ[X_a:a\in A]\rightarrow A$, which maps $X_a$ to $a$. Then $\WW_n(\varphi):\WW_n(\ZZ[X_a:a\in A])
+%\rightarrow \WW_n(A)$ is surjective as a map of sets and we equip $\WW_n(A)$ with the unique ring structure
+%that makes $\WW_n(\varphi)$ into a ring homomorphism.
+%\end{proof}
+%The Witt vectors carry additional structure. The projection onto the first $n-1$ factors $$R:\WW_n(A)\rightarrow \WW_{n-1}(A)$$
+%is called \textit{restriction}. Thus, $\WW_\bullet(A)$ is a pro-ring. There is also a ring homomorphism $$F:\WW_n(A)\rightarrow \WW_{n-1}(A),$$
+%which is defined by $w(F(a)) = (w_1(a),\ldots, w_{n-1}(a))$
+%called the \textit{Frobenius}. Finally, if we consider $\WW_{n-1}(A)$ as a $\WW_n(A)$-module via the Frobenius, there
+%is a $\WW_n(A)$-linear map $$V:\WW_{n-1}(A)\rightarrow \WW_{n}(A)$$ called the \textit{Verschiebung}. It is defined by $V(a_0,\ldots, a_{n-2})
+%=(0,a_0,\ldots, a_{n-2})$.
+%
+%\begin{lem}
+%
+%\end{lem}
+%
+%\begin{lem}
+%
+%\end{lem}
+%
+%\begin{lem}
+%
+%\end{lem}
+
+
+%\section{Topological Hochschild Homology and the Witt Complex $TR^\bullet_\ast(A;p)$}
+
+\section{The topological Hochschild space.}
+%\todo{ Write $S^{ ( \underline{i_0}, \ldots, \underline{i_k} ) }$ and 
+%$\A_{ ( \underline{i_0}, \ldots, \underline{i_k} ) }$}
+Let $\mathbb{A}$ be a symmetric commutative ring spectrum and $X$ a pointed space. In this section we construct the associated topological Hochschild space $\mathrm{THH}(\A,X)$, which is a $\TT$-space. Let $\mathcal{I}$ be the category with objects ordered finite sets $[q]=\{1,\ldots, q\}$ and morphisms injective maps. For any positive integer $k$ we denote elements of
+the product category $\mathcal{I}^{k+1}$ by $[\vec{q}\,]$ and if $\phi:[\vec{q}\,]\to [\vec{r}\,]$
+is a morphism we let $[\vec{r}\,]- \phi ([\vec{q}\,]) = ([r_0-q_0],\ldots, [r_k-q_k])$. Moreover, for
+any symmetric spectrum $E$ we write $E_{[\vec{q}\,]}$ as a shorthand for  $E_{q_0}\wedge\cdots \wedge E_{q_k}$
+and we recall that
+$\spherespectrum^{\mathrm{sym}}$ denotes the symmetric sphere spectrum.
+We define a functor $G_k(\A;X):\mathcal{I}^{k+1}\rightarrow \mathbf{Top}_\ast$ by
+\[G_k(\A;X)([\vec{q}\,])=\map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},\A_{[\vec{q}\,]}\wedge X).\]
+For a morphism $\phi:[\vec{q}\,]\to [\vec{r}\,]$ we let
+\[ G_k(\A,X)(\phi): G_k(\A;X)([\vec{q}\,])\to G_k(\A;X)([\vec{r}\,])\]
+be the adjoint of 
+\[
+\begin{tikzcd}
+ \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},\A_{[\vec{q}\,]}\wedge X) \wedge
+\spherespectrum^{\mathrm{sym}}_{[\vec{r}\,]} 
+\arrow{d}{\cong}\\
+\map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},\A_{[\vec{q}\,]}\wedge X) \wedge
+\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}\wedge \spherespectrum^{\mathrm{sym}}_{[\vec{r}\,]- \phi ([\vec{q}\,])} 
+\arrow{r}{\mathrm{ev}\wedge \mathrm {id}}
+&\A_{[\vec{q}\,]}\wedge X\wedge \spherespectrum^{\mathrm{sym}}_{[\vec{r}\,]- \varphi ([\vec{q}\,])}
+\arrow{r} 
+&\A_{[\vec{r}\,]}\wedge X.
+\end{tikzcd}
+\]
+Here the first map permutates smash factors and coordinates of the spheres and
+the final map is induced by the structure maps of $\A$.
+We finally put 
+$$\text{THH}(\A;X)_k = \underset{\mathcal{I}^{k+1}}{\hocolim}\, G_k(\A;X).$$
+We claim $\mathrm{THH}(\A;X)_\bullet$ is a cyclic space, so that we can define $\mathrm{THH}(\A;X)$
+as its geometric realization.
+
+For $j\in \{0,\ldots, k\}$ we define a functor $\delta_j:\mathcal{I}^{k + 1}\rightarrow \mathcal{I}^k$,
+which on objects is given by
+\begin{equation*}
+\delta_j([\vec{q}\,]) = 
+\begin{cases}
+([q_0],\ldots, [q_{ j - 1}] , [q_j + q_{ j + 1}] , 
+[q_{ j + 2}] ,\ldots , [q_k]), &\text{ for } j<k \\
+([q_0 + q_k],\ldots,[q_{k - 1} ]), &\text{ for } j = k,
+\end{cases}
+\end{equation*}
+and acts on morphisms by concatenation. Similarly we define a functor
+$\sigma_j : \mathcal{I}^k\rightarrow \mathcal{I}^{ k + 1}$ by
+$$\sigma_j([\vec{q}\,]) = 
+([q_0],\ldots, [ q_{ j - 1 } ], [0]
+,[q_j],\ldots , [q_k])$$
+and a functor $\tau_k : \mathcal{I}^{k+1}\rightarrow \mathcal{I}^{ k + 1}$
+by cyclic permutation of the coordinates.
+
+We proceed to construct morphisms of natural modules
+\begin{align}
+d_i: &\,(\mathcal{I}^{k+1},G_{k}(\A, X))\to (\mathcal{I}^k,  G_{k-1}, (\A, X)), \label{eq:facethh}\\
+s_i: &\,(\mathcal{I}^{k+1}, G_{k}(\A, X)) \to (\mathcal{I}^{k+2}, G_{k+1}(\A, X)),\label{eq:degeneracythh}\\
+t_k: &\,(\mathcal{I}^{k+1}, G_{k}(\A, X))\to (\mathcal{I}^{k+1}, G_{k}(\A, X))\label{eq:cyclicthh},
+\end{align}
+which satisfy the cyclic identities, so that the induced maps 
+on the homotopy colimits satisfy the cyclic identities as well,
+completing the proof that $\mathrm{THH}(\A, X)_\bullet$ is a cyclic space.
+
+We first construct \eqref{eq:facethh}. Recall from the \hyperref[sec:naturalmodules]{introduction}
+that this amounts to constructing
+a natural transformation
+\begin{equation}\label{eq:facethhnaturaltransformation}
+G_k(\A,X)\to \delta_i^\ast G_{k-1}(\A,X).
+\end{equation}
+Let $[\vec{q}\,]\in \mathcal{I}^{k+1}$.
+The multiplication of $\A$ induces an obvious map
+\[\varphi:\A_{[\vec{q}\,]}\to \A_{\delta_i([\vec{q}\,])}
+\]
+and there is a canonical isomorphism
+\[\psi:\spherespectrum^{\mathrm{sym}}_{\delta_i([\vec{q}\,])}\xrightarrow{\cong }
+\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}.
+\]
+Thus, we can define \eqref{eq:facethhnaturaltransformation} as the adjoint of
+\[
+\begin{tikzcd}
+ \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},\A_{[\vec{q}\,]}\wedge X) \wedge
+\spherespectrum^{\mathrm{sym}}_{\delta_i([\vec{q}\,])} 
+\arrow{d}{\mathrm{id}\wedge \psi}\\
+\map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},\A_{[\vec{q}\,]}\wedge X) \wedge
+\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}
+\arrow{r}{\mathrm{ev}}
+&\A_{[\vec{q}\,]}\wedge X
+\arrow{r}{\varphi\wedge \mathrm{id}} 
+&\A_{\delta_i([\vec{q}\,])}\wedge X,
+\end{tikzcd}
+\]
+which is natural in $[\vec{q}\,]$, so that \eqref{eq:facethh} is really a map of 
+natural modules.
+
+Next, we construct \eqref{eq:degeneracythh}. Again, this
+amounts to constructing a natural transformation
+\begin{equation}\label{eq:thhdegeneracynaturaltransformation}
+G_k(\A,X)\to \sigma^\ast_i G_{k+1}(\A,X).
+\end{equation}
+Let $[\vec{q}\,]\in \mathcal{I}^{k+1}$.
+The unit maps of $\A$ induce a map
+\[\varphi:\A_{[\vec{q}\,]}\to \A_{\sigma_i([\vec{q}\,])}
+\]
+and as before there is a canonical isomorphism
+\[\psi:\spherespectrum^{\mathrm{sym}}_{\sigma_i([\vec{q}\,])}\xrightarrow{\cong }
+\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}.
+\]
+We then define \eqref{eq:thhdegeneracynaturaltransformation} as the adjoint of
+\[
+\begin{tikzcd}
+ \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},\A_{[\vec{q}\,]}\wedge X) \wedge
+\spherespectrum^{\mathrm{sym}}_{\sigma_i([\vec{q}\,])} 
+\arrow{d}{\mathrm{id}\wedge \psi}\\
+ \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},\A_{[\vec{q}\,]}\wedge X) \wedge
+\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}
+\arrow{r}{\mathrm{ev}}
+&\A_{[\vec{q}\,]}\wedge X
+\arrow{r}{\varphi\wedge \mathrm{id}} 
+&\A_{\sigma_i([\vec{q}\,])}\wedge X,
+\end{tikzcd}
+\]
+which is again seen to be natural in $[\vec{q}\,]$, so that we obtain a
+morphism of natural modules. Finally, we define a natural transformation
+\[
+G_k(\A,X)\to \tau^\ast_k G_k(\A,X)
+\]
+by permutation of the smash factors in the mapping space,
+which gives \eqref{eq:cyclicthh}.
+
+This completes the construction of $\mathrm{THH}(\A, X)$ and
+we see this is functorial in both $\A$ and $X$. If $X$ is additionally
+a $\TT$-space, this  induces a $\TT$-action on $\mathrm{THH}(\A, X)$,
+which commutes with the $\TT$-action coming
+from the cyclic structure, meaning that $\mathrm{THH}(\A, X)$
+has a $\TT\times \TT$-action. In this case, we equip
+$\mathrm{THH}(\A, X)$ with the diagonal action.
+
+%
+%This gives us maps
+%\begin{align}
+% \text{hocolim}_{\mathcal{I}^k} 
+%(G_k(\A;X)\circ \sigma_j ) &\rightarrow \text{THH}(\A;X)_{k} 
+%\label{eq:degeneracy}\\
+%\text{hocolim}_{\mathcal{I}^{k + 1}} 
+% (G_{k - 1} (\A;X) \circ \delta_j) &\rightarrow \text{THH}(\A;X)_{k - 1} 
+% \label{eq:face}
+%\end{align}
+%
+%As part of the data of a symmetric ring spectrum there are multiplication maps
+%$$\mu_{i,j}: \A_i \wedge \A_j\rightarrow \A_{ i + j },$$
+%which induce maps
+%\begin{align*}\label{eq:multiplication}
+%\begin{split}
+%\A_{i_0} \wedge \cdots \wedge \A_{i_k}\rightarrow 
+%\A_{i_0} \wedge \cdots \wedge \A_{ i_{ j - 1 } } \wedge \A_{i_j + i_{ j + 1} } \wedge \A_{ i_{ j + 2 } }
+%\wedge \cdots  \wedge \A_{i_k}
+%\\
+%\A_{i_0} \wedge \cdots \wedge \A_{i_k}\rightarrow 
+%\A_{i_0 + i_k} \wedge \cdots \wedge \A_{ i_{ k - 1 } },
+%\end{split}
+%\end{align*}
+%\todo{fix formatting}
+%that together with the canonical homeomorphisms
+%\begin{align*}
+%\begin{split}
+%S^{i_0} \wedge \cdots \wedge S^{i_k}\cong
+%S^{i_0} \wedge \cdots \wedge S^{ i_{ j - 1 } } \wedge S^{i_j + i_{ j + 1} } \wedge S^{ i_{ j + 2 } }
+%\wedge \cdots  \wedge S^{i_k}
+%\\
+%S^{i_0} \wedge \cdots \wedge S^{i_k} \cong 
+%S^{i_0 + i_k} \wedge \cdots \wedge S^{ i_{ k - 1 } }
+%\end{split}
+%\end{align*}
+%yield a natural transformation
+%$$G_k(\A;X)\Rightarrow G_{k - 1}(\A;X)\circ \delta_j,$$
+%hence a map
+%\begin{equation}\label{eq:face2}
+%\text{hocolim}_{\mathcal{I}^{k + 1}} 
+%\text{THH}(\A;X)_{k} \rightarrow (G_{k - 1} (\A;X) \circ \delta_j).
+%\end{equation}
+%Furthermore, there is a unit map
+%$$S^0\rightarrow \A_0,$$
+%which induces maps
+%\begin{align*}\label{eq:unit}
+%\begin{split}
+%\A_{i_0} \wedge \cdots \wedge \A_{i_k}\cong
+%\A_{i_0} \wedge \cdots \wedge \A_{ i_{ j - 1 } } \wedge S^0 \wedge \A_{ i }
+%\wedge \cdots  \wedge \A_{i_k}
+%\rightarrow 
+%\A_{i_0} \wedge \cdots \wedge \A_{ i_{ j - 1 } } \wedge \A_{0} \wedge \A_{ i }
+%\wedge \cdots  \wedge \A_{i_k}
+%\end{split}
+%\end{align*}
+%that together with the canonical homeomorphism
+%\begin{align*}
+%S^{i_0} \wedge \cdots \wedge S^{i_k}\cong
+%S^{i_0} \wedge \cdots \wedge S^{ i_{ j - 1 } } \wedge S^0 \wedge S^{ i_{ j } }
+%\wedge \cdots  \wedge S^{i_k}
+%\end{align*}
+%yield a natural transformation
+%$$G_{k - 1}(\A;X)\Rightarrow G_{k}(\A;X)\circ \sigma_j,$$
+%thus a map
+%\begin{equation}\label{eq:degeneracy2}
+%\text{THH}(\A;X)_{k - 1} \rightarrow 
+% \text{hocolim}_{\mathcal{I}^k} 
+%(G_k(\A;X)\circ \sigma_j )
+%\end{equation}
+%Composing \eqref{eq:degeneracy} with \eqref{eq:degeneracy2} and 
+%\eqref{eq:face}with \eqref{eq:face2} then gives rise to maps
+%\begin{align*}
+%s_j: \text{THH}_{k - 1}(\A;X)\rightarrow \text{THH}_k(\A;X)\\
+%d_j: \text{THH}_{k}(\A;X)\rightarrow \text{THH}_{k-1}(\A;X)
+%\end{align*}
+%Finally, cyclic permutation of the smash factors induces a natural transformation
+%$$G_k(\A;X)\Rightarrow G_k(\A;X)$$
+%and applying the homotopy colimit we obtain a map
+%$$\tau_k:\text{THH}_{k}(\A;X)\rightarrow \text{THH}_k(\A;X).$$
+%Using the simplicial replacements of the involved functors, it is easy to check that
+%these maps satisfy the cyclic relations, proving that $\text{THH}_\bullet(\A;X)$
+%is a cyclic set.
+
+%Assigning $k$ to $G_k(E;X)$ specifies a cyclic object in the category of functors from $\mathcal{I}^{k+1}$ to topological spaces.%Some details missing here. Need more terminology from cyclic sets and need to specify in which category we are working in here.
+%We define
+%
+%and since the homotopy colimit is a functor we obtain a cyclic set. The space $THH(E;X)$ is defined to be its geometric realization. We recall that the geometric
+%realization of a cyclic space is a $\TT$-space in a canonical way (give reference?). Moreover, if $F:E\rightarrow \tilde E, g:X\rightarrow Y$ are morphisms of
+%orthogonal ring spectra and topological spaces respectively, we obtain for every $k$ a natural transformation of functors $G_k(E;X)\rightarrow
+%G_k(\tilde E;Y)$ and passing to the homotopy colimit induces a map $THH_k(E;X)\rightarrow THH_k(\tilde E;Y)$. This amounts to a morphism of cyclic spaces and
+%applying the geometric realization functor yields a $\TT$-equivariant map $THH(E;X)\rightarrow THH(\tilde E, Y)$.
+
+\section{The topological Hochschild spectrum.}
+From the topological Hochschild space we construct an orthogonal $\TT$-spectrum $T(\A)$. Let $U$ be an orthogonal $\TT$-representation.
+We put $T(\A)(U)=\mathrm{THH}(\A;S^{U})$. Now suppose $(f,v)\in \mathbf{Th}(U,V)$.
+The map
+$$U\rightarrow V, u\mapsto f(u) + v$$
+induces a map
+$$\varphi_{f,v}:S^U\rightarrow S^V.$$
+Since $\text{THH}(\A;-)$ is a functor,
+$\varphi_{f,v}$ defines a map 
+$$T(\A)(f,v):\text{THH}(\A;S^U)\rightarrow \text{THH}(\A;S^V).$$
+
+\begin{prop}
+$T(\A)$ is an orthogonal $\TT$-spectrum.
+\end{prop}
+
+\begin{proof}
+Let $U$ and $V$ be two $\TT$-representations.
+We need to show the map
+\begin{equation}\label{eq:thhgmap}
+\mathbf{Th}(U,V)\to \map(T(\A)(U), T(\A)(V)), (f,v)\mapsto T(\A)(f,v)
+\end{equation}
+is a continuous $\TT$-map. We do so by showing its adjoint
+\begin{equation}\label{eq:thhgmapadjoint}
+\mathbf{Th}(U,V)\wedge T(\A)(U)\to T(\A)(V)
+\end{equation}
+is continuous and  $\TT$-equivariant. By
+\cite[Lemma~3.9, \pno~1503]{rvadams} (which is also valid for
+$\TT$), the following map is a $\TT$-homeomorphism:
+\[
+\mathbf{Th}(U,V)\wedge S^U\xrightarrow{\cong} S^V\wedge \mathbf{L}(U,V)_+, (f,v)\wedge u\mapsto (f(u)+v)\wedge f.
+\]
+Here $ \mathbf{L}(U,V)$ denotes the space of linear isometries. If we then collapse
+$ \mathbf{L}(U,V)$ to a point we obtain a continuous $\TT$-map
+\[
+\eta_{U,V}:\mathbf{Th}(U,V)\wedge S^U\to S^V, (f,v)\wedge u\mapsto f(u) + v.
+\]
+This implies that for
+$[\vec{q}\,]\in \mathcal{I}^{k+1}$ the map
+\[
+\mathbf{Th}(U,V)\wedge \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},
+\A_{_{[\vec{q}\,]}}\wedge S^U)\wedge \spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}
+\xrightarrow{\mathrm{id}\wedge\mathrm{ev}}
+\mathbf{Th}(U,V)\wedge \A_{_{[\vec{q}\,]}}\wedge S^U
+\xrightarrow{\mathrm{id}\wedge \eta_{U,V}}
+\A_{_{[\vec{q}\,]}}\wedge S^V
+\]
+%\[\begin{tikzcd}
+%\xi(U,V)\wedge \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},
+%\A_{_{[\vec{q}\,]}}\wedge S^U)\wedge \spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}
+%\arrow{d}{\mathrm{id}\wedge\mathrm{ev}}\\
+%\xi(U,V)\wedge \A_{_{[\vec{q}\,]}}\wedge S^U
+%\arrow{d}{\mathrm{id}\wedge \eta_{U,V}}\\
+%\A_{_{[\vec{q}\,]}}\wedge S^V
+%\end{tikzcd}
+%\]
+is a continuous $\TT$-map, hence its adjoint
+\[\mathbf{Th}(U,V)\wedge \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},
+\A_{_{[\vec{q}\,]}}\wedge S^U)
+\to  \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]},
+\A_{_{[\vec{q}\,]}}\wedge S^V)\]
+is also continuous and $\TT$-equivariant. Passing to homotopy colimits
+and then to geometric realization yields continuity and $\TT$-equivariance
+of \eqref{eq:thhgmapadjoint}. It is straightforward to check the associativity
+and unitality axiom.
+\end{proof}
+
+%The topological Hochschild space is equipped with a $\TT$-action and since $THH(E,-)$ is a functor, $T(E)(V)$ carries
+%a $\TT\times O(n)$-action. To complete the construction we must define the structure maps. The map
+%$$G_k(E;S^{\RR^n})(\underline{i_0},\ldots,\underline{i_k})\wedge S^\RR
+%\rightarrow F(S^{i_0}\wedge\cdots\wedge S^{i_k},E_{i_0}\wedge\cdots\wedge E_{i_k}\wedge S^{\RR^n}\wedge S^\RR)\cong G_k(E;S^{\RR^{n+1}})(\underline{i_0},\ldots,\underline{i_k})$$
+%given by $f\wedge x\mapsto f\wedge c_x$ is easily seen to be a natural transformation of functors,
+%hence induces a map
+%$$\tau_k: G_k(E;S^{\RR^n})\wedge S^1\rightarrow G_k(E;S^{\RR^{n+1}})$$
+%after passing to the homotopy colimit,
+%since homotopy colimits commute with smash products (proof by adjunction?).
+
+
+%In general, if $S$ is a simplicial space and $Y$ a space, then
+%$$|S\wedge Y|\cong |S|\wedge Y$$. We apply this to the case $S_k=THH_k(E;S^{\RR^n}, Y=S^1$ to obtain the structure map
+%$$\sigma_n: THH(E;S^{\RR^n})\wedge S^1\rightarrow THH(E;S^{\RR^{n+1}})$$
+\begin{mydef}
+The \textit{topological Hochschild spectrum} of a ring spectrum $\A$ is the
+orthogonal $\TT$-spectrum $T(\A)$. If $A$ is a ring and $\mathbb{H}A$ its
+corresponding Eilenberg-MacLane spectrum we write $T(A)$ for $T(\mathbb{H}A)$.
+\end{mydef}
+
+
+\begin{prop}\label{prop:thhringspectrum}
+Let $\A$ be a commutative symmetric ring spectrum. Then $T(\A)$ is a commutative orthogonal ring $\TT$-spectrum.
+\end{prop}
+
+\begin{proof}
+We start by constructing the multiplication map. Recall from \eqref{eq:mappingspacesmash} that
+for spaces $W,X,Y$ and $Z$  the canonical map
+\[\mathrm{smash}: \map(X,Y)\wedge \map(W,Z)\to \map(X\wedge W, Y\wedge Z)
+\]
+is continuous.
+Let 
+\begin{equation}\label{eq:concatenationfunctor}
+\alpha_k: \mathcal{I}^{k+1}\times \mathcal{I}^{k+1} 
+\to \mathcal{I}^{k+1}
+\end{equation}
+denote the coordinatewise concatenation functor.
+For orthogonal $\TT$-representations $U$ and $V$ and
+for $[\vec{q}\,], [\vec{r}\,]\in \mathcal{I}^{k+1}$
+we want to define a map
+\begin{equation}\label{eq:thhmultiplication}
+ \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}, \A_{[\vec{q}\,]}\wedge S^U)
+\wedge \map(\spherespectrum^{\mathrm{sym}}_{[\vec{r}\,]}, \A_{[\vec{r}\,]}\wedge S^V)\to 
+\map(\spherespectrum^{\mathrm{sym}}_{\alpha_k([\vec{q}\,],[\vec{r}\,])},\A_{\alpha_k([\vec{q}\,],[\vec{r}\,])}\wedge S^{U\oplus V}).
+\end{equation}
+We consider the map $\mu^\A_{[\vec{q}\,], [\vec{r}\,]}: $,
+given by the composition
+\[
+\begin{tikzcd}
+\A_{q_0}\wedge\cdots\wedge \A_{q_k}\wedge \A_{r_0}\wedge \cdots \wedge \A_{r_k}
+\arrow{d}{\cong} \\
+\A_{q_0}\wedge \A_{r_0}\wedge \cdots\A_{q_k}\wedge \A_{r_k}
+\arrow{r}
+&\A_{r_0+q_0}\wedge\cdots \wedge \A_{q_k+r_k},
+\end{tikzcd}
+\]
+where the first map permutes smash factors and the second map is
+obtained as the smash product of the multiplication maps of $\A$.
+We then define \eqref{eq:thhmultiplication} as the adjoint of the composition
+\begin{equation}\label{eq:thhmultiplicationadjoint}
+\begin{tikzcd}
+ \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}, \A_{[\vec{q}\,]}\wedge S^U)
+\wedge \map(\spherespectrum^{\mathrm{sym}}_{[\vec{r}\,]}, \A_{[\vec{r}\,]}\wedge S^V)
+\wedge \spherespectrum^{\mathrm{sym}}_{\alpha_k([\vec{q}\,],[\vec{r}\,])}
+\arrow{d}{\mathrm{smash}\wedge \mathrm{id}}\\
+\map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]} \wedge 
+\spherespectrum^{\mathrm{sym}}_{[\vec{r}\,]}, \A_{[\vec{q}\,]}\wedge S^U\wedge
+\A_{[\vec{r}\,]}\wedge S^V) \wedge \spherespectrum^{\mathrm{sym}}_{\alpha_k([\vec{q}\,],[\vec{r}\,])}
+ \arrow{d}{\cong}\\
+\map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]} \wedge 
+\spherespectrum^{\mathrm{sym}}_{[\vec{r}\,]} , 
+\A_{[\vec{q}\,]}\wedge \A_{[\vec{r}\,]}\wedge S^{U\oplus V}) 
+\wedge \spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]} \wedge 
+\spherespectrum^{\mathrm{sym}}_{[\vec{r}\,]}
+\arrow{d}{\mathrm{ev}}\\
+\A_{[\vec{q}\,]}\wedge \A_{[\vec{r}\,]}\wedge S^{U\oplus V}
+\arrow{d}{\mu^\A_{[\vec{q}\,], [\vec{r}\,]}\wedge \mathrm{id}}\\
+\A_{[\vec{q}+\vec{r}\,]}\wedge S^{U\oplus V},
+\end{tikzcd}
+\end{equation}
+where the second map is given by permuting smash factors.
+It follows from the commutativity of $\A$ that this is natural in $[\vec{q}\,]$
+and $[\vec{r}\,]$. 
+Then we obtain a morphism of natural modules
+\begin{equation}\label{eq:thhmultiplicationnaturalmodules}
+G_k(\A, S^U)\wedge G_k(\A, S^V)\to \alpha_k^\ast G_k(\A,S^{U\oplus V} ),
+\end{equation}
+which is compatible with the natural transformations \eqref{eq:facethh}, 
+\eqref{eq:degeneracythh} and \eqref{eq:cyclicthh}. By passing
+to the homotopy colimits we can define 
+\begin{equation}\label{eq:thhlevelmultiplication}
+\overline{\mu}_{U,V,k}:\mathrm{THH}(\A, S^U)_k\wedge
+\mathrm{THH}(\A, S^V)_k\to \mathrm{THH}(\A, S^{U\oplus V})_k
+\end{equation}
+as the induced map
+\[
+\begin{tikzcd}
+(\underset{\mathcal{I}^{k+1}}{\hocolim}\, G_k(\A, S^U))\wedge
+(\underset{\mathcal{I}^{k+1}}{\hocolim}\, G_k(\A, S^V))
+\arrow{d}{\cong}\\
+\underset{\mathcal{I}^{k+1}\times \mathcal{I}^{k+1}}{\hocolim}\, G_k(\A, S^U)\wedge G_k(\A, S^V)
+\arrow{r} 
+&\underset{\mathcal{I}^{k+1}}{\hocolim}\, G_k(\A, S^{U\oplus V}).
+\end{tikzcd}
+\]
+This yields a map of cyclic spaces, which is natural with respect to $U$ and $V$.
+Thus, after realizing we get a map 
+\begin{equation}\label{eq:thhmultiplicationspacelevel}
+\overline{\mu}_{U,V}: T(\A)(U)\wedge T(\A)(V)\to T(\A)(U\oplus V),
+\end{equation}
+which is natural in $U$ and $V$. This finally gives us the multiplication
+map $\mu: T(\A)\wedge T(\A)\to T(\A)$. The commutativity of $\A$
+implies that the diagram
+\[
+\begin{tikzcd}
+G_k(\A,S^U)\wedge G_k(\A, S^V)
+\arrow{d}{\mathrm{twist}}\arrow{r}
+&\alpha_k^\ast G_k(\A,S^{U\oplus V})\arrow{d}{\cong}\\
+G_k(\A, S^V)\wedge G_k(\A, S^U)
+\arrow{r}
+&\alpha_k^\ast G_k(\A, S^{V\oplus U}),
+\end{tikzcd}
+\]
+where the horizontal arrows are given by \eqref{eq:thhmultiplicationnaturalmodules}
+and the right vertical arrow is induced by the isomorphism $S^{U\oplus V}\cong S^{V\oplus U}$,
+commutes, which in turn implies the commutativity of $\mu$.
+
+To see $\mu$ is associative, let 
+\[
+\beta_k:\mathcal{I}^{k+1} \times \mathcal{I}^{k+1}\times
+\mathcal{I}^{k+1}\to \mathcal{I}^{k+1}
+\]
+denote the triple concatenation and note the following diagram,
+where the arrows are induced by \eqref{eq:thhmultiplication}, commutes:
+\[
+\begin{tikzcd}
+G_k(\A,S^U)\wedge G_k(\A,S^V)\wedge G_k(\A,S^W)
+\arrow{r}\arrow{d}
+& (\alpha_k^\ast G_k(\A,S^{U\oplus V}))\wedge G_k(\A,S^W)
+\arrow{d}\\
+G_k(\A,S^U)\wedge(\alpha_k^\ast G_k(\A,S^{V\oplus W}))
+\arrow{r}
+&\beta_k^\ast G_k(\A,S^{U\oplus V\oplus W}).
+\end{tikzcd}
+\]
+
+It remains to construct the unit map. Let $U$ be an orthogonal $\TT$-representation.
+We consider the map
+\begin{equation}\label{eq:thhunit}
+S^U\xrightarrow{\cong}
+\map(S^0,S^0\wedge S^U)\to
+\map(S^0,\A_0\wedge S^U)\to
+\mathrm{THH}(\A,S^0)_0\to
+\mathrm{THH}(\A,S^U),
+\end{equation}
+%\[
+%\begin{tikzcd}
+%S^U\arrow{d}{\cong}\\
+%\map(S^0,S^0\wedge S^U)\arrow{d}\\
+%\map(S^0,\A_0\wedge S^U)\arrow{d}\\
+%\hocolim_{I} G_0(\A, S^U)\arrow{d}\\
+%\mathrm{THH}(\A,S^U),
+%\end{tikzcd}
+%\]
+where the second map is induced by the unit map of $\A$, the third
+map is the canonical map into the homotopy colimit and the last
+map is the inclusion into the realization. This map is natural in $U$,
+so gives a map $u:\spherespectrum\to T(\A)$. We need to show
+this is the unit map for $\mu$. Consider the map
+\begin{equation}\label{eq:thhhigherunit}
+\begin{tikzcd}
+ S^0
+\arrow{r}{\cong}
+&\map(\spherespectrum^{\mathrm{sym}}_{[\vec{0}\,]}, \spherespectrum^{\mathrm{sym}}_{[\vec{0}\,]} \wedge S^0)
+\arrow{r}
+&\map(\spherespectrum^{\mathrm{sym}}_{[\vec{0}\,]}, \A_{[\vec{0}\,]} \wedge S^0),
+\end{tikzcd}
+\end{equation}
+where the second map is induced by the unit map of $\A$. The map which results
+from smashing \eqref{eq:thhhigherunit} with $\map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}, \A_{[\vec{q}\,]}\wedge S^U)\wedge 
+\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}$ and subsequently composing
+with \eqref{eq:thhmultiplicationadjoint} is adjoint to the identity
+and the claim follows from the commutativity of the following diagram
+\begin{equation}\label{eq:unitdiagram}
+\begin{tikzcd}[column sep = 6em]
+S^0
+\arrow{d}\arrow[equal]{r}
+&S^0
+\arrow{d}\\
+\map(S^0,S^0\wedge S^0)
+\arrow{r}\arrow{d}
+& \map(\spherespectrum^{\mathrm{sym}}_{[\vec{0}\,]}, \spherespectrum^{\mathrm{sym}}_{[\vec{0}\,]} \wedge S^0)
+\arrow{d}\\
+\map(S^0, \A_0\wedge S^0)
+\arrow{d}
+& \map(\spherespectrum^{\mathrm{sym}}_{[\vec{0}\,]}, \A_{[\vec{0}\,]} \wedge S^0)
+\arrow{d}\\
+\mathrm{THH}(\A, S^0)_0\arrow{r}{\mathrm{THH}(\A, S^0)_\bullet([k]\to [0])}
+&\mathrm{THH}(\A, S^0)_k,
+\end{tikzcd}
+\end{equation}
+where the columns are given by \eqref{eq:thhunit} and \eqref{eq:thhhigherunit}.
+\end{proof}
+
+
+%
+%\begin{prop}
+%Let $\A$ be a commutative symmetric ring spectrum. Then $T(\A)$ is a cyclotomic spectrum.
+%\end{prop}
+
+The following proposition is proven in \cite[Proposition~2.4, \pno~40]{hmperfect}. We will need it to define the restriction map.
+\begin{prop}\label{prop:thhfibrant}
+Let $A$ be a ring and $C\subset \TT$ a cyclic subgroup. Then $T(A)$ is a $C$-$\Omega$-spectrum.
+\end{prop}
+
+\begin{rem}\label{rem:connectiveplus}
+The previous proposition also holds for a commutative symmetric ring spectrum
+$\A$ under suitable point set conditions. We refer to \cite[Proposition~8.3, \pno~975]{lrrvthh}
+for a precise statement (see \cite[Definitions~4.7, 4.8 and 4.9, \pno~952]{lrrvthh} for the relevant definitions).
+Furthermore, under slightly weaker assumptions on $\A$ theorem \ref{thm:polynomialextension}
+is proven for the trivial subgroup in \cite[Theorem~6.10, \pno~963]{lrrvthh} and it is indicated
+there without proof that the corresponding statement for $\mathcal{F}$ is also true.
+\end{rem}
+
+%\begin{mydef}
+%Let $A$ be a ring and $\mathbb{H}A$ the associated Eilenberg-MacLane spectrum. The \textit{topological Hochschild spectrum} of $A$ is $T(\mathbb{H}A)$. By abuse of notation, we write $T(A)$ instead of $T(\mathbb{H}A)$.
+%\end{mydef}
+
+
+
+\section{The differential graded ring $\mathrm{TR}^n_\ast(\A;p)$.}\label{sec:wittcomplexes}
+For a symmetric ring spectrum $\A$ and a positive integer $n$ we define
+\[
+\mathrm{TR}^n_q(\A;p) = \pi_q^{C_{p^{n-1}}}(T(\A)).
+\] 
+From now on we assume $\A$ is commutative.
+Under suitable point set conditions (see remark \ref{rem:connectiveplus})
+these abelian groups are related by a number of  operators:
+\begin{align*}
+&F:\mathrm{TR}^n_q(\A;p)\rightarrow \mathrm{TR}^{n-1}_q(\A;p) &(\mathrm{Frobenius}),\\
+&V:\mathrm{TR}^{n-1}_q(\A;p)\rightarrow \mathrm{TR}^{n}_q(\A;p) &(\mathrm{Verschiebung}),\\
+&d:\mathrm{TR}^n_q(\A;p)\rightarrow \mathrm{TR}^n_{q+1}(\A;p),\\
+&R:\mathrm{TR}^n_q(\A ;p)\to \mathrm{TR}^{n-1}_q(\A;p) &(\mathrm{Restriction}),\\
+&[-]_n :\pi_0(\A_0)\to \mathrm{TR}^n_0(\A;p) &(\text{Teichm\"uller}).
+\end{align*}
+The map $d$ is a differential, i.e. $dd = 0$ and satisfies the Leibniz rule,
+giving $\mathrm{TR}^n_\ast$ the structure of a differential graded ring.
+The restriction map $R$ is a map of differential graded ring and
+gives $\mathrm{TR}^\bullet_\ast$ the structure of a pro-differential graded
+ring. The maps above satisfy the following properties and relations:
+\begin{enumerate}[(i)]
+\item $F$ is a map of pro-graded rings, that is $F:\mathrm{TR}^n_\ast\to \mathrm{TR}^{n-1}_\ast$ is 
+for each $n$ a map of graded rings and $FR = RF$.
+\item $V$ is a map of pro-abelian groups, i.e. $VR = RV$. 
+Furthermore, $FV = p$ and $V$ and $F$ satisfy the \textit{Frobenius relation} 
+$xV(y) = V(F(x)y)$.
+\item $FdV = d$.
+\item By the definition of a symmetric ring spectrum $\A_0$ is a monoid in $\mathbf{Top}_\ast$, hence $\pi_0(\A_0)$ is a monoid
+and the Teichm\"uller map $[-]_n$ is multiplicative with respect to this structure.
+Furthermore, in the case $\A = \mathbb{H}A$, then $\pi_0(\A_0) = A$ and
+the Teichm\"uller map is a map of rings.
+\end{enumerate}
+
+\subsection{The Frobenius, Verschiebung and differential.}
+The Frobenius, Verschiebung and $d$ can be defined for any
+$\TT$-spectrum. 
+We define the Frobenius
+\[
+F:\pi_q^{C_{p^n}}(T)\to \pi_q^{C_{p^{n-1}}}(T)
+\]
+ to be the restriction map
+\[
+\mathrm{res}^{C_{p^{n}}}_{C_{p^{n-1}}}: \pi_q^{C_{p^{n}}}(T)
+\to
+\pi_q^{C_{p^{n-1}}}(T) ,
+\]
+or equivalently the map induced by the inclusion of the fixed points
+\begin{equation}\label{eq:frobenius}
+ \pi_q^{C_{p^{n}}}(T)\cong
+\pi^{\{ 1 \}}_q(\mathrm{res}_1\,(QT)^{C_{p^{n}}})
+\to \pi^{\{ 1 \}}_q(\mathrm{res}_1\,(QT)^{C_{p^{n-1}}}) \cong
+\pi_q^{C_{p^{n-1}}}(T).
+\end{equation}
+By definition of the restriction map, this is a multiplicative map.
+The map $V$ is the corresponding internal transfer map
+\[
+\mathrm{tr}^{C_{p^n}}_{C_{p^{n-1}}}:
+\pi_q^{C_{p^{n-1}}}(T)
+\to
+\pi_q^{C_{p^{n}}}(T) .
+\]
+
+Next, we construct the differential. 
+%Again, we do this by defining
+% a map $d:\pi_q^C(T)\to \pi_{q+1}^C(T)$ for any $\TT$-spectrum
+% $T$ and any finite subgroup $C\subset \TT$. 
+ In general
+ this will not be a differential, but it will be so in special cases.
+ Recall from \eqref{eq:circlemodifiedaction} that $\TT_0$ is the
+ circle group with trivial $\TT$-action.
+ Let $\iota: S^0\to \TT_{0+}$ be the map that sends the non-basepoint
+ to $1$. This map has an evident retraction and using
+ the long exact sequence resulting from the cofiber sequence
+ \[
+ S^0\xrightarrow{\iota}\TT_{0+}\xrightarrow{\mathrm{collapse}} S^1
+ \]
+we obtain an isomorphism
+\begin{equation}\label{eq:hopfmapidentity}
+\pi_q^{G}(\Sigma^\infty \TT_{0+})\cong \pi_q^{G}(\Sigma^\infty S^0)
+\oplus \pi_q^{\{1\}}(\Sigma^\infty S^1)
+\end{equation}
+for any subgroup $G$ of $\TT$.
+%
+%\begin{lem}
+%The collapse maps $p_0:\TT_{0+}\to S^0, p_1:\TT_{0+}\to S^1$ induce for all $q$ an isomorphism
+%\begin{equation}\label{eq:hopfmapidentity}
+%\pi_q^{\{1\}}(\Sigma^\infty \TT_{0+})\cong \pi_q^{\{1\}}(\Sigma^\infty S^0)
+%\oplus \pi_q^{\{1\}}(\Sigma^\infty S^1)
+%\end{equation}
+%\end{lem}
+%\begin{proof}
+%Consider the cofiber sequence $S^0\xrightarrow{i} \TT_{0+}\xrightarrow{p_1} S^1$. In the long exact sequence
+%\[
+%\ldots\to \pi_{q+1}^{\{1\}}(\Sigma^\infty S^1)\xrightarrow{\partial}
+%\pi_q^{\{1\}}(\Sigma^\infty S^0)\xrightarrow{i_\ast}
+%\pi_q^{\{1\}}(\Sigma^\infty \TT_{0+})\xrightarrow{(p_1)_\ast}
+%\pi_q^{\{1\}}(\Sigma^\infty S^1)\xrightarrow{\partial}
+%\pi_{q-1}^{\{1\}}(\Sigma^\infty S^0) \to\ldots
+%\]
+%the map $p_0$ induces a retraction of $i_\ast$.
+%\end{proof}
+Let $\sigma\in \pi_1^{\{1\}}(\Sigma^\infty \TT_{0+})$ be the element
+that is mapped to $(0,\mathrm{id})\in 
+\pi_1^{\{1\}}(\Sigma^\infty S^0)
+\oplus \pi_1^{\{1\}}(\Sigma^\infty S^1)
+$ under \eqref{eq:hopfmapidentity}. We define $d$ to be the composite
+\begin{equation}\label{eq:differential}
+\pi_q^{\{1\}}(\rho^\ast_C QT^C)\xrightarrow{\beta(-,\sigma)} \pi_{q+1}^{\{1\}}(\rho^\ast_C QT^C\wedge \TT_{0+})
+\xrightarrow{\mathrm{action}_\ast} \pi_{q+1}^{\{1\}}(\rho^\ast_C QT^C),
+\end{equation}
+where $\beta$ denotes the natural pairing from \eqref{eq:homotopygroupspairing}.
+This is natural in $T$. 
+%Moreover, if $C=1$ or if $T$ is an $\Omega$-spectrum,
+%we can use $T$ instead of $QT$ in \eqref{eq:differential} by \cite[Theorem~III.3.11, 
+%\pno~47]{mandellmay}. 
+
+We give an equivalent description of $d$. Since
+$(\Omega^n\Sigma^n \TT_{0+})^C = \Omega^n\Sigma^n \TT_{0+}$ 
+for any finite subgroup $C$ of $\TT$, any representative
+$\psi:S^1\to \Omega^n\Sigma^n \TT_{0+}$ of $\sigma
+\in \pi_1^{\{1\}}(\Sigma^\infty \TT_{0+})$ determines an element of
+$\pi_1^{C}(\Sigma^\infty \TT_{0+})$, which we also denote by $\sigma$.
+This is independent of the choice of representative for $\sigma$.
+Then we have the following commutative diagram:
+
+\begin{equation}\label{eq:differentialalternative}
+\begin{tikzcd}[column sep = large]
+\pi_q^{\{1\}}(\rho^\ast_C QT^C)
+\arrow{r}{\beta(-,\sigma)} \arrow{d}{\cong}
+&\pi_{q+1}^{\{1\}}(\rho^\ast_C QT^C\wedge \TT_{0+})
+\arrow{r}{\mathrm{action}_\ast} \arrow{d}
+&\pi_{q+1}^{\{1\}}(\rho^\ast_C QT^C)
+\arrow{d}{\cong}\\
+\pi_q^C(QT)
+\arrow{r}{\beta(-,\sigma)}
+&\pi_{q+1}^C(QT\wedge \TT_{0+})
+\arrow{r}{\mathrm{action}_\ast}
+&\pi_{q+1}^C(QT)\\
+\pi_q^C(T)
+\arrow{r}{\beta(-,\sigma)}\arrow{u}{(r_T)_\ast}[swap]{\cong}
+&\pi_{q+1}^C(T\wedge \TT_{0+})
+\arrow{u}{(r_T\wedge \mathrm{id})_\ast}[swap]{\cong}\arrow{r}{\mathrm{action}_\ast}
+&\pi_{q+1}^C(T).
+\arrow{u}{(r_T)_\ast}[swap]{\cong}
+\end{tikzcd}
+\end{equation}
+Here the upper vertical isomorphisms are given by lemma 
+\ref{lem:omegaspectrafixedpoints} and \eqref{eq:homotopygroupomegaspectrum}. 
+The lower vertical 
+arrow in the middle is an isomorphism by \cite[Theorem~III.3.11, 
+\pno~47]{mandellmay} and the fact that $r_T:T\to QT$
+is an equivalence of $\TT$-spectra. Using lemma 
+\ref{lem:omegaspectrafixedpoints} and \eqref{eq:homotopygroupomegaspectrum},
+one sees after a diagram chase that the bottom row of \eqref{eq:differentialalternative}
+defines the same map as \eqref{eq:differential}.
+
+
+
+As remarked before, this does not always
+define a differential. In general, \cite[(1.4.4), \pno~13]{hesselholtacta} notes that
+\[dd = d\circ \beta(-,\eta) = \beta(-,\eta)\circ d,\]
+where $\eta\in \pi_1^{\{1\}}(\spherespectrum)$ denotes  the Hopf class. Thus, if
+the Hopf class acts trivially, $d$ is a differential. This is the case, for example,
+if the homotopy groups of $T$ have no $2$-torsion. Later we show
+this holds for $T(A)$ if $A$ is a $\ZZ_{(p)}$-algebra. As remarked before, the Frobenius,
+Verschiebung and $d$ satisfy the following relations.
+
+\begin{lem}\label{lem:wittcomplexrelations} Let $T$ by a $\TT$-ring spectrum. Then the following holds:
+\begin{enumerate}[(i)]
+\item $FV(x) = px$.
+\item $V(F(x)y) = xV(y)$.
+\item $FdV = d$.
+\item For $x\in \pi_m^C(T)$ and $y\in \pi_n^C(T)$ we have $d(xy) = (dx)y + (-1)^m x(dy)$.
+\item $Vd = pdV$.
+\item For any $q,n\in \NN_0$ the following diagram commutes:
+\[
+\begin{tikzcd}
+\pi_q^{C_{p^n}}(\Sigma^\infty S^q)
+\arrow{r}{d}\arrow{d}{V}
+&\pi_{q+1}^{C_{p^n}}(\Sigma^\infty S^q)
+\arrow{d}{V}\\
+\pi_q^{C_{p^{n+1}}}(\Sigma^\infty S^q)
+\arrow{r}{pd}
+&\pi_{q+1}^{C_{p^{n+1}}}(\Sigma^\infty S^q)
+\end{tikzcd}
+\] 
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+The first two statements are proven in \cite[Lemma~3.3, \pno~52]{hmperfect}.
+The third assertion
+follows from \cite[Lemma~1.5.1, \pno~16]{hesselholtacta}, where it is proven
+that $FdV = d + (p-1)\eta$. Since $p$ is assumed to be odd and $\eta$
+is 2-torsion, the claim follows.
+For the fourth statement we use \cite[Lemma~1.4.2, \pno~11]{hesselholtacta},
+where \eqref{eq:differential} is identified with a differential of a 
+spectral sequence:
+\[
+d^1_{0,q}:E^1_{0,q}\to E^1_{-1, q}.
+\]  
+In the discussion preceding this result it is remarked that this spectral
+sequence is a differential bigraded algebra, hence the claim follows.
+
+(v) is proven in \cite[Lemma~1.2.1, \pno~8]{hmmixed} and we reduce (vi) to this claim.
+Note that $\Sigma^\infty S^0$ is a $\TT$-ring spectrum, so in this case the claim follows directly
+from (v). The general case follows from the equality $\Sigma^\infty S^q = \Sigma^q\Sigma^\infty S^0$,
+lemma \ref{lem:suspensiontransfer} and the fact that the following diagram commutes:
+\[
+\begin{tikzcd}
+\pi_0^{C_{p^n}} (\Sigma^\infty S^0)
+\arrow{d}[swap]{\cong}{\Sigma}\arrow{r}{d}
+&\pi_1^{C_{p^n}} (\Sigma^\infty S^0)
+\arrow{d}[swap]{\cong}{\Sigma}
+\\
+\pi_q^{C_{p^n}} (\Sigma^\infty S^q)
+\arrow{r}{d}
+&\pi_{q+1}^{C_{p^n}} (\Sigma^\infty S^q).
+\end{tikzcd}
+\]
+The commutativity of this diagram can be seen from the description of $d$ as the
+bottom row of \eqref{eq:differentialalternative} and the description
+of the suspension isomorphism given in remark \ref{rem:spectrumsuspensionshift}.
+\end{proof}
+
+
+
+
+\subsection{The restriction and Teichm\"uller map.}
+In this part we define the restriction map
+ and the Teichm\"uller map.
+This will give $\mathrm{TR}^\bullet_\ast(A;p)$ the structure of a pro-differential graded ring.
+We do so by defining a map of ring $\TT$-spectra
+\begin{equation}\label{eq:restrictionmap}
+r_n:\rho_{p^n}^\ast T(\A)^{C_{p^n}}\to \rho_{p^{n-1}}^\ast T(\A)^{C_{p^{n-1}}}
+\end{equation}
+for all $n\in \NN$. For this reason we restrict to the case of rings,
+since we need proposition \ref{prop:thhfibrant} for \eqref{eq:restrictionmap} 
+to carry homotopical information. Of course, remark \ref{rem:connectiveplus}
+still applies. The Teichm\"uller map can be defined without any assumptions
+on $\A$.
+
+First note that for $C$-spaces $X,Y$ we have the canonical map
+\begin{equation}\label{eq:restrictfixedpoints}
+\map(X,Y)^C\to \map(X^C, Y^C), f\mapsto f^C.
+\end{equation}
+This is continuous by lemma \ref{lem:mapinclusion}.
+Next, we have the following lemma, which follows directly from the choice of our
+model for the homotopy colimit and the fact that taking $C$-fixed points
+commutes with geometric realization.
+\begin{lem}\label{lem:hocolimfixedpoints}
+Suppose $C_a$ acts on a natural module $(\mathcal{J}, F)$. Then we have
+a natural isomorphism of (pointed) spaces
+\[
+\left(\underset{\mathcal{J}}{\hocolim}\, F\right)^{C_a}\cong \underset{\mathcal{J}^{C_a}}{\hocolim}\,  F^{C_a}.
+\]
+Here  $F^{C_a}$ is defined as the composition  \[
+(-)^{C_a}\circ F: \mathcal{J}^{C_a}\to \mathbf{Top}_\ast.
+\]
+\end{lem}
+We apply this to the case $(\mathcal{I}^{a(k+1)}, G_{a(k+1) - 1}(\A, X))$, where $C_a$ acts on $\mathcal{I}^{a(k+1)}\cong (\mathcal{I}^{k+1})^a$
+by cyclic permutation and on $G_{a(k+1) - 1}(\A, X)$ by cyclic permutation of the smash factors in the mapping space.
+Moreover, we assume $C_a$ acts trivially on $X$.
+The diagonal functor $\Delta_a:\mathcal{I}^{k+1} \to \mathcal{I}^{a(k+1)}$ induces an isomorphism of natural
+modules 
+\[
+(\mathcal{I}^{k+1},  G_{a(k+1) - 1}(\A, X)\circ \Delta_a)\xrightarrow{\cong}
+((\mathcal{I}^{a(k+1)})^{C_a}, G_{a(k+1) - 1}(\A, X)).
+\]
+Furthermore, for any $[\vec{q}\,]\in \mathcal{I}^{k+1}$ we have the isomorphisms
+\begin{align}
+\begin{split}
+(\A_{\Delta_a([\vec{q}\,])})^{C_a}&\cong \A_{[\vec{q}\,]}, \\
+(\mathbb{S}^{\mathrm{sym}}_{\Delta_a([\vec{q}\,])})^{C_a}
+&\cong  \mathbb{S}^{\mathrm{sym}}_{[\vec{q}\,]},
+\end{split}
+\end{align}
+natural in $[\vec{q}\,]$, where the $C_a$-action is again by cyclic permutation on the smash factors.
+After applying mapping spaces and composing with \eqref{eq:restrictfixedpoints}
+we obtain the map
+\begin{equation}\label{eq:prerestriction}
+\begin{tikzcd}
+ \map(\mathbb{S}^{\mathrm{sym}}_{\Delta_a([\vec{q}\,])}, \A_{\Delta_a([\vec{q}\,])}\wedge X)^{C_a}
+\arrow{r} 
+&\map((\mathbb{S}^{\mathrm{sym}}_{\Delta_a([\vec{q}\,])})^{C_a},
+(\A_{\Delta_a([\vec{q}\,])})^{C_a}\wedge X)\\
+&\map(\mathbb{S}^{\mathrm{sym}}_{[\vec{q}\,]},  \A_{[\vec{q}\,]} \wedge X),
+\arrow[swap]{u}{\cong}
+\end{tikzcd}
+\end{equation}
+which is natural in $[\vec{q}\,]$, hence yields a map of natural modules 
+\begin{equation}
+(\mathcal{I}^{k+1},  ( G_{a(k+1) - 1}(\A, X)\circ \Delta_a)^{C_a})\to
+(\mathcal{I}^{k+1},  G_{k}(\A, X)).
+\end{equation}
+
+Putting everything together we define $r'_k:(sd_{C_a} \mathrm{THH}(\A, X)_k)^{C_a}\to
+\mathrm{THH}(\A, X)_k$ as the composition
+\begin{equation}
+\begin{tikzcd}
+(sd_{C_a} \mathrm{THH}(\A, X)_k)^{C_a} \arrow[equal]{r}
+&\left(\underset{\mathcal{I}^{a(k+1)}}{\hocolim}\, G_{a(k+1)-1}(\A,X) \right)^{C_a}\\
+& \underset{\mathcal{I}^{k+1}}{\hocolim}\, (G_{a(k+1) - 1}(\A,X)\circ \Delta_a)^{C_a}
+\arrow[swap]{u}{\cong}
+\arrow{d}\\
+ \mathrm{THH}(\A,X)_k\arrow[equal]{r}
+& \underset{\mathcal{I}^{k+1}}{\hocolim}\, G_{k}(\A, X).
+\end{tikzcd}
+\end{equation}
+%One verifies that this map satisfies the assumption of lemma \ref{lem:modifiedequivariance}. 
+After realizing and specializing to the case $a = p$
+we define $r_1:\rho_p^\ast T(\A)^{C_p}\to T(A)$
+as the composition
+\begin{align}\label{eq:thhrestriction}
+\rho_p^\ast |\mathrm{THH}(\A, S^U)_\bullet|^{C_p}\xrightarrow{D_p^{-1}} 
+\rho_p^\ast |sd_p\mathrm{THH}(\A,S^U)_\bullet|^{C_p}\xrightarrow{r'}
+|\mathrm{THH}(\A, S^U)_\bullet|,
+\end{align}
+where $U$ is a $\TT$-representation with trivial $C_p$-action.
+By \cite[Lemma~1.10, \pno~470]{bhmcyclotomic} this is $\TT$-equivariant
+and finally we obtain \eqref{eq:restrictionmap} as the composition
+\[
+\rho_{p^n}^\ast T(\A)^{C_{p^n}}\cong \rho_{p^{n-1}}^\ast(\rho_p^\ast T(\A)^{C_p})^{C_{p^{n-1}}}
+\xrightarrow{\rho_{p^{n-1}}^\ast r_1^{C_{p^{n-1}}}} 
+\rho_{p^{n-1}}^\ast T(\A)^{C_{p^{n-1}}}.
+\]
+\begin{lem}\label{lem:restrictionrelations}
+The map $r_n$ is a map of ring $\TT$-spectra.
+Furthermore, the following relations hold:
+\begin{enumerate}[(i)]
+\item Rd = dR.
+\item RF = FR.
+\item VR = VR.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+We first show that $r_1:\rho_p^\ast T(\A)^{C_p}\to T(\A)$ is a map of ring $\TT$-spectra. 
+The map \eqref{eq:thhlevelmultiplication} induces after edgewise subdivision
+and geometric realization a map
+\begin{equation}\label{eq:thhmultiplicationsubdivision}
+\lvert sd_p\mathrm{THH}(\A,S^U)_\bullet\rvert ^{C_p}\wedge \lvert sd_p\mathrm{THH}(\A,S^V)_\bullet\rvert ^{C_p}\to
+\lvert sd_p\mathrm{THH}(\A,S^{U\oplus V})_\bullet\rvert ^{C_p}
+\end{equation}
+and one verifies  by direct inspection that the following diagram commutes:
+\begin{equation}\label{eq:restrictionmultiplication1}
+\begin{tikzcd}
+\lvert \mathrm{THH}(\A,S^U)_\bullet\rvert ^{C_p}\wedge \lvert \mathrm{THH}(\A,S^V)_\bullet\rvert ^{C_p}
+\arrow{r}\arrow{d}{D_p^{-1} \wedge D_p^{-1}}
+&\lvert \mathrm{THH}(\A,S^{U\oplus V})_\bullet\rvert ^{C_p}
+\arrow{d}{D^{-1}_p}\\
+\lvert sd_p\mathrm{THH}(\A,S^U)_\bullet\rvert ^{C_p}\wedge \lvert sd_p\mathrm{THH}(\A,S^V)_\bullet\rvert ^{C_p}
+\arrow{r}
+&\lvert sd_p\mathrm{THH}(\A,S^{U\oplus V})_\bullet\rvert ^{C_p}.
+\end{tikzcd}
+\end{equation}
+Here the top horizontal arrow is obtained by applying $C_p$-fixed points
+to \ref{eq:thhmultiplicationspacelevel} and the bottom horizontal arrow is given by \ref{eq:thhmultiplicationsubdivision}.
+
+Between
+the diagonal functor $\Delta_p$ and the concatenation functor $\alpha_k$
+from \eqref{eq:concatenationfunctor} we have the following relation
+\[
+\Delta_p\circ \alpha_k = \alpha_{p(k+1) - 1}\circ (\Delta_p\times \Delta_p)
+\]
+and again by direction inspection we find that the following diagram, where the vertical arrows
+are given by \eqref{eq:thhmultiplicationadjoint} and the horizontal arrows by
+\eqref{eq:prerestriction}, commutes:
+\[
+\begin{tikzcd}
+(G_{p(k+1) - 1}(\A, S^U)\circ \Delta_p)^{C_p}\wedge (G_{p(k+1) - 1}(\A, S^V)\circ \Delta_p)^{C_p}
+\arrow{d}\arrow{r}
+& G_{k}(\A, S^U)\wedge G_{k}(\A, S^V)
+\arrow{d}\\
+(\alpha_k^\ast (G_{p(k+1) - 1}(\A, S^{U\oplus V})\circ (\Delta_p\times \Delta_p))^{C_p}
+\arrow{r}
+&\alpha^\ast_k G_{k}(\A, S^{U\oplus V}).
+\end{tikzcd}
+%
+%
+%\begin{tikzcd}
+%\map(\mathbb{S}^{\mathrm{sym}}_{\Delta_a([\vec{q}\,])}, \A_{\Delta_a([\vec{q}\,])}\wedge S^U)^{C_a}
+%\wedge \map(\mathbb{S}^{\mathrm{sym}}_{\Delta_a([\vec{r}\,])}, \A_{\Delta_a([\vec{r}\,])}\wedge X)^{C_a}
+%\arrow{r}\arrow{d}
+%&\map(\mathbb{S}^{\mathrm{sym}}_{[\vec{q}\,]}, \A_{[\vec{q}\,]}\wedge S^U)
+%\wedge \map(\mathbb{S}^{\mathrm{sym}}_{[\vec{r}\,]}, \A_{[\vec{r}\,]}\wedge X)
+%\arrow{d}\\
+%\map(\mathbb{S}^{\mathrm{sym}}_{\Delta_a(\alpha_k([\vec{q}\,],[\vec{r}\,]))}, 
+%\A_{\Delta_a(\alpha_k([\vec{q}\,],[\vec{r}\,]))}\wedge S^{U\oplus V})^{C_a}
+%\arrow{r}
+%&\map(\mathbb{S}^{\mathrm{sym}}_{\alpha_k([\vec{q}\,],[\vec{r}\,])}, 
+%\A_{\alpha_k([\vec{q}\,],[\vec{r}\,])}\wedge S^{U\oplus V})
+%\end{tikzcd}
+\]
+Passing to homotopy colimits and applying geometric realization we obtain the following
+commutative diagram, where the top horizontal arrow is given by
+\eqref{eq:thhmultiplicationsubdivision} and the bottom horizontal arrow is given by \eqref{eq:thhmultiplicationspacelevel} :
+\begin{equation}\label{eq:restrictionmultiplication2}
+\begin{tikzcd}
+\lvert sd_p\mathrm{THH}(\A,S^U)_\bullet\rvert ^{C_p}\wedge \lvert sd_p\mathrm{THH}(\A,S^V)_\bullet\rvert ^{C_p}
+\arrow{r}\arrow{d}{r'\wedge r'}
+&\lvert sd_p\mathrm{THH}(\A,S^{U\oplus V})_\bullet\rvert ^{C_p}
+\arrow{d}{r'}\\
+\lvert \mathrm{THH}(\A,S^U)_\bullet\rvert \wedge \lvert \mathrm{THH}(\A,S^V)_\bullet\rvert 
+\arrow{r}
+&\lvert \mathrm{THH}(\A,S^{U\oplus V})_\bullet\rvert 
+\end{tikzcd}
+\end{equation}
+After concatenating \eqref{eq:restrictionmultiplication1} and \eqref{eq:restrictionmultiplication2}
+this shows $r_1$ is multiplicative.
+It remains to show that $r_1$ preserves the unit map. Note that  \eqref{eq:unitdiagram}
+still commutes if we replace $S^0$ by $S^U$ and put $k=p-1$. The claim then follows
+directly from the definition of $D_p$ and $r'_0$. The general case for $r_n$
+follows from the equality
+$\rho_{p^{n}}^\ast T(\A)^{C_{p^n}}= \rho_{p^{n-1}}^\ast(\rho_p^\ast T(\A)^{C_p})^{C_{p^{n-1}}}$
+and the fact that $\rho_{p^{n-1}}^\ast$ and $(-)^{C_{p^{n-1}}}$ are lax monoidal
+functors, which implies that they send maps of ring spectra to maps of ring
+spectra.
+
+The assertions (i)-(iii) follow from the fact that $r_n$ is a map of $\TT$-spectra
+and from the naturality of restriction, transfer and $d$.
+\end{proof}
+
+Finally, we construct the Teichm\"uller map
+\[
+[-]_n:\pi_0(\A_0)\to \mathrm{TR}_0^n(\A;p).
+\]
+Note that $\A_0$ is a monoid in $\mathbf{Top}_\ast$,
+so we can form its cyclic nerve. We define a map
+\begin{equation}\label{eq:teichmueller}
+|CN(\A_0)_\bullet|\to  T(\A)(0)
+\end{equation}
+as follows. For fixed $k$ we consider the composition 
+\[
+CN(\A_0)_k\to \map(S^0\wedge \ldots\wedge S^0,
+\A_0\wedge\ldots\wedge \A_0\wedge S^0)
+\to \mathrm{THH}(\A, S^0)_k,
+\]
+where the second map is the inclusion into the homotopy colimit 
+and the first map is induced by the isomorphism
+$\map(S^0\wedge \ldots\wedge S^0,
+\A_0\wedge\ldots\wedge \A_0\wedge S^0)
+\cong \A_0\wedge\ldots\wedge \A_0$.
+After geometric realization this yields \eqref{eq:teichmueller}.
+We then define the Teichm\"uller map as the composition
+\begin{align*}
+\pi_0(\A_0)&\to \pi_0(|CN(\A_0)_\bullet|)
+\xrightarrow{\Delta_\ast}
+\pi_0(\rho^\ast_{C_{p^{n-1}}}|CN(\A_0)_\bullet|^{C_{p^{n-1}}})\\
+&\to \pi_0(\rho^\ast_{C_{p^{n-1}}}T(\A)(0)^{C_{p^{n-1}}})
+\to \pi_0^{C_{p^{n-1}}}(T(\A)),
+\end{align*}
+where the first map is induced by the inclusion of the vertices,
+ the third map is induced by \eqref{eq:teichmueller}
+ and the final map is the inclusion into the colimit.
+This map is multiplicative and since $\mathrm{TR}_\ast^n(\A;p)$
+is a graded ring for all $n$, we immediately obtain the following
+proposition from the isomorphism $A\cong \pi_0((\mathbb{H}A)_0)$.
+
+\begin{prop}\label{prop:thhplocalization}
+If $A$ is a $\ZZ_{(p)}$-algebra, $\mathrm{TR}_q^n(A;p)$ is a $\ZZ_{(p)}$-module
+for all $n$ and all $q$.
+\end{prop}

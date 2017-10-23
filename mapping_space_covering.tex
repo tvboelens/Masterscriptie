@@ -1,0 +1,249 @@
+\documentclass[8pt, oneside]{article}
+\linespread{1.3}
+\usepackage{geometry}
+\usepackage{csquotes}
+\geometry{a4paper}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amsmath}	
+\usepackage{amssymb}
+\usepackage{textgreek}
+\usepackage{eufrak}
+\usepackage[english]{babel}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{tikz} 
+\usepackage{tikz-cd} 
+\usepackage[backend=biber,
+style = numeric,
+]{biblatex}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+%\DeclareLanguageMapping{ngerman}
+\addbibresource{scriptieref.bib}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+
+  
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{mydef}[thm]{Definition}
+\newtheorem{bem}[thm]{Bemerkung}
+\newtheorem{bsp}[thm]{Beispiel}
+\newtheorem{bspe}[thm]{Beispiele}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\WW}{\mathbb{W}}
+\newcommand{\lin}{\text{lin}}
+\newcommand{\dens}{\text{dens}}
+\newcommand{\card}{\text{card}}
+\newcommand{\hocolim}{\mathrm{hocolim}}
+\newcommand{\colim}{\mathrm{colim}}
+\newcommand{\map}{\mathrm{map}}
+\newcommand{\clco}{\overline{\text{co}}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\begin{document}
+We fix some notation. If $X$ and $Y$ are spaces, $K\subset X$ is a compact subset
+and $V\subset Y$ an open subset, we define $M(K,V)\subset \mathrm{map}(X,Y)$
+by
+$$M(K,V) = \{f:X\rightarrow Y: f(K)\subset V\}.$$
+These sets form a subbasis for the compact open topology.
+We denote by $\map_0(X,Y)$ the mapping space with the compact open topology.
+In general $\map_0(X,Y)$ is not CGWH, even if $X$ and $Y$ are. So we
+only obtain the mapping space after retopologizing, i.e.
+$\map(X,Y) = k\map_0(X,Y)$. Furthermore, we use $\prod_{I,0}, \lim_{I,0}$
+to denote products and limits in the category of topological spaces.
+\begin{lem}\label{lem:mapinclusion}
+Let $f:Y\to Z$ be an inclusion. For any space $X$ the induced map
+$$f_\ast:\mathrm{map}(X,Y)\to \map(X,Z)$$
+is an inclusion.
+\end{lem}
+
+\begin{proof}
+Let $T$ be a space and $\varphi:T\rightarrow \map(X,Y)$ a set map.
+We show that $\varphi$ is continuous iff $f_\ast\circ\varphi$ is continuous.
+Let $$\tilde \varphi:T\times X\rightarrow Y$$
+be the adjoint of $\varphi$. Since $f$ is an inclusion, $\tilde \varphi$
+is continuous iff $f\circ \tilde\varphi$ is continuous. The claim now follows
+from the observation that $f\circ \tilde\varphi$ is the adjoint of
+$f_\ast\circ\varphi$.
+\end{proof}
+
+\begin{lem}\label{lem:maprepresentable}
+Let 
+$\{X_i: i\in I\}$
+be a diagram of CGWH spaces. Let $X$ be the colimit 
+in the category of CGWH spaces with the structure maps
+$\varphi_i:X_i \to X$ and suppose the following condition is satisfied:
+for every compact subset $K\subset X$ there are compact subsets
+$$K_{j}\subset X_{i_j}, j=1,\ldots n,$$ such that
+$K = \cup_{j=1}^n \varphi_{i_j}(K_{j})$.
+Then the structure maps induce a natural map 
+$$\varphi: \mathrm{map}(\colim_I X_i, Y)\to \lim_I
+\mathrm{map}(X_i, Y)$$
+and this map is a homeomorphism.
+\end{lem}
+
+\begin{proof}
+Throughout this proof spaces are not CGWH unless explicitly mentioned.
+For categorical reasons $\varphi$ is bijective and continuous, so 
+we only need to show its inverse is continuous. We first show
+that $\psi(M(K,V))$ is open in $\lim_{I,0}\map_0(X,Y)$. We choose compact sets 
+$$K_{j}\subset X_{i_j}, j=1,\ldots n,$$ such that
+$K = \cup_{j=1}^n \varphi_{i_j}(K_{j})$. Then we
+have 
+$$\varphi(M(K,V)) = \left(\prod_{j = i}^n M(K_{i_j}, V)\times \prod_{i\in I\setminus \{i_1,\ldots, i_n\}}
+\map_0(X_i, Y)\right)\cap \lim_{I, 0} \map_0(X_i, Y),$$
+showing the claim. This means that $\varphi: \map_0(X,Y) \to \lim_{I,0} \map_0(X, Y)$
+is a homeomorphism. 
+
+We now consider the following composition:
+$$
+\lim_I \map(X_i, Y)
+\xrightarrow{\mathrm{id}}
+\lim_{I,0} \map_0(X_i, Y)
+\xrightarrow{\varphi^{-1}}
+\map_0(X,Y).
+$$
+The left map is continuous since it is the product of the maps
+$$\lim_I \map(X_i, Y)\xrightarrow{\pi_j} \map(X_j, Y)\xrightarrow{\mathrm{id}}
+\map_0(X_j, Y)$$
+and since $\mathrm{id}: kA\to A$ is continuous 
+for any space $A$. 
+The continuity of $$\varphi^{-1}: \lim_I \map(X_i,Y)\to \map(X, Y)$$
+ now follows from the fact that for any $CGWH$ space $A$ and any space $B$,
+a map $f:A\to kB$ is continuous iff $f:A\to B$ is continuous.
+\end{proof}
+
+We remark that we can write $\RR = \colim_{k\in \ZZ} [k, k+1]$
+and $[0,1] = \colim_{i=1,\ldots, n} [\frac{i-1}{n}, \frac in]$. In both cases the
+hypothesis of the previous lemma is satisfied.
+
+In the following, we denote by $p:\RR\to \TT$  the 
+standard covering, i.e. $p(x) = \mathrm{exp}(2\pi i x)$. Furthermore,
+we let $$\map_p(\RR,\RR) = \{f\in \map(\RR, \RR): p(f(x+k)) = p(f(x)) \text{ for all }
+x\in \RR, k\in \ZZ\}.$$
+
+\begin{prop}
+Let $f\in \map_p(\RR,\RR)$ and denote by $\eta(f):\TT\to \TT$ the unique map
+that makes 
+$$
+\begin{tikzcd}
+\RR \arrow{r}{f}\arrow{d}{p}
+&\RR\arrow{d}{p}\\
+\TT\arrow{r}{\eta(f)}
+&\TT
+\end{tikzcd}
+$$
+commute. Then $\eta:\map_p(\RR,\RR)\rightarrow \map(\TT,\TT)$ is continuous.
+Furthermore,  for any $f\in \map(\TT, \TT)$ there exists a neighborhood $U$
+of $f$ and a local section $s:U\rightarrow \map_p(\RR,\RR)$ of $\eta$.
+\end{prop}
+\begin{proof}
+Let $q_1:\TT\setminus\{1\}\rightarrow (0,1), q_{-1}:\TT\setminus\{-1\}\to \left(-\frac12, \frac12\right)$
+be local inverses of $p$. Then the adjoint
+$$\tilde \eta:\map_p(\RR,\RR)\times \TT\to \TT$$
+of $\eta$ is locally given by
+$$\map_p(\RR,\RR)\times \TT\setminus\{1\}\xrightarrow{\id\times q_1}
+\map_p(\RR,\RR)\times (0,1)\xrightarrow{\mathrm{ev}}\RR
+\xrightarrow{p} \TT$$
+and
+$$\map_p(\RR,\RR)\times \TT\setminus\{-1\}\xrightarrow{\id\times q_{-1}}
+\map_p(\RR,\RR)\times \left(-\frac12,\frac12\right)\xrightarrow{\mathrm{ev}}\RR
+\xrightarrow{p} \TT,$$
+showing that $\tilde \eta$, hence $\eta$ is continuous.
+
+Now let $f\in \map(\TT,\TT)$ and $\tilde f:\RR\to \RR$ a lift of $p\circ f$.
+We choose a subdivision $$\left[\frac{i-1}{n}, \frac{i}{n}\right], i = 1,\ldots ,n$$ of $[0,1]$
+such that for each $i$ we have $f(p([\frac{i-1}{n}, \frac{i}{n}]))\subset \TT\setminus\{1\}$ 
+or $f(p([\frac{i-1}{n}, \frac{i}{n}]))\subset \TT\setminus\{-1\}$. We put $K_i = p([\frac{i-1}{n}, \frac{i}{n}])$
+and 
+$$U_i = 
+\begin{cases}
+\TT\setminus\{1\} &\text{ if } f(p([\frac{i-1}{n}, \frac{i}{n}]))\subset \TT\setminus\{1\},\\
+\TT\setminus\{-1\} &\text{ if } f(p([\frac{i-1}{n}, \frac{i}{n}]))\subset \TT\setminus\{-1\}.
+\end{cases}$$
+We choose $a_i\in \frac12 \ZZ$ such that 
+$$
+\begin{tikzcd}
+\left [\frac{i-1}{n}, \frac{i}{n} \right ]
+\arrow{r}{\tilde f}
+\arrow{d}{p}
+&(a_i, a_i+1)\arrow{d}{p_i}\\
+K_i\arrow{r}{f}
+&U_i
+\end{tikzcd}
+$$
+commutes. Here $p_i$ denotes the restriction of $p$ to $(a_i, a_i+1)$, which is a homeomorphism.
+Since $f(p(\frac{i}{n}))\in \TT\setminus\{1, -1\}$, we have either
+$\tilde f(\frac{i}{n})\in \left(a_i, a_i+\frac12\right)$ or $\tilde f(\frac{i}{n})\in \left(a_i +\frac12, a_i +1\right)$, so we can define
+$$\tilde V_i = 
+\begin{cases}
+ \left(a_i, a_i+\frac12\right) &\text{ if } \tilde f(\frac{i}{n})\in \left(a_i, a_i+\frac12\right)\\
+ \left(a_i +\frac12, a_i +1\right) &\text{ if } 
+ \tilde f(\frac{i}{n})\in \left(a_i +\frac12, a_i +1\right)
+\end{cases}$$
+Finally, we put $V_i = p(\tilde V_i)$. The definition ensures that 
+$\tilde V_i\subset (a_{i+1}, a_{i+1}+1)$.
+
+Consider the diagram
+$$
+\begin{tikzcd}
+M(K_i, U_i)\arrow{r}\arrow{d}
+&\map(K_i, U_i)\arrow{d}\\
+\map(\TT,\TT)\arrow{r}
+&\map(K_i, \TT),
+\end{tikzcd}
+$$
+where the left vertical map is the inclusion, the right vertical map is induced
+by the inclusion $U_i\to \TT$ and the lower horizontal map is induced
+by the inclusion $K_i\to \TT$. By lemma \ref{lem:mapinclusion} the upper
+horizontal map is continuous. Using this we can define
+$$s_i:M(K_i, U_i)\rightarrow \map(K_i, U_i)\xrightarrow{(p_i^{-1})_\ast} 
+\map(K_i, \tilde U_i)\xrightarrow{p^\ast}\map\left(\left[\frac{i-1}{i}, \frac{i}{n}\right], \tilde U_i\right)
+\to \map\left(\left[\frac{i-1}{i}, \frac{i}{n}\right], \RR\right).$$
+If $g\in U(f):=\bigcap_{i = 1}^n M(K_i, U_i)\cap M(\{p(\frac{i}{n})\}, V_i)$, then 
+for $i\ge 2$ we have
+$$s_{i-1}(g)\left(\frac{i-1}{n}\right)\in \tilde V_{i-1} \subset(a_{i}, a_i+1)$$ 
+and  
+$$s_{i}(g)\left(\frac{i-1}{n}\right)\subset (a_i, a_i+1).$$ By construction $p$ maps 
+$s_{i-1}(g)(\frac{i-1}{n})$ and $s_{i}(g)(\frac{i-1}{n})$ to the same element
+and since $p$ is injective on $(a_i, a_i+1)$ they are equal. By lemma \ref{lem:maprepresentable}
+we obtain a map
+$$s_0:U(f)
+\to \lim_{i\in \{1,\ldots, n\}} \map\left(\left[\frac{i-1}{n},
+\frac{i}{n}\right],\RR\right)\cong \map([0,1],\RR).$$
+For $k\in \ZZ\setminus \{0\}$ we define
+$$s_k:U(f)\to \map([k, k+1],\RR)$$
+by
+$$s_k(g)(x) = s_0(g)(x-k) + k\mathrm{deg}(g),$$
+which is continuous since the degree map is continuous. This
+definition ensures that $s_k(g)(k+1) = s_{k+1}(g)(k+1)$ for all $k$,
+so by lemma \ref{lem:maprepresentable} we obtain a map
+$$s:U(f)\to \lim_{k\in \ZZ} \map([k, k+1], \RR)\cong \map(\RR,\RR)$$
+such that $p\circ s(g) = g\circ p$.
+\end{proof}
+\end{document}
+
+
+
+
+
+

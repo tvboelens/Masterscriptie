@@ -1,0 +1,97 @@
+\documentclass[8pt, twoside]{report}
+\linespread{1.3}
+\usepackage{geometry}
+%\usepackage{csquotes}
+\geometry{a4paper}
+%\usepackage{graphicx}
+%\usepackage{mathtools}
+\usepackage{amsmath}	
+\usepackage{amssymb}
+%\usepackage{textgreek}
+%\usepackage[english]{babel}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{tikz} 
+\usepackage{tikz-cd} 
+\usepackage{todonotes}
+\usepackage{mathrsfs}
+\usepackage[backend=biber,
+style = alphabetic, maxnames = 5, maxalphanames = 5
+]{biblatex}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+%\DeclareLanguageMapping{ngerman}
+\addbibresource{scriptieref.bib}
+\usepackage[colorlinks=false, pdfborder={0 0 0}]{hyperref}  
+  
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{mydef}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{bsp}[thm]{Example}
+\newtheorem{bspe}[thm]{Beispiele}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\spherespectrum}{\mathbb{S}}
+\newcommand{\WW}{\mathbb{W}}
+%\newcommand{\lin}{\text{lin}}
+%\newcommand{\dens}{\text{dens}}
+%\newcommand{\card}{\text{card}}
+\newcommand{\hocolim}{\mathrm{hocolim}}
+\newcommand{\colim}{\mathrm{colim}}
+\newcommand{\map}{\mathrm{map}}
+%\newcommand{\clco}{\overline{\text{co}}}
+%\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+%    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\newcounter{counter}
+
+
+
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+	\vspace*{1cm}
+	\large
+	Masterarbeit\\
+	\vspace{1cm}
+	\huge
+		Topological Hochschild Homology for the group ring of the infinite cyclic group\\
+	\vspace{1.5cm}
+	\large
+	Thomas Vincent Boelens
+	\vfill
+	Erstgutachter und Betreuer: Herr Prof. Dr. H. Reich\\
+	Zweitgutachter: Herr Prof. Dr. E. Vogt\\
+	\vspace{1cm}
+	\today	
+	\end{center}
+\end{titlepage}
+%\maketitle
+\tableofcontents
+\input{Introduction}
+\input{Spectra3}
+\input{Cyclic_Spaces}
+\input{Witt_Complexes}
+\input{Main_Proof}
+\printbibliography
+
+
+
+
+
+\end{document}

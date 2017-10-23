@@ -1,0 +1,990 @@
+\chapter{Topological Hochschild homology for the group ring of the infinite cyclic group.}
+\section{Preliminaries on differential graded rings and the de Rham complex.}
+We recall some basic facts on differential graded rings, which we will need
+in the computation of $\mathrm{TR}^\bullet_\ast(A[C_\infty];p)$. We fix a ground ring
+$k$ and assume $A$ is a $k$-algebra. Recall (see for example \cite[\pno~386]{eisenbud})
+that the module of K\"ahler
+differentials $\Omega^1_{A/k}$ is equipped with a $k$-derivation $\delta:A\to \Omega^1_{A/k}$
+satisfying the following universal property. Given an $A$-module $M$ and a $k$-derivation
+$d:A\to M$, there is a unique $A$-linear map $f:\Omega^1_{A/k}\to M$ such that
+the following diagram commutes:
+\[
+\begin{tikzcd}
+A\arrow{r}{\delta}\arrow{dr}{d}
+&\Omega^1_{A/k}\arrow{d}{f}\\
+&M.
+\end{tikzcd}
+\]
+
+From the module of K\"ahler differentials one can construct the de Rham
+complex $\Omega^\ast_{A/k}$, which also satisfies a universal property. We describe
+this universal property by constructing the de Rham complex as an initial object
+of a certain category. We denote by $\mathbf{DG}_{A/k}$ the category with
+objects pairs $(E_\ast,\lambda)$, where $E_\ast$ is a differential graded $k$-algebra 
+indexed over $\NN_0$
+and $\lambda:A\to E_0$ is a map of $k$-algebra's. We then put
+$\Omega^\ast_{A/k} = \Lambda^\ast_A \Omega^1_{A/k}$
+and equip it with a differential $d:\Lambda^n_A \Omega^1_{A/k}\to
+\Lambda^{n+1}_A \Omega^1_{A/k}$ via the formula
+\[
+d(adx_1\wedge\cdots \wedge dx_n) = da\wedge dx_1\wedge\cdots \wedge dx_n.
+\]
+One can verify that this makes $\Omega^\ast_{A/k}$ into a differential
+graded $k$-algebra. By definition we have $\Omega^0_{A/k} = A$
+and by using induction and the universal property of $\Omega^1_{A/k}$
+one can show that $(\Omega^\ast_{A/k}, \mathrm{id}_A)$ is an initial
+object of $\mathbf{DG}_{A/k}$. We write $\Omega^\ast_{A}$
+instead of $\Omega^\ast_{A/\ZZ}$ and we note the formula's
+$\Omega^1_{k[x_1,\ldots, x_n]} = \bigoplus_{i=1}^nk[x_1,\ldots, x_n] dx_i$
+and $\Omega^1_{S^{-1}A/k} = S^{-1}A\otimes_A \Omega^1_{A/k}$
+from \cite[Proposition~16.1, \pno~387]{eisenbud} and
+\cite[Proposition~16.9, \pno~397]{eisenbud}. These facts imply
+that $\Omega^\ast_{\ZZ[C_\infty]}$ is in degree $0$
+given by $\ZZ[C_\infty]$, in degree $1$ by $\ZZ[C_\infty] dx$
+and trivial in higher degrees. We will use this fact later. 
+
+Finally, we recall that the tensor product $E_\ast\otimes_k E'_\ast$  of
+two differential graded $k$-algebra's
+$E_\ast$ and $E'_\ast$ is the tensor product of the underlying
+cochain complexes with differential
+\[
+d(x\otimes y) = dx\otimes y + (-1)^m x\otimes dy,
+\]
+where $x\in E_m$ and $y\in E'_n$ and multiplication
+\[
+(x\otimes y)\cdot (w\otimes z) = (-1)^{nq}xw\otimes yz,
+\]
+where $w\in E_q$ and $z\in E'_r$. The tensor product is
+the coproduct in the category of differential graded $k$-algebra's.
+\section{The comparison between $T(A)$ and $T(A[C_\infty])$.}
+We first relate $T(A)$ to $T(A[C_\infty])$. We do this in a slightly more general
+setting.
+\begin{mydef}
+For a monoid $M$ in $\mathbf{Top}$ and a symmetric ring spectrum
+$\A$, we let $\A[M] = \A\wedge M_+$. 
+%If $M$ is a monoid in $\mathbf{Top}_\ast$,
+%we put $\A[M] = \A\wedge M$.
+\end{mydef}
+Of course, $\A[M]$ is also a ring spectrum with multiplication map
+\[\begin{tikzcd}[column sep = large]
+%(\A\wedge M)\wedge(\A\wedge M)&\cong (\A\wedge\A)\wedge (M\wedge M), \\
+\A_n\wedge M_+\wedge \A_q\wedge M_+
+\arrow{r}[swap]{\cong}{\mathrm{twist}}
+&(\A_n\wedge \A_q)\wedge (M\times M)_+
+\arrow{r}{\mu_{n,q}\wedge \mu_M}
+&\A_{n+q}\wedge M_+
+\end{tikzcd}
+\]
+and unit map $u_{\A\wedge M_+}: \spherespectrum^{\mathrm{sym}}\to \A\wedge M_+$
+given in level $n$ by
+\[
+\begin{tikzcd}[column sep = large]
+S^n\arrow{r}{\cong}
+&S^n\wedge S^0
+\arrow{r}{u_{\A_n}\wedge u_M}
+&\A_n\wedge M_+.
+\end{tikzcd}
+\]
+Also, if $M$ is discrete, we have
+in the case of a ring $A$  a canonical isomorphism
+$(\mathbb{H}A)[M] \cong \mathbb{H}(A[M])$. We now construct a map
+\begin{equation}\label{eq:thhpolynomialextension}
+\varphi: T(\A)\wedge \lvert CN(M)_\bullet\rvert_+\to T(\A[M])
+\end{equation}
+for any monoid $M$ in $\mathbf{Top}$, which is a map
+of ring spectra if $\A$ is commutative. Let $[\vec{q}\,]\in \mathcal{I}^{k+1}$.
+Then we define
+\begin{equation}
+\varphi_{[\vec{q}\,],k,U} : G_k(\A,S^U)([\vec{q}\,])\wedge CN(M_+)_k
+\to G_k(\A[M],S^U)([\vec{q}\,])
+\end{equation}
+as the adjoint of the map
+\begin{equation}
+\begin{tikzcd}
+ \map(\spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}, \A_{[\vec{q}\,]}\wedge S^U)
+\wedge \spherespectrum^{\mathrm{sym}}_{[\vec{q}\,]}
+\wedge (M_+\wedge\cdots\wedge M_+)
+\arrow{d}{\mathrm{ev}\wedge \mathrm{id}}\\
+\A_{[\vec{q}\,]}\wedge S^U \wedge( M_+\wedge\cdots\wedge M_+)
+\arrow{r}{\cong}
+&\A[M]_{[\vec{q}\,]}\wedge S^U,
+\end{tikzcd}
+\end{equation}
+where the second map is given by permutation of the smash factors. This is
+natural in $[\vec{q}\,]$ and the induced map on homotopy colimits forms
+a map of cyclic spaces. After geometric realization and using
+the pointed homeomorphism $|CN(M_+)_\bullet|\cong |CN(M)_\bullet|_+$ this yields
+\eqref{eq:thhpolynomialextension}. If $\A$ is commutative,
+the diagram
+\[
+\begin{tikzcd}
+G_k(\A, S^U)\wedge CN(M_+)_k\wedge G_k(\A, S^V)\wedge CN(M_+)_k
+\arrow{r}\arrow{d}{\varphi_{k,U}\wedge \varphi_{k,V}}
+&\alpha_k^\ast G_k(\A, S^{U\oplus V})\wedge CN(M_+)_k
+\arrow{d}{\varphi_{k, U\oplus V}}\\
+G_k(\A[M], S^U)\wedge  G_k(\A[M], S^V)
+\arrow{r}
+&\alpha_k^\ast G_k(\A[M], S^{U\oplus V}),
+\end{tikzcd}
+\]
+where the horizontal arrows are the smash product of
+\eqref{eq:thhmultiplicationnaturalmodules} and the multiplication of $CN(M_+)_k$, 
+commutes, showing that $\varphi$ is multiplicative and using \eqref{eq:thhunit}
+it immediately follows that
+$\varphi$ preserves the unit map. The following theorem is proven in
+\cite[Theorem~7.1, \pno~81]{hmperfect}, but see also \cite[Proposition~3, \pno~81]{hesselholthandbook}.
+\begin{thm}\label{thm:polynomialextension}
+Let $\mathcal{F}$ denote the family of finite subgroups of $\TT$.
+For any ring $A$ the map \eqref{eq:thhpolynomialextension}
+is a map of ring $\TT$-spectra and an $\mathcal{F}$-equivalence.
+\end{thm}
+
+
+\section{The comparison between $\mathrm{TR}^\bullet_\ast(A;p)$ and
+$\mathrm{TR}^\bullet_\ast(A[C_\infty];p)$.}
+%We fix a generator $x\in C_\infty$. 
+We now recall and prove the main theorem of this thesis.
+The canonical inclusion $A\to A[C_\infty]$
+induces a map of ring spectra $T(A)\to T(A[C_\infty])$, which in turn induces a map
+of differential graded rings
+\[
+f:\mathrm{TR}_\ast^\bullet(A;p)\to \mathrm{TR}_\ast^\bullet(A[C_\infty];p),
+\]
+such that $f$ commutes with the Frobenius and Verschiebung. Furthermore,
+one can check that the map 
+\[
+T(A)(U)\to T(A[C_\infty])(U)
+\]
+commutes with $r_1$, compare \eqref{eq:thhrestriction}, so that $f$ commutes with $R$.
+This means $f$ is a map of pro-differential graded rings. Finally,
+it follows directly from the construction that the composition of $f$
+with the Teichm\"uller map of $A$ is equal to the Teichm\"uller map of $A[C_\infty]$.
+Recall from the introduction that we want to prove the following theorem.
+\begin{thm}\label{thm:maintheorem}
+Choose a generator $x\in C_\infty$. If $A$ is a $\ZZ_{(p)}$-algebra, the map
+$$\bigoplus_{j\in \ZZ} \left(\mathrm{TR}^n_q(A;p)\oplus \mathrm{TR}^n_{q-1}(A;p) \right)
+\oplus \bigoplus_{s=0}^{n-1}\bigoplus_{j\in \ZZ\setminus p\ZZ}
+\left( \mathrm{TR}^{s}_q(A;p)\oplus \mathrm{TR}^{s}_{q-1}(A;p)\right)
+\rightarrow \mathrm{TR}^n_q(A[C_\infty];p)$$
+which sends
+$$(a_j, b_j , a_{j'}^{(s)} ,b_{j'}^{(s)}),$$
+to
+\begin{equation}\label{eq:maintheoremsummands}
+f(a_j)[x]^j_n + f(b_j)d([x]^j_n)
++V^{n-s}(f(a_{j'}^{(s)})[x]^{j'}_{s}) + dV^{n-s}(f(b_{j'}^{(s)})[x]^{j'}_{s})
+\end{equation}
+ is an isomorphism.
+\end{thm}
+\begin{rem}
+Using the relations from lemma \ref{lem:wittcomplexrelations}, lemma
+\ref{lem:restrictionrelations} and the relation $Fd([x]_n) = [x]_{n-1}^p d([x]_{n-1})$,
+which is proven in \cite[Lemma~1.5.6, \pno~19]{hesselholtacta}, one can 
+explicitly compute formula's for $F,V,R$ and $d$ and  define
+a multiplication for 
+\[
+\bigoplus_{j\in \ZZ} \left(\mathrm{TR}^n_q(A;p)\oplus \mathrm{TR}^n_{q-1}(A;p) \right)
+\oplus \bigoplus_{s=0}^{n-1}\bigoplus_{j\in \ZZ\setminus p\ZZ}
+\left( \mathrm{TR}^{s}_q(A;p)\oplus \mathrm{TR}^{s}_{q-1}(A;p)\right),
+\]
+such that it becomes a pro-differential graded ring and the
+isomorphism from theorem \ref{thm:maintheorem} preserves all the structure.
+We refer to \cite[Section~4.2, \pno~24-27]{hmmixed} for the specific formula's.
+\end{rem}
+
+
+
+
+\begin{proof}
+By theorem \ref{thm:polynomialextension} there is an $\mathcal{F}$-equivalence
+of ring $\TT$-spectra
+\[
+\varphi: T(\A)\wedge |CN(C_\infty)_\bullet|_+\to T(\A[C_\infty]),
+\]
+where $\mathcal{F}$ denotes the family of finite subgroups of $\TT$.
+This yields for each $n\in \NN_0$ an isomorphism of differential graded rings
+\begin{equation}\label{eq:original}
+%\rho_{p^{n-1}}^\ast \left(R\left(T(A)\wedge \left|N^{\text{cy}}(\Pi)_\bullet\right|\right)\right)^{C_{p^{n-1}}}\rightarrow \rho_{p^{n-1}}^\ast \left( R (T ( A [x,x^{-1}] ) )\right)^{C_{p^{n-1}}}.
+\pi_\ast^{C_{p^{n}}}( T(A)\wedge \left|CN(C_\infty)_\bullet\right|_+ )
+\rightarrow \pi_\ast^{C_{p^{n}}}( T(A[C_\infty]) )
+\end{equation}
+We describe the left hand side. There are canonical isomorphisms
+and an $\mathcal{F}$-equivalence of $\TT$-spectra
+\begin{equation}
+\begin{tikzcd}[column sep = scriptsize]
+\underset{i\in \ZZ}{\bigvee} T(A)\wedge \TT_{i+}
+\arrow{r}{\cong} 
+&T(A)\wedge\underset{i\in \ZZ}{\bigvee} \TT_{i+}
+\arrow{r}{\cong}
+&T(A)\wedge\left(\underset{i\in \ZZ}{\coprod} \TT_{i}\right)_+
+\arrow{r}{\sim}
+&T(A)\wedge\lvert CN(C_\infty)_\bullet \rvert_+,
+\end{tikzcd}
+\end{equation}
+where the $\mathcal{F}$-equivalence is obtained from theorem \ref{thm:cycretract} and we recall that
+the action on $\TT_i$ is given by \eqref{eq:circlemodifiedaction}. 
+
+
+
+%\begin{align*}
+%\bigoplus_{i \in \ZZ} \pi_\ast^{ C_{p^{n}}}
+%\left( T(A)\wedge \TT_{i+}\right) 
+%&\cong  \pi_\ast^{ C_{p^{n}}}
+%\left( \bigvee_{i \in \ZZ} T(A)\wedge \TT_{i+}\right) \\
+%&\cong  \pi_\ast^{ C_{p^{n}}}
+%\left(  T(A)\wedge \bigvee_{i \in \ZZ}\TT_{i+}\right) \\
+%&\cong  \pi_\ast^{ C_{p^{n}}}
+%\left(  T(A)\wedge \left(\coprod_{i \in \ZZ}\TT_i\right)_+\right) \\
+%&\cong  \pi_\ast^{ C_{p^{n}}}
+%\left(  T(A)\wedge \left| CN_\bullet(C_\infty)\right|_+ \right).
+%\end{align*}
+%The final isomomorphism is obtained from theorem \ref{thm:cycretract} and we recall that
+%the action on $\TT_i$ is given by \eqref{eq:circlemodifiedaction}.
+%Recall from (?) the decomposition
+%$$N^{\text{cy}}(\Pi)_\bullet\cong \bigvee_{i\in \ZZ} N^{\text{cy}}(\Pi,i)_\bullet
+%\cong \bigvee_{i\in \NN_0} N^{\text{cy}}(\Pi,i)_\bullet\vee 
+%\bigvee_{i\in \NN} N^{\text{cy}}(\Pi,-i)_\bullet,$$
+%where $N^{\text{cy}}(\Pi,i)_\bullet$ is the cyclic submonoid with $k$-simplices
+%$$N^{\text{cy}}(\Pi,i)_k = \left\{ x^{ i_0 }\wedge \cdots \wedge x^{ i_k }: 
+%\text{ sgn}( i_j ) = \text{sgn}( i )  \text{ for all } j \text{ and } \sum_{ j = 0}^k i_j = i \right\}.$$
+
+%Combining this decomposition with lemma~\ref{lem:wedgefixed} and the fact that restriction
+%commutes with wedges, we obtain a $\TT$-equivalence
+%\begin{align}\label{eq:decomp}
+%\begin{split}
+%\bigvee_{i \in \ZZ}\rho_{p^{n-1}}^\ast \left(R\left(T(A)\wedge 
+%\left|N^{\text{cy}}(\Pi,i)_\bullet\right|\right)\right)^{C_{p^{n-1}}}
+%\xrightarrow{\sim} 
+%&\rho_{p^{n-1}}^\ast 
+%\left( R \left( \bigvee_{i \in \ZZ} (T(A) \wedge 
+%\left| N^{\text{cy}}(\Pi,i)_\bullet \right|) \right) \right)^{C_{p^{n-1}}}\\
+%\xrightarrow{\sim} 
+%&\rho_{p^{n-1}}^\ast \left(R\left(T(A)\wedge 
+%\left|N^{\text{cy}}(\Pi)_\bullet\right|\right)\right)^{C_{p^{n-1}}}.
+%\end{split}
+%\end{align}
+%Plugging in \eqref{eq:decomp} into \eqref{eq:original} and a
+We can write the index set of the left hand term
+as the disjoint union:
+\[
+\ZZ = \{p^nj:j\in \ZZ\}\cup\bigcup_{s = 0}^{n-1}\{p^sj:j\in \ZZ\setminus p\ZZ\}.
+\]
+Thus, we have an $\mathcal{F}$-equivalence
+of $\TT$-spectra
+\begin{equation}\label{eq:padic}
+\begin{tikzcd}[column sep = scriptsize]
+T(A)\wedge \underset{j\in \ZZ}{\bigvee}
+\TT_{p^{n}j+}\vee
+\overset{n-1}{\underset{s= 0}{\bigvee}}\underset{j\in \ZZ\setminus p\ZZ }{\bigvee}
+T(A)\wedge \TT_{p^sj+} 
+\arrow{d}{\cong}\\
+\underset{j\in \ZZ}{\bigvee}T(A)\wedge \TT_{p^{n}j+}\vee
+\overset{n-1}{\underset{s= 0}{\bigvee}}\underset{j\in \ZZ\setminus p\ZZ }{\bigvee}
+T(A)\wedge \TT_{p^sj+} 
+\arrow{r}{\sim} 
+&T(A)\wedge \left| CN(C_\infty)_\bullet\right|_+ 
+\arrow{r}[swap]{\varphi}{\sim}
+&T(A[C_\infty])
+\end{tikzcd}
+\end{equation}
+The $C_{p^n}$-action on $\bigvee_{j\in \ZZ} \TT_{p^nj+}$ is trivial
+and we have the equality $\rho_{p^n}^\ast \bigvee_{j\in \ZZ} \TT_{p^nj+} = 
+\bigvee_{j\in \ZZ} \TT_{j+}$, so by
+lemma~\ref{lem:smashfixed} and lemma
+\ref{lem:homotopygroupsrestriction} we obtain an equivalence
+of non-equivariant spectra
+\begin{equation}\label{eq:pdivisible1}
+\rho_{p^{n}}^\ast T(A)  ^{ C_{ p^{ n  } } }
+\wedge 
+\underset{j \in \ZZ}{\bigvee}\TT_{j+} =
+\rho_{p^{n}}^\ast \left(T(A)  ^{ C_{ p^{ n  } } }
+\wedge 
+\underset{j \in \ZZ}{\bigvee}\TT_{p^nj+}\right)
+\xrightarrow{\sim}
+\rho_{p^n}^\ast Q\left(T(A)\wedge \underset{j \in \ZZ}{\bigvee}\TT_{p^nj+}\right)^{C_{p^n}}.
+\end{equation}
+
+%the equivalence of $\TT$-spectra
+%\begin{align}\label{eq:padic}%Take a look at the indices here! Fix the alignment later.
+%\begin{split}
+%\bigvee_{j \in \ZZ}\rho_{p^{n-1}}^\ast \left(R\left(T(A)\wedge 
+%\left|N^{\text{cy}}(\Pi,p^{n-1}j)_\bullet\right|\right)\right)^{C_{p^{n-1}}}
+%\vee \bigvee_{s=0}^{n-1}
+%\bigvee_{j\in I_p} \rho_{p^{n-1}}^\ast \left(R\left(T(A)\wedge 
+%\left|N^{\text{cy}}(\Pi,p^{s}j)_\bullet\right|\right)\right)^{C_{p^{n-1}}}\\
+%\xrightarrow{\sim} \rho_{p^{n-1}}^\ast R(T(A[x,x^{-1}]))^{C_{p^{n-1}}}.
+%\end{split}
+%\end{align}
+
+By lemma~\ref{lem:separatefixed}, if $n,s \in \NN_0$ are such that 
+$s < n$, there is an isomorphism of $\TT$-spectra
+\begin{equation}
+\rho^\ast_{ p^{ n } } \left( Q \left( T(A) \wedge 
+\TT_{p^sj+} \right) \right)^{ C_{ p^{n}} }
+\cong 
+\rho^\ast_{ p^{ n - s } } \left(  \rho_{ p^s }^\ast \left( Q 
+\left( T(A) \wedge \TT_{p^sj+} \right) 
+\right)^{ C_{ p^s } } \right)^{ C_{ p^{ n - s} } }.
+\end{equation}
+Furthermore,  the $C_{ p^s }$-action on 
+$\TT_{p^sj+}$ is trivial and we have
+equalities $\TT_{j+} = \rho^\ast_{p^s}\TT_{p^sj+}$
+and 
+\[
+\rho_{ p^s }^\ast T(A) ^{ C_{ p^s } } \wedge 
+\rho_{ p^s }^\ast \TT_{p^sj+}  = 
+\rho_{ p^s }^\ast \left(T(A) ^{ C_{ p^s } } \wedge 
+ \TT_{p^sj+}\right) ,
+\]
+thus  combining lemma~\ref{lem:smashfixed} and lemma
+\ref{lem:homotopygroupsrestriction}  
+yields a $C_{p^n}/C_{p^{n-s}}$-equivalence
+\begin{equation}\label{eq:pdivisible2}
+\begin{tikzcd}
+  Q \left( \rho_{ p^s }^\ast  
+  T(A) ^{ C_{ p^s } } \wedge 
+ \TT_{j+}\right) ^{ C_{ p^{ n - s} } }
+\arrow[equal]{r}
+& Q\left(\rho_{ p^s }^\ast 
+\left( 
+  T(A)  ^{ C_{ p^s } } \wedge 
+  \TT_{p^sj+} \right)  \right)^{ C_{ p^{ n  - s} } }
+\arrow{d}{\simeq}\\
+&Q\left( \rho_{ p^s }^\ast \left( Q 
+ \left( T(A) \wedge \TT_{p^sj+} \right)^{ C_{ p^s } } \right) \right)^{ C_{ p^{ n  - s} } }.
+\end{tikzcd}
+\end{equation}
+%Finally, we have the equality
+%$\TT_{j+} = \rho^\ast_{p^s}\TT_{p^sj+}$. 
+If we apply $C_{p^n}$-fixed points to \eqref{eq:padic},  use lemma \ref{lem:wedgefixed} and
+plug in \eqref{eq:pdivisible1} and \eqref{eq:pdivisible2},
+we obtain a zig-zag of equivalences of non-equivariant
+spectra
+\begin{equation}\label{eq:mainmapfixedpoints}
+\begin{tikzcd}
+\mathrm{res_1}\, \rho_{p^{n}}^\ast T(A)  ^{ C_{ p^{ n  } } }
+\wedge 
+\underset{j \in \ZZ}{\bigvee}\TT_{j+}
+\vee
+\overset{n-1}{\underset{s=0}{\bigvee}} \underset{j\in \ZZ\setminus p\ZZ}{\bigvee}\mathrm{res_1} \,  Q \left( \rho_{ p^s }^\ast  
+  T(A) ^{ C_{ p^s } } \wedge 
+ \TT_{j+}\right) ^{ C_{ p^{ n - s} } }
+ \arrow{d}{\simeq}\\
+\mathrm{res}_1\, Q(T(A)[C_\infty])^{C_{p^n}}\\
+\mathrm{res}_1\,T(A[C_\infty])^{C_{p^n}}.
+\arrow{u}[swap]{\simeq}
+ \end{tikzcd}
+\end{equation}
+We have that $\mathrm{res_1}\, \rho_{p^{n}}^\ast T(A)  ^{ C_{ p^{ n  } } }
+\wedge 
+\bigvee_{j \in \ZZ}\TT_{j+}$ is a ring spectrum and intuitively the zig-zag
+\eqref{eq:mainmapfixedpoints} identifies it with a subring of $\mathrm{res}_1\,T(A[C_\infty])^{C_{p^n}}$.
+More precisely, if we take homotopy groups of \eqref{eq:mainmapfixedpoints} and apply lemma 
+\ref{lem:omegaspectrafixedpoints} and lemma \ref{lem:wedgefixed},
+\eqref{eq:original} becomes
+\[
+\begin{tikzcd}
+ \pi_\ast^{\{1\}}\left(
+\rho_{p^{n}}^\ast T(A)  ^{ C_{ p^{ n  } } }
+\wedge 
+\underset{j \in \ZZ}{\bigvee}\TT_{j+}\right)
+\oplus \overset{ n - 1 }{\underset{ s = 0}{\bigoplus}}
+\underset{ j\in \ZZ\setminus p\ZZ }{\bigoplus}
+\pi_\ast^{C_{p^{n-s}}}  \left(
+ \rho^\ast_{ p^s } 
+T(A) ^{ C_{ p^s } }\wedge 
+\TT_{j+}  \right)
+\arrow{d}{\cong}\\ 
+\pi_\ast^{C_{p^{n}}} ( T (A[ C_\infty] ) )
+\end{tikzcd}
+\]
+and the restriction of this map to the summand $ \pi_\ast^{\{1\}}\left(
+\rho_{p^{n}}^\ast T(A)  ^{ C_{ p^{ n  } } }
+\wedge 
+\bigvee_{j \in \ZZ}\TT_{j+}\right)$ is a map of differential graded rings
+by remark \ref{rem:smashfixed}, 
+hence identifies it with a sub-differential graded ring of
+$\pi_\ast^{C_{p^{n}}} ( T (A[ C_\infty] ) )$.
+%The claim will follow from the next two lemma's. 
+The next lemma then identifies
+the first two summands in \eqref{eq:maintheoremsummands} with the 
+elements of $ \pi_\ast^{\{1\}}\left(
+\rho_{p^{n}}^\ast T(A)  ^{ C_{ p^{ n  } } }
+\wedge 
+\bigvee_{j \in \ZZ}\TT_{j+}\right)$. The second lemma then
+shows the final two
+summands of \eqref{eq:maintheoremsummands}
+correspond to the 
+the elements of $ \bigoplus_{ s = 0}^{ n - 1 }
+\bigoplus_{ j\in \ZZ\setminus p\ZZ }
+\pi_\ast^{C_{p^{n-s}}}  \left(
+ \rho^\ast_{ p^s } 
+T(A) ^{ C_{ p^s } }\wedge 
+\TT_{j+}  \right)$.
+Proposition \ref{prop:thhplocalization} says that $ \rho^\ast_{ p^s } 
+T(A) ^{ C_{ p^s } }$ satisfies the assumptions of the second lemma.
+\end{proof}
+%There are $\TT$-equivalences
+%
+%Since restriction commutes
+%with wedges, we obtain a $\TT$-equivalence
+%$$\rho_{p^{n-1}}^\ast\bigvee_{i \in \NN_0}Q^{\mathcal{U}}(T(A)\wedge N^{cy}(\Pi,i))^{C_{p^{n-1}}}
+%\rightarrow \rho_{p^{n-1}}^\ast Q^{\mathcal{U}}(T(A)\wedge N^{cy}(\Pi))^{C_{p^{n-1}}}.$$ 
+%
+\begin{lem}
+The map of differential graded rings
+\[
+\mathrm{TR}^{n+1}_\ast(A;p)\otimes \Omega^\ast_{\ZZ[C_\infty]}\rightarrow 
+\mathrm{TR}^{n+1}_\ast(A[C_{\infty}];p),
+\]
+which maps $a\otimes 1$ to $f(a)$ and $1\otimes x$ to  $[x]_{n+1}$ is an isomorphism onto the
+sub-differential graded ring $ \pi_\ast^{\{1\}}\left(
+\rho_{p^n}^\ast T(A) ^{ C_{ p^n } }
+\wedge 
+\bigvee_{j \in \ZZ}\TT_{j+}\right)$.
+\end{lem}
+\begin{proof}
+We first show that the image of the map is contained in 
+\[
+ \pi_\ast^{\{1\}}\left(
+\rho_{p^n}^\ast  T(A) ^{ C_{ p^n } }
+\wedge 
+\bigvee_{j \in \ZZ}\TT_{j+}\right).
+\]
+ Since $a \otimes 1$ and $1 \otimes x $
+are generators, it suffices to show 
+\[
+f(a),  [x]_{n+1}  \in 
+ \pi_\ast^{\{1\}}\left(
+\rho_{p^n}^\ast  T(A)^{ C_{ p^n } }
+\wedge 
+\bigvee_{j \in \ZZ}\TT_{j+}\right).
+\]
+For $f(a)$ this is clear. Consider the following diagram
+\[
+\begin{tikzcd}
+C_\infty\arrow{r}\arrow{d}
+&A[C_\infty]\arrow{d}\\
+\lvert CN(C_\infty)_\bullet\rvert_+
+\arrow{r}\arrow{d}{1\wedge\mathrm{id}}
+&\lvert CN(A[C_\infty])_\bullet\rvert
+\arrow{dd}{\Delta}\\
+\lvert CN(A)_\bullet \rvert\wedge\lvert CN(C_\infty)_\bullet \rvert_+
+\arrow{d}{\Delta\wedge \Delta}
+\\
+\rho_{p^n}^\ast \left( \lvert CN(A)_\bullet \rvert\right)^{C_{p^n}}\wedge
+\rho_{p^n}^\ast \left(\lvert CN(C_\infty)_\bullet \rvert_+\right)^{C_{p^n}}
+\arrow{r}{\varphi}\arrow{d}
+& \rho_{p^n}^\ast \left( \lvert CN(A[C_\infty])_\bullet\rvert\right)^{C_{p^n}}
+\arrow{d}\\
+\rho_{p^n}^\ast (T(A)(0))^{C_{p^n}} \wedge
+\rho_{p^n}^\ast \left(\lvert CN(C_\infty)_\bullet \rvert_+\right)^{C_{p^n}}
+\arrow{r}{\varphi}
+&\rho_{p^n}^\ast (T(A[C_\infty])(0))^{C_{p^n}},
+\end{tikzcd}
+\]
+where the top horizontal arrow is given by the canonical inclusion, the top vertical
+arrows are the inclusion of the vertices, the bottom vertical arrows are given
+by \eqref{eq:teichmueller} and $1:S^0\to |CN(A)_\bullet|$ denotes
+the unit map. Here we regard $A$ as a monoid with basepoint $0$.
+If we apply $\pi_0$ the right hand column becomes $[-]_{n+1}$. The claim
+follows chasing $x$ through the diagram above and by combining propositions \ref{prop:cyclicnervefixedpoints}
+and \ref{prop:cyclicnervegrading}, which imply that the composition
+\[
+C_\infty\to |CN(C_\infty)_\bullet| \xrightarrow{\Delta}
+\rho_{p^n}^\ast \left( \lvert CN(C_\infty)_\bullet \rvert\right)^{C_{p^n}}
+\xrightarrow{\sim} \rho_{p^n}^\ast \left(\coprod_{j\in \ZZ}\TT_j\right)^{C_{p^n}}
+\]
+maps $x$
+into $\rho_{p^n}^\ast \TT_{p^n}^{C_{p^n}} = \TT_1$.
+
+%
+%Recall that 
+%$\lambda ( [x]_n ) = \omega_n ( x )$. Note that $A[ x, x^{ -1 } ] = \pi_0
+%((HA[ x, x^{ -1 } ])_0)$ and $\Pi = \pi_0 ( \Pi )$, since $\Pi$ is discrete. 
+%Then $\omega_n$ is given by the composite
+%\begin{align}
+%\Pi = \pi_0(\Pi)&\xrightarrow{ g_\ast } 
+%\pi_0 ( (HA[ x, x^{ -1 } ])_0 ) \\
+%&\rightarrow \pi_0 ( N^{ \text{cy} }( ( HA[ x, x^{ -1 } ])_0 ) )\\
+%&\xrightarrow{ \Delta } \pi_0 \left( \rho_{ p^{ n - 1 } }^\ast N^{ \text{cy} }
+%( ( HA[ x, x^{ -1 } ])_0 )^{ C_{ p^{ n - 1 } } } \right) \label{eq:Eilenbergcyclicbar} \\
+%&\to \pi_0 \left( \rho_{ p^{ n - 1 } }^\ast T( A[ x, x^{ -1 } ] )^{ C_{ p^{ n - 1 } } } \right).
+%\end{align}
+%Here $g$ is the map $$\Pi\rightarrow A[ x, x^{ -1 }]\rightarrow A[ x, x^{ -1 }]
+%\left[ S^0 \right]=( HA[ x, x^{ -1 } ])_0$$ and \eqref{eq:Eilenbergcyclicbar} is the inclusion of the vertices. Now let
+%$h$ be the composite
+%\begin{align}
+%\Pi &\rightarrow N^{ \text{cy} } (\Pi)\cong N^{ \text{cy} } (\Pi) \wedge S^0 \\
+%&\rightarrow N^{ \text{cy} } (\Pi) \wedge A\left[ S^0 \right] = 
+%N^{ \text{cy} } (\Pi) \wedge ( HA )_0\\
+%&\rightarrow N^{ \text{cy} } (\Pi) \wedge N^{ \text{cy} } ( ( HA )_0 ) 
+%\end{align}
+%Then the following diagram commutes:
+%$$
+%\begin{tikzcd}
+%\Pi \arrow{r}{g} \arrow{d}{h}&H( A[ x, x^{ -1 } ] )_0 \arrow{d}\\
+%N^{ \text{cy} } (\Pi) \wedge N^{ \text{cy} } ( ( HA )_0 )  \arrow{d}{ \Delta \wedge \Delta }
+%&N^{ \text{cy} }( H( A[ x, x^{ -1 } ] )_0 ) \arrow{d}{ \Delta } \\
+%\rho_{ p^{ n - 1 } }^\ast N^{ \text{cy} } (\Pi)^{ C_{ p^{ n - 1 } } } 
+%\wedge \rho_{ p^{ n - 1 } }^\ast N^{ \text{cy} } ( ( HA )_0 ) ^{ C_{ p^{ n - 1 } } }  \arrow{r}
+%&\rho_{ p^{ n - 1} }^\ast N^{ \text{cy} }( H( A[ x, x^{ -1 } ] )_0 ) ^{ C_{ p^{ n - 1 } } } 
+%\end{tikzcd}
+%$$
+%The claim then follows after applying $\pi_0$ and the following commutative diagram:
+%$$
+%\begin{tikzcd}
+%\pi_0 \left( \rho_{ p^{ n - 1 } }^\ast N^{ \text{cy} } (\Pi)^{ C_{ p^{ n - 1 } } } 
+%\wedge \rho_{ p^{ n - 1 } }^\ast N^{ \text{cy} } ( ( HA )_0 ) ^{ C_{ p^{ n - 1 } } } \right)
+%\arrow{d}  \arrow{r} 
+%&\pi_0 \left( \rho_{ p^{ n - 1} }^\ast N^{ \text{cy} }( H( A[ x, x^{ -1 } ] )_0 ) ^{ C_{ p^{ n - 1 } } }  \right)
+%\arrow{d} \\
+%\pi_0 \left( \rho_{ p^{ n - 1 } }^\ast 
+%\left( T(A) \wedge N^{ \text{cy} } (\Pi) \right) ^{ C_{ p^{ n - 1 } } }  \right)  \arrow{r}
+%&\pi_0 \left( \rho_{ p^{ n - 1 } }^\ast \left( T(A[ x, x^{ -1 }] ) \right) ^{ C_{ p^{ n - 1 } } } \right) 
+%\end{tikzcd}
+%$$
+%\todo{This does not fit with the above proof, it needs to be adjusted}
+
+We define a differential  
+\[
+\delta:\tilde H_\ast\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right)\to \tilde H_{\ast+1}\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right)
+\]
+ as the composition
+\begin{align*}
+\tilde  H_0\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right)
+&\to \tilde H_1(\TT_+)\otimes  \tilde H_0\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right)\\
+&\xrightarrow{\times}
+\tilde  H_1\left(\TT_+\wedge\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right)\\
+&\xrightarrow{\mathrm{action}}
+\tilde H_1\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right),
+\end{align*}
+where the first map is tensoring with the fundamental class
+corresponding to the counterclockwise orientation
+of the circle. This turns $\tilde H_\ast\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right)$
+into a differential graded ring.
+To see this, denote by $x_i$ the class corresponding to the point
+\[
+(1,i)\in \coprod_{j\in \ZZ} \TT_j
+\]
+and let 
+\[
+\iota_i:\TT_{i+}\to \left( \coprod_{j\in \ZZ} \TT_j \right)_+
+\]
+be the inclusion into the coproduct. Since $(1,i)\cdot (1,j) = (1,i+j)$, $x_i\cdot x_j = x_{i+j}$.
+Furthermore, if $[\TT_i]$ is the fundamental class of $\TT_i$ corresponding to the counterclockwise
+orientation of the circle, then $\delta x_i = i\cdot (\iota_i)_\ast([\TT_i])$. It is straightforward to check
+that $x_i\cdot (\iota_j)_\ast([\TT_j]) = (\iota_{i+j})_\ast([\TT_{i+j}])$ and we compute
+\begin{align*}
+\delta(x_i\cdot x_j) &= \delta x_{i+j} =    (i+j)\cdot (\iota_{i+j})_\ast([\TT_{i+j}]) \\
+&= j\cdot  x_i\cdot (\iota_j)_\ast([\TT_j])+ i\cdot(\iota_i)_\ast([\TT_i])\cdot x_j\\
+&= x_i\cdot \delta x_j + (\delta x_j)\cdot x_i,
+\end{align*}
+showing the Leibniz rule holds.
+%We let $x_i\in \tilde H_0\left(\left( \coprod_{i\in \ZZ} \TT/C_{|i|} \right)_+\right)$ be the image of 
+%$[ C_{|i|} ]\in \tilde H_0( \TT/C_{|i|} )$ under the map induced by the inclusion
+%$$\TT/C_{|i|} \rightarrow \left( \coprod_{i\in \ZZ} \TT/C_{|i|} \right)_+$$
+From the remarks above we see that the map of differential graded rings 
+\[
+\Omega^\ast_{\ZZ[C_\infty]}\to
+\tilde H_\ast\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right),
+\]
+ which maps $x$ to $x_1$, is an isomorphism. 
+
+%The map
+%in homology induced by the product
+%$$\mu:\TT/C_{|i|}\times \TT/C_{|j|} \rightarrow \TT/C_{|i+j|}$$
+%maps the cycle $C_{|i|} \otimes C_{|j|}$ to the cycle $C_{|i+j|}$, hence 
+%$x_i x_j = x_{i+j}$. It follows that the map is an isomorphism in degree $0$. To prove
+%it is an isomorphism in degree $1$, it is enough to show
+%\todo{Complete this part. This uses products in homology.}
+
+
+We now show the map from the statement is an isomorphism.
+From the skeletal filtration of 
+$X=\left( \coprod_{j\in \ZZ} \TT_j \right)_+$ we obtain a spectral sequence
+\[
+E^1_{s,t}=\pi^{\{1\}}_{s+t}(\rho_{p^n}^\ast T(A)^{C_{p^n}}
+\wedge X_s/X_{s-1})
+\Rightarrow 
+\pi^{\{1\}}_\ast\left(\rho_{p^n}^\ast T(A)^{C_{p^n}}
+\wedge \left( \coprod_{j\in \ZZ} \TT_j \right)_+\right).
+\]
+There are natural isomorphisms of abelian groups
+\[
+\mathrm{TR}^{n+1}_t(A;p)\otimes\pi_s(X_s/X_{s-1}) \xrightarrow{\cong}
+\pi^{\{1\}}_{s+t}(\rho_{p^n}^\ast T(A)^{C_{p^n}}
+\wedge X_s/X_{s-1})\]
+and
+\[
+\mathrm{TR}^{n+1}_t(A;p)\otimes\pi_s(X_s/X_{s-1}) \xrightarrow{\cong} 
+\mathrm{TR}^{n+1}_t(A;p)\otimes \tilde H_s(X_s/X_{s-1})
+\]
+induced by the natural pairing from lemma \ref{lem:pairing}
+and the Hurewicz homomomorphism respectively.
+This gives an isomorphism of chain complexes
+\[
+E^1_{\ast, t}\cong \mathrm{TR}^{n+1}_t(A;p)\otimes \tilde C_\ast(X),
+\]
+where $\tilde C_\ast(X)$ denotes the reduced cellular chain complex of $X$
+and since the homology of $\left( \coprod_{i\in \ZZ} \TT_j \right)_+$ 
+is torsion free, the universal coefficient theorem yields a natural isomorphism
+of abelian groups
+\[
+E^2_{s,t}\cong \mathrm{TR}^{n+1}_t(A;p)\otimes
+ \tilde H_s\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right).
+ \]
+We see that $E^2_{s,t}=0$ if $s\neq0,1$. Thus, we obtain a diagram
+\[
+\begin{tikzcd}
+0\arrow{d}
+&0\arrow{d} \\
+\mathrm{TR}^{n+1}_t(A;p)\otimes \ZZ[C_\infty]
+\arrow{d}\arrow{r}{\cong}
+&E^2_{0,t}
+\arrow{d} 
+\\
+\left(\mathrm{TR}^{n+1}_\ast\otimes \Omega^\ast_{\ZZ[C_\infty]}\right)_t
+\arrow{r}\arrow{d}
+&\pi^{\{1\}}_t\left(\rho_{p^n}^\ast T(A)^{C_{p^n}}\wedge \left( \coprod_{j\in \ZZ} \TT_j \right)_+\right)\arrow{d}\\
+\mathrm{TR}^{n+1}_{t-1}\otimes \Omega^1_{\ZZ[C_\infty]} 
+\arrow{d}\arrow{r}{\cong} 
+&E^2_{1,t-1}
+\arrow{d} \\
+0
+&0
+\end{tikzcd}
+\]
+where the right vertical exact sequence arises from 
+the spectral sequence and the outer two horizontal maps 
+are isomorphisms induced from 
+$\Omega^\ast_{\ZZ[C_\infty]}\xrightarrow{\cong} 
+\tilde H_\ast\left(\left( \coprod_{j\in \ZZ} \TT_j \right)_+\right)$ 
+after tensoring with $\mathrm{TR}^{n+1}_t(A;p)$ and 
+$\mathrm{TR}^{n+1}_{t-1}(A;p)$ respectively. A diagram 
+chase shows that the middle horizontal map is the map from 
+the statement, hence the claim follows from the five lemma.
+\end{proof}
+
+\begin{lem}
+Let $T$ be a ring $\TT$-spectrum such that $\pi_q^{\{1\}}(T)$ is a $\ZZ_{(p)}$-module for all $q$. Let $j\in \ZZ$ such that $(j,p) = 1$ and 
+$$\iota:S^0\rightarrow \TT_{j+}$$
+the map which sends the non-basepoint to $1$.
+For all $q$ and $\nu\ge 0$ the map $$V^\nu \iota_\ast +d V^\nu \iota_\ast :\pi^{\{1\}}_q(T)\oplus \pi^{\{1\}}_{q-1}(T)\rightarrow \pi^{C_{p^\nu}}_q(T\wedge \TT_{j+})$$
+is an isomorphism.
+\end{lem}
+
+
+\begin{proof}
+Let $X$ be a pointed  $C_{p^\nu}$-CW-complex. The skeletal filtration of $X$ gives rise to a spectral sequence
+\[
+E^1_{s,t}=\pi^{C_{p^\nu}}_{s+t}(T\wedge (X_s/X_{s-1}))
+\Rightarrow \pi_{s+t}^{C_{p^\nu}}(T\wedge X).
+\]
+If the action of $C_{p^\nu}$ on $X$ is free away from the basepoint, 
+lemma \ref{lem:switchfixedpoints} gives a natural isomorphism
+of abelian groups
+\begin{equation}\label{eq:changefixed}
+%\pi^{C_{p^\nu}}_{s+t}(T \wedge X)\xrightarrow{\cong} 
+%\left(\pi^{\{1\}}_{s+t}(T \wedge X)\right)^{C_{p^\nu}},
+\mathrm{res}^{C_{p^\nu}}_1:\pi^{C_{p^\nu}}_{s+t}(T \wedge X_s/X_{s-1})\xrightarrow{\cong} 
+\left(\pi^{\{1\}}_{s+t}(T \wedge X_s/X_{s-1})\right)^{C_{p^\nu}}
+\end{equation}
+Similar to the previous proof, there are natural isomorphisms
+of abelian groups
+\[
+\pi^{ \{ 1\} }_t(T)\otimes\pi_s(X_s/X_{s-1}) \xrightarrow{\cong}
+\pi^{\{1\}}_{s+t}(T\wedge X_s/X_{s-1})
+\]
+and
+\[
+\pi^{ \{ 1\} }_t(T)\otimes\pi_s(X_s/X_{s-1}) \xrightarrow{\cong} 
+\pi^{ \{ 1\} }_t(T)\otimes \tilde H_s(X_s/X_{s-1})
+\]
+induced by the natural pairing
+and the Hurewicz homomomorphism respectively and these maps
+are $C_{p^\nu}$-equivariant. If $\tilde C_\ast(X)$ denotes
+the reduced cellular chain complex, these isomorphisms
+together with \eqref{eq:changefixed}
+ yield an isomorphism of chain complexes
+\begin{equation}\label{eq:ffirstpage}
+E^1_{t,\ast}\cong \left( \pi^{\{1\}}_t(T)\otimes \tilde C_\ast(X) \right)^{C_{p^\nu}}.
+\end{equation}
+
+We specialize to the case $X=\TT_{j+}$, which has a free
+$C_{p^\nu}$-action by the assumption $(p,j) = 1$. 
+We give it the $C_{p^\nu}$-CW-structure induced from the obvious $C_{p^\nu}$-CW-structure
+on a circle with a free $C_{p^\nu}$-action. More precisely, let $g=e^{2\pi i/p^\nu}\in C_{p^\nu}$ be the canonical generator
+and define the characteristic maps
+\[
+\alpha_s: D^s\times C_{p^\nu}\to \TT_j,
+\]
+as by $\alpha_0(g^n) = g^{jn} $ and $\alpha_1(x, g^n) = g^{jn} e^{\pi i(x+1)j/p^\nu}$. 
+Then the $0$-skeleton of $\TT_j$ is $C_{p^\nu}$ and we note for future reference that
+the (unpointed) inclusion $\TT_j\to \TT_{j+}$ induces a (pointed) $C_{p^\nu}$-homeomorphism
+$\TT_j/C_{p^\nu}\cong X_1/X_0$. 
+
+Let $W(j)$ be the complex of $\ZZ[C_{p^\nu}]$-modules, which
+in degrees $s=0,1$ is a free $\ZZ[C_{p^\nu}]$-module with generator $y_s$ and is trivial in all other degrees. We equip $W(j)$ with a differential given by $d(y_1) = 
+(g-1)y_0$. Then there is an isomorphism of complexes
+\[W(j)\cong\tilde C_\ast(\TT_{j+}).
+\]
+Since $T$ is a $\TT$-spectrum, the left translation map
+$\ell_g:T\to T$ is homotopic to the identity, hence $C_{p^\nu}$ acts trivially on $\pi_t^{\{1\}}(T)$ and
+\eqref{eq:ffirstpage} becomes
+\begin{equation}
+E^1_{s,t}\cong \begin{cases}
+\pi^{\{1\}}_t(T)\cdot Ny_s &\text{ for } s=0,1,\\
+0 &\text{ for } s\neq 0,1.
+\end{cases}
+\end{equation}
+Here $N=\sum_{c\in C_{p^\nu}} c\in \ZZ[C_{p^\nu}]$ denotes the norm element,
+which is a generator of the fixed  module $\ZZ[C_{p^\nu}]^{C_{p^\nu}}$.
+We have
+$$d(Ny_1) = Nd(y_1) = N(g-1)y_0 = (N-N)y_0 = 0,$$
+showing that the $d^1$-differential vanishes and the higher
+differentials vanish for degree reasons. Thus, the spectral sequence 
+stabilizes at the first page.
+
+The skeleton filtration also yields a spectral sequence
+\begin{equation}\label{eq:ssnonequivariant}
+E'^1_{s,t} = \pi^{\{1\}}_{s+t}(T\wedge X_s/X_{s+1})\Rightarrow 
+\pi^{\{1\}}_{s+t}(T\wedge\TT_{j+})
+\end{equation}
+and a similar argument as above shows that there is a natural isomorphism of complexes
+\begin{equation}\label{eq:firstpage}
+E'^1_{\ast,t}\cong \pi^{\{1\}}_t(T)\otimes W(j).
+\end{equation}
+Since $W(j)$ is a complex consisting of free $\ZZ[C_{p^\nu}]$-, hence by extension, free $\ZZ$-modules, we obtain $E'^2_{0,t}\cong \pi^{\{1\}}_t(T)\cdot y_0$ and 
+$E'^2_{1,t}\cong \pi^{\{1\}}_t(T)\cdot Ny_1$ from the universal coefficient theorem.
+
+
+
+The map $$V^\nu: \pi^{\{1\}}_\ast(T\wedge \TT_{j+})\rightarrow 
+\pi^{C_{p^\nu}}_\ast\left( T\wedge \TT_{j+}\right)$$ induces a map of spectral sequences.
+Under the above identifications of the $E^1$-terms this corresponds to multiplication with the norm element
+$$N:\pi^{\{1\}}_t(T)\otimes W(j)\rightarrow \left(\pi^{\{ 1 \} }_t(T)\otimes W(j)\right)^{C_{p^\nu}}.$$
+To see this, note that by definition of $V$ and by proposition \ref{prop:transfertransitivity}
+$V^\nu$ is equal to the transfer map
+\[
+\mathrm{tr}^{C_{p^\nu}}_1:E^1_{s,t} = \pi_{t+s}^{\{1\}}(T\wedge X_s/X_{s-1})\to 
+\pi_{t+s}^{C_{p^\nu}}(T\wedge X_s/X_{s-1}) = E'^1_{s,t}
+\]
+and by proposition \ref{prop:doublecoset} the following diagram commutes:
+\[
+\begin{tikzcd}
+\pi_{t+s}^{\{1\}}(T\wedge X_s/X_{s-1})
+\arrow{r}{\mathrm{tr}^{C_{p^\nu}}_1} \arrow{dr}[swap]{\underset{c\in C_{p^\nu}}{\sum}\ell_{c\ast}}
+&\pi_{t+s}^{C_{p^\nu}}(T\wedge X_s/X_{s-1})
+\arrow{d}[swap]{\cong}{\mathrm{res}^{C_{p^\nu}}_1}\\
+&\left(\pi_{t+s}^{\{1\}}(T\wedge X_s/X_{s-1})\right)^{C_{p^\nu}}.
+\end{tikzcd}
+\]
+We obtain a diagram
+$$
+\begin{tikzcd}
+0\arrow{r} &\pi^{\{1\}}_q(T)\cdot y_0 \arrow{r} \arrow{d} 
+&\pi^{\{1\}}_q(T)\oplus \pi^{\{1\}}_{q-1}(T)\arrow{r} \arrow{d} 
+&\pi^{\{1\}}_{q-1}(T)\cdot Ny_0 \arrow{r} \arrow{d} & 0\\
+0\arrow{r} &\pi^{\{1\}}_q(T)\cdot Ny_0 \arrow{r} &\pi^{C_{p^\nu}}_q(T\wedge \TT_{j+})\arrow{r} &\pi^{\{1\}}_{q-1}(T)\cdot Ny_1\arrow{r} & 0
+\end{tikzcd}
+$$
+with exact rows, where the lower exact sequence results from
+\eqref{eq:ffirstpage} and the vertical maps are as follows. The middle map is the map from the statement.
+The left vertical map 
+sends $x\cdot y_0$ to $x\cdot Ny_0$, hence is an isomorphism and the right vertical map is given by
+\begin{equation}\label{eq:mainmap}
+\pi^{\{1\}}_q(T)\cdot Ny_0\cong E^2_{0,q}\hookrightarrow \pi^{C_{p^\nu}}_q(T\wedge\TT_{j+})\xrightarrow{d} 
+\pi^{C_{p^\nu}}_{q+1}(T\wedge\TT_{j+})\rightarrow E^2_{1,q}\cong \pi_q^{\{1\}}(T)\cdot Ny_1.
+\end{equation}
+We will show that it takes $x\cdot Ny_0$ to $jx\cdot Ny_1$,
+and our assumptions then imply it is an isomorphism, yielding the result.
+
+In fact, we also prove this for the additional case $T = \Sigma^\infty S^q$. We can assume that $T$ is
+a $\TT$-$\Omega$-spectrum, since if $r_T:T\xrightarrow{\sim} QT$ is a fibrant replacement,
+then 
+\[
+T\wedge \TT_{j+}\xrightarrow{r_T\wedge \mathrm{id}} QT\wedge\TT_{j+}
+\]
+is an equivalence of $\TT$-spectra by \cite[Theorem 3.11, \pno~47]{mandellmay}
+and we have the following diagram:
+\[
+\begin{tikzcd}
+\pi^{\{1\}}_q(T)\cdot Ny_0
+\arrow{r}\arrow{d}{\cong}
+&\pi^{C_{p^\nu}}_q(T\wedge\TT_{j+})
+\arrow{r}{d}\arrow{d}{\cong}
+&\pi^{C_{p^\nu}}_{q+1}(T\wedge\TT_{j+})
+\arrow{r}\arrow{d}{\cong}
+&\pi_q^{\{1\}}(T)\cdot Ny_1
+\arrow{d}{\cong}\\
+\pi^{\{1\}}_q(QT)\cdot Ny_0
+\arrow{r}
+&\pi^{C_{p^\nu}}_q(QT\wedge\TT_{j+})
+\arrow{r}{d}
+&\pi^{C_{p^\nu}}_{q+1}(QT\wedge\TT_{j+})
+\arrow{r}
+&\pi_q^{\{1\}}(QT)\cdot Ny_1,
+\end{tikzcd}
+\]
+where the rows are given by \eqref{eq:mainmap}.
+
+If $\pi^{\{1\}}_q(T)$ has no $p$-torsion, it is clearly enough to show that
+\begin{equation}\label{eq:mainmaptorsion}
+\pi^{\{1\}}_q(T)\cdot Ny_0 \to\pi^{C_{p^\nu}}_q(T\wedge\TT_{j+})\xrightarrow{p^\nu d} 
+\pi^{C_{p^\nu}}_{q+1}(T\wedge\TT_{j+})\rightarrow  \pi_q^{\{1\}}(T)\cdot Ny_1
+\end{equation}
+maps $x\cdot Ny_0$ to $p^\nu jx\cdot Ny_1$. Granting this fact,
+we obtain the claim from the following observation. If $x\in \pi^{\{1\}}_q(T)$, then it
+is represented by a map $f:S^q\to T(0)$, since $T$ is an $\Omega$-spectrum.
+We can extend this to a map of $\TT$-spectra $\Sigma^\infty S^q\to T$,
+which we also denote by $f$ and this
+gives a diagram
+\begin{equation}\label{eq:spherespectrumtorsion}
+\begin{tikzcd}
+\pi_q^{\{1\}}(\Sigma^\infty S^q)\cdot Ny_0
+\arrow{d}\arrow{r}{f_\ast}
+&\pi^{\{1\}}_q(T)\cdot Ny_0
+\arrow{d}\\
+\pi_q^{C_{p^\nu}}(\Sigma^\infty S^q\wedge \TT_{j+})
+\arrow{r}{(f\wedge \mathrm{id})_\ast}\arrow{d}{d}
+&\pi^{C_{p^\nu}}_q(T\wedge\TT_{j+})
+\arrow{d}{d}\\
+\pi_{q+1}^{C_{p^\nu}}(\Sigma^\infty S^q\wedge \TT_{j+})
+\arrow{r}{(f\wedge \mathrm{id})_\ast}\arrow{d}
+&\pi^{C_{p^\nu}}_{q+1}(T\wedge\TT_{j+})
+\arrow{d}\\
+\pi_q^{\{1\}}(\Sigma^\infty S^q)\cdot Ny_1
+\arrow{r}{f_\ast}
+&\pi_q^{\{1\}}(T)\cdot Ny_1,
+\end{tikzcd}
+\end{equation}
+%
+%\begin{equation}\label{eq:spherespectrumtorsion}
+%\begin{tikzcd}
+%\pi_q^{\{1\}}(\Sigma^\infty S^q)\cdot Ny_0
+%\arrow{r}\arrow{d}{f_\ast}
+%&\pi_q^{\{1\}}(\Sigma^\infty S^q\wedge \TT_{j+})
+%\arrow{d}{(f\wedge \mathrm{id})_\ast}\arrow{r}{d}
+%&\pi_{q+1}^{\{1\}}(\Sigma^\infty S^q\wedge \TT_{j+})
+%\arrow{d}{(f\wedge \mathrm{id})_\ast}\arrow{r}
+%&\pi_q^{\{1\}}(\Sigma^\infty S^q)\cdot Ny_1
+%\arrow{d}{f_\ast}\\
+%\pi^{\{1\}}_q(T)\cdot Ny_0
+%\arrow{r}
+%&\pi^{C_{p^\nu}}_q(T\wedge\TT_{j+})
+%\arrow{r}{d}
+%&\pi^{C_{p^\nu}}_{q+1}(T\wedge\TT_{j+})
+%\arrow{r}
+%&\pi_q^{\{1\}}(T)\cdot Ny_1,
+%\end{tikzcd}
+%\end{equation}
+where the columns are given by \eqref{eq:mainmap}. We have 
+$\pi_q^{\{1\}}(\Sigma^\infty S^q)\cong \ZZ$ and 
+$f_\ast$ maps a generator to $x$. Thus, we can assume $\pi^{\{1\}}_q(T)$ has no $p$-torsion.
+
+We reduce to the non-equivariant homotopy groups. By 
+lemma \ref{lem:wittcomplexrelations} (v), (vi) the following diagram commutes:
+\[
+\begin{tikzcd}
+\pi_q^{\{1\}}(T)\cdot y_0
+\arrow{r}\arrow{d}{\cdot N}
+&\pi_q^{\{1\}}(T\wedge \TT_{j+})
+\arrow{d}{V^\nu}\arrow{r}{d}
+&\pi_{q+1}^{\{1\}}(T\wedge \TT_{j+})
+\arrow{d}{V^\nu}\arrow{r}
+&\pi_q^{\{1\}}(T)\cdot Ny_1
+\arrow{d}{\cdot N}\\
+\pi_q^{C_{p^\nu}}(T)\cdot Ny_0
+\arrow{r}
+&\pi_q^{C_{p^\nu}}(T\wedge \TT_{j+})
+\arrow{r}{p^\nu d}
+&\pi_{q+1}^{C_{p^\nu}}(T\wedge \TT_{j+})
+\arrow{r}
+&\pi_q^{C_{p^\nu}}(T)\cdot Ny_1.
+\end{tikzcd}
+\]
+Here the upper row is the non-equivariant version of \eqref{eq:mainmap},
+where the left and right horizontal maps are obtained from the spectral sequence \eqref{eq:ssnonequivariant}.
+We note that the right vertical arrow sends $jx\cdot Ny_1$
+to $jx\cdot NNy_1 = p^\nu jx \cdot Ny_1$. Thus, it suffices to
+show that the upper row sends $x\cdot y_0$ to $jx \cdot Ny_0$.
+
+We fix $x\in \pi_q^{\{1\}}(T)$. Similar to \eqref{eq:spherespectrumtorsion}
+there is a diagram 
+\[
+\begin{tikzcd}
+\pi_q^{\{1\}}(\Sigma^\infty S^q)\cdot y_0
+\arrow{r}\arrow{d}{f_\ast}
+&\pi_q^{\{1\}}(\Sigma^\infty S^q\wedge \TT_{j+})
+\arrow{d}{(f\wedge \mathrm{id})_\ast}\arrow{r}{d}
+&\pi_{q+1}^{\{1\}}(\Sigma^\infty S^q\wedge \TT_{j+})
+\arrow{d}{(f\wedge \mathrm{id})_\ast}\arrow{r}
+&\pi_q^{\{1\}}(\Sigma^\infty S^q)\cdot Ny_1
+\arrow{d}{f_\ast}\\
+\pi^{\{1\}}_q(T)\cdot y_0
+\arrow{r}
+&\pi^{\{1\}}_q(T\wedge\TT_{j+})
+\arrow{r}{d}
+&\pi^{\{1\}}_{q+1}(T\wedge\TT_{j+})
+\arrow{r}
+&\pi_q^{\{1\}}(T)\cdot Ny_1,
+\end{tikzcd}
+\]
+such that $f_\ast$ maps $\mathrm{id}_{S^q}\cdot y_0$ to $x\cdot y_0$.
+Hence, it suffices to show that the upper row maps 
+$\mathrm{id}_{S^q}\cdot y_0$ to $ \mathrm{id}_{S^q}\cdot jNy_1$.
+Consider the maps $p:\TT_j\to \TT_j/C_{p^\nu}\cong X^1/X_0$
+and $s_j:\TT\to \TT_j, z\mapsto z^j$. Then \eqref{eq:firstpage} maps
+the composite
+\[
+\varphi: S^{q+1}\cong S^q\wedge \TT
+\xrightarrow{\mathrm{id}_{S^q}\wedge s_j} S^q\wedge \TT
+\xrightarrow{\mathrm{id}_{S^q}\wedge p} S^q\wedge(X_1/X_0)
+\]
+to $ \mathrm{id}_{S^q}\cdot jNy_1$. We show that
+\[
+\pi_q^{\{1\}}(\Sigma^\infty S^q)\cdot y_0
+\to
+\pi_q^{\{1\}}(\Sigma^\infty S^q\wedge \TT_{j+})
+\xrightarrow{d}
+\pi_{q+1}^{\{1\}}(\Sigma^\infty S^q\wedge \TT_{j+})
+\to
+\pi_q^{\{1\}}(\Sigma^\infty S^q\wedge (X^1/X_0))
+\]
+sends  $\mathrm{id}_{S^q}\cdot y_0$ to the class of $\varphi$.
+We choose a representative $\psi:S^{n+1}\to S^n\wedge \TT_+$
+of $\sigma\in \pi^{\{1\}}_1(\Sigma^\infty \TT_+)$. Then  $\mathrm{id}_{S^q}\cdot y_0$ 
+is mapped to the class of
+\begin{align*}
+%\begin{tikzcd}
+S^q\wedge S^0\wedge S^{n+1}
+&\xrightarrow{\mathrm{id}\wedge \iota\wedge \psi}
+S^q\wedge \TT_{j+}\wedge S^n\wedge \TT_+\\
+&\xrightarrow{\mathrm{action}}
+S^q\wedge \TT_{j+}\wedge S^n\\
+&\xrightarrow{\mathrm{collapse}} 
+S^q\wedge (X_1/X_0)\wedge S^n.
+%\end{tikzcd}
+\end{align*}
+But this is the same as the map
+\begin{align*}
+%\begin{tikzcd}
+S^q\wedge S^{n+1}
+&\xrightarrow{\mathrm{id}\wedge \psi}
+S^q\wedge S^n\wedge \TT_+
+\xrightarrow{\mathrm{collapse}}
+S^q\wedge S^n\wedge \TT\\
+&\xrightarrow{\mathrm{id}\wedge s_j}
+S^q\wedge S^n\wedge \TT
+\xrightarrow{\mathrm{id}\wedge p}
+S^q\wedge S^n\wedge (X_1/X_0)
+%\end{tikzcd}
+%\]
+\end{align*}
+and since 
+\[
+S^{n+1}\xrightarrow{\psi} S^n\wedge \TT_+\xrightarrow{\mathrm{collapse}}
+S^n\wedge \TT
+\]
+is (stably) homotopic to the identity, the claim follows.
+\end{proof}

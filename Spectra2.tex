@@ -1,0 +1,1289 @@
+\chapter{Equivariant homotopy theory.}
+\section{Unstable equivariant homotopy theory.}
+Throughout this section $G$ denotes a topological group. The categories
+$\mathbf{Top}_G$ and $\mathbf{Top}_{\ast G}$ have objects
+(pointed) left $G$-spaces and morphisms (pointed) continuous
+maps. In the pointed case we require that $G$ acts trivially on
+the basepoint. Note also that we do not require maps to be equivariant.
+We equip the (smash) product with the diagonal action. If $X$ and $Y$ are
+$G$-spaces, we let $G$ act on $\map(X,Y)$ by conjugation. Just as in the
+non-equivariant case, the product and the mapping space
+give $\mathbf{Top}_G$ the structure of a closed symmetric monoidal
+category with unit the one-point space. Similarly, the smash product
+and pointed mapping space give $\mathbf{Top}_{\ast G}$
+a closed symmetric monoidal structure with unit $S^0$.
+
+\subsection{Equivariant CW complexes and universal spaces.}
+
+
+\begin{mydef}
+Let $A$ and $X$ be $G$-spaces. We say $X$ is obtained by attaching equivariant $n$-cells
+if there exists a family $\{H_j:j\in J\}$ of closed subgroups and a pushout in $\mathbf{Top}^G$:
+\begin{equation}\label{eq:cwpushout}
+\begin{tikzcd}
+\underset{j\in J}{\coprod} G/H_j\times S^{n-1}
+\arrow{r}{\varphi}\arrow[hookrightarrow]{d}
+&A\arrow{d}\\
+\underset{j\in J}{\coprod} G/H_j\times D^{n}
+\arrow{r}{\Phi}
+&X.
+\end{tikzcd}
+\end{equation}
+\end{mydef}
+In \eqref{eq:cwpushout} $G$ acts trivially on $S^{n-1}$ and $D^n$. The action on $G/H_j$ is
+by left multiplication. One can verify that if $X$ is obtained from $A$ by attaching equivariant cells, there is
+a canonical $G$-homeomorphism $X/A\cong \bigvee_{j\in J} G/H_{j+}\wedge S^n$.
+\begin{mydef}
+Let $(X,A)$ be a pair of $G$-spaces with $A$ Hausdorff. We say it is a relative $G$-CW-complex
+if there is a filtration
+\[
+A = X_{-1}\subset X_0\subset \ldots\subset X_n\subset \ldots \subset X
+\]
+such that the following holds:
+\begin{enumerate}
+\item $X = \cup_{n = -1}^\infty X_n$.
+\item $X_n$ is obtained from $X_{n-1}$ by attaching equivariant $n$-cells.
+\item $X = \colim_n X_n$.
+\end{enumerate}
+The cellular dimension of $X$ is the smallest integer $n$ such that $X_n =X$. We refer
+to the space $X_n$ as the $n$-skeleton.
+In the case $A=\emptyset$ we say $X$ is a $G$-CW-complex.
+\end{mydef}
+
+We now turn to families of subgroups and universal spaces.
+\begin{mydef}
+A family of subgroups of the group $G$ is a set $\mathcal{F}$
+of closed subgroups such that the following holds:
+\begin{enumerate}
+\item If $H\in \mathcal{F}$ and $K$ is conjugate to $H$, then  $K\in \mathcal{F}$.
+\item If $H\in \mathcal{F}$ and $K\subset H$, then  $K\in \mathcal{F}$.
+\end{enumerate}
+\end{mydef}
+
+
+\begin{mydef}
+Let $\mathcal{F}$ be a family of subgroups of the group $G$. A universal $G$-space
+for $\mathcal{F}$ is a $G$-CW-complex $E\mathcal{F}$ such that $E\mathcal{F}^H$
+is empty if $H\in \mathcal{F}$ and $E\mathcal{F}^H$
+is contractible if $H\not \in \mathcal{F}$.
+\end{mydef}
+
+\begin{thm}
+Let $G$ be a compact Lie group and $\mathcal{F}$ a family of subgroups.
+Then an universal space for $\mathcal{F}$ exists and is unique up to
+$G$-homotopy equivalence.
+\end{thm}
+
+\subsection{Change of groups.}
+\begin{mydef}
+Let $\alpha:\Gamma\to G$ be a group homomorphism and $X$ a (pointed) $G$-space.
+We denote by $\alpha^\ast X$ the $\Gamma$-space with underlying space $X$
+and $\Gamma$-action given by $(\gamma,x)\mapsto \alpha(\gamma)\cdot x$. This operation 
+yields the restriction functors
+\begin{align}
+\begin{split}
+\alpha^\ast:\mathbf{Top}^G&\to \mathbf{Top}^{\Gamma},\\
+\alpha^\ast: \mathbf{Top}^G_\ast&\to \mathbf{Top}^{\Gamma}_\ast.
+\end{split}
+\end{align}
+In the case that $H$ is a subgroup and $\alpha:H\to G$ is the inclusion, we often
+write $\mathrm{res}^G_H$ instead of $\alpha^\ast$.
+\end{mydef}
+The restriction functors admit left adjoints called induction. For our purposes
+it suffices to treat the pointed case. We give an explicit construction.
+
+\begin{mydef}
+
+\end{mydef}
+\section{Symmetric Spectra}
+
+In the following we denote by $\Sigma_n$ the symmetric group. If we regard $S^{n}$ as the one-point compactification
+of $\RR^n$, the canonical left action of $\Sigma_n$ on $\RR^n$ extends naturally to a basepoint preserving left action
+on $S^{n}$.
+\begin{mydef}
+A symmetric spectrum is a sequence of pointed spaces $\{X_n\}_{n\ge 0}$, together with basepoint preserving left actions
+of $\Sigma_n$ on $X_n$ and maps $\sigma_n:X_n\wedge S^1\rightarrow X_{n+1}$ such that (fill in details here)
+\end{mydef}
+
+\begin{bsp}[Sphere spectrum]
+\end{bsp}
+
+\begin{bsp}[Suspension spectrum]
+Let $X$ be a pointed space. The associated suspension spectrum $\Sigma^\infty X$ is given
+by $(\Sigma^\infty X)_n= X\wedge S^n$. The $n$-th structure map is defined to be the canonical homeomorphism
+$(X\wedge S^n)\wedge S^1\cong X\wedge S^{n+1}$.
+\end{bsp}
+\begin{mydef}
+Smash product of symmetric spectra.
+\end{mydef}
+
+\begin{mydef}
+Ring spectra and module spectra over a ring spectrum.
+\end{mydef}
+
+\begin{bsp}[Eilenberg-MacLane spectrum]
+
+\end{bsp}
+
+\section{Equivariant Orthogonal Spectra}
+In this section we collect basic definitions and facts about equivariant 
+stable homotopy theory. The standard reference is \cite{mandellmay},
+but see also \cite{schwedeequivariant} and \cite[Section~3-7]{rvadams}
+in the case of finite groups. 
+Throughout this section we assume that $G$ is a compact Lie group.
+We are mostly interested in the case of the circle group $\TT$ and its
+finite cyclic subgroups. 
+
+\begin{mydef}
+An orthogonal $G$-spectrum $T$ is a $\mathbf{Top}_{\ast G}$-functor
+\[
+T:\mathbf{Th}_G\to \mathbf{Top}_{\ast G}.
+\]
+A naive orthogonal $G$-spectrum $T$ is a $\mathbf{Top}_{\ast G}$-functor
+\[
+T:\mathbf{Th}^{\mathrm{triv}}_G\to \mathbf{Top}^G_{\ast}.
+\]
+A map of (naive) orthogonal $G$-spectra is a natural transformation of
+$\mathbf{Top}_{\ast G}$-functors. We denote the category of orthogonal
+$G$-spectra by $\mathbf{Sp}^G$ and the category of
+naive orthogonal $G$-spectra by $\mathbf{NSp}^G$.
+\end{mydef}
+We will often drop the adjective orthogonal and simply use the expression
+$G$-spectrum. The category $\mathbf{Th}_G$ is the $\mathbf{Top}_{\ast G}$-category of
+Thom complexes  as described in  \cite[Section~3]{rvadams} (this description
+is also valid for compact Lie groups).
+We denote by $\mathbf{Th}_G^{\mathrm{triv}}$ the full subcategory
+with objects the trivial $G$-representations. Then any $G$-spectrum
+$T$ has an underlying naive $G$-spectrum obtained by restriction,
+which we denote by $\iota^\ast T$.
+
+
+%We will define orthogonal $G$-spectra
+%as $\mathbf{Top}_\ast^G$-enriched functors taking values
+%in $\mathbf{Top}_{\ast G}$. We first describe the indexing category.
+%
+%We take a $G$\textit{-representation} to mean a real inner product
+%space $U$ on which $G$ acts smoothly by linear isometries. We only
+%consider $G$-representations of finite or countably infinite
+%dimension. For $G$-representations $U$ and $V$ we denote
+%by $\mathbf{L}(U,V)$ the set of all linear isometries and topologize
+%it as a subspace of the unpointed mapping space $\map(U,V)$. 
+%We let $\xi(U,V)\to \mathbf{L}(U,V)$
+%be the vector bundle with total space
+%\[
+%\xi(U,V) = \{(f,v)\in \mathbf{L}(U,V)\times V:f(U)\perp v\}
+%\]
+%and bundle map projection onto the first factor. We let $G$
+%act on $\xi(U,V)$ via 
+%\begin{equation}\label{eq:thomspaceaction}
+%(g,(f,v))\mapsto (gf(g^{-1}-),gv).
+%\end{equation}
+%
+%\begin{mydef}
+%Let $U$ and $V$ be finite dimensional $G$-representations.
+%We define $\mathbf{Th}(U,V)$ as the Thom space of the bundle
+%$\xi(U,V)\to \mathbf{L}(U,V)$. Explicitly, it is the quotient space
+%of the fibrewise one-point compactification obtained by collapsing
+%all the points at infinity to a basepoint.
+%It has a $G$-action induced by \eqref{eq:thomspaceaction}.
+%\end{mydef}
+%
+%Composition of isometries induces $G$-equivariant bundle maps
+%\[
+%\xi(V,W)\times \xi(U,V)\to \xi(U,W), ((f,w),(f',v))\mapsto (f'\circ f, w + f'(v))
+%\]
+%and this descends to a map
+%\begin{equation}\label{eq:thomspacecomposition}
+%\circ:\mathbf{Th}(V,W)\wedge \mathbf{Th}(U,V)\to \mathbf{Th}(U,W).
+%\end{equation}
+%This map has an identity, given by
+%\begin{equation}\label{eq:thomspaceidentity}
+%(\mathrm{id},0)\in \mathbf{Th}(U,U).
+%\end{equation}
+%\begin{mydef}
+%The $\mathbf{Top}_{\ast G}$-category $\mathbf{Th}_G$ has as objects
+%finite dimensional $G$-representations. For finite dimensional
+%$G$-representations $U$ and $V$ the morphism space
+%is the pointed $G$-space $\mathbf{Th}(U,V)$.  The composition is
+%given by \eqref{eq:thomspacecomposition} and the identity by \eqref{eq:thomspaceidentity}.
+%The $\mathbf{Top}_{\ast G}$-category $\mathbf{Th}_G^{\mathrm{triv}}$ is the subcategory
+%with objects the trivial finite dimensional $G$-representations and the same
+%morphism spaces.
+%\end{mydef}
+
+% We now proceed to explain that any $G$-spectrum has an 
+%underlying naive $G$-spectrum. Let
+%\[
+%\iota: \mathbf{Th}^{\mathrm{triv}}_G\to \mathbf{Th}_G
+%\]
+%denote the inclusion functor. If $T$ is an orthogonal $G$-spectrum,
+%$\iota^\ast T$ naturally takes values in $\mathbf{Top}^G_{\ast}$,
+%since if $U$ and $V$ are trivial $G$-representations, the $G$-action
+%on $\mathbf{Th}(U,V)$ is trivial, hence the $G$-equivariant map
+%\[
+%\mathbf{Th}(U,V)\to \map(T(U),T(V))
+%\]
+%factors through $\map(T(U),T(V))^G$, which are exactly the equivariant maps.
+%\begin{mydef}
+%Let $T$ be an orthogonal $G$-spectrum. Its underlying naive spectrum
+%is the naive orthogonal $G$-spectrum $\iota^\ast T$.
+%\end{mydef}
+Naive and non-naive spectra are related by the following result. It will play an important
+role in our discussion of change of group functors.
+\begin{thm}\label{thm:naiveisnotnaive}
+The functor
+\[
+\iota^\ast: \mathbf{Sp}^G\to \mathbf{NSp}^G
+\]
+is an equivalence of categories. 
+Its inverse
+\[
+\iota_!: \mathbf{NSp}^G\to \mathbf{Sp}^G
+\]
+is given by mapping a naive $G$-spectrum $T$
+to its enriched left Kan extension along $\iota:\mathbf{Th}^{\mathrm{triv}}_G\to 
+\mathbf{Th}_G$.
+In particular, $G$-spectra
+with isomorphic underlying naive $G$-spectra are isomorphic.
+\end{thm}
+
+Every $T$ spectrum comes equipped with a structure map
+\begin{equation}\label{eq:structuremap}
+\sigma_{U,V}: S^V\wedge T(U)\to T(U\oplus V),
+\end{equation}
+as well as an internal structure map
+\begin{equation}\label{eq:internalstructuremap}
+\sigma_{U\subseteq V}: S^V\wedge T(U)\to T(V)
+\end{equation}
+for finite dimensional $G$-representations $U$ and $V$.
+A precise definition is given in \cite[Definition~4.6, \pno~1505]{rvadams}.
+Before we proceed, we give two important examples of $G$-spectra.
+\begin{bsp}
+\begin{enumerate}
+\item The $G$\textit{-sphere spectrum} $\spherespectrum$
+is defined by $\spherespectrum(U) = S^U$. On morphisms
+it is given by sending $(f,v)\in \mathbf{Th}(U,V)$
+to the one-point compactification of the map
+\[
+U\to V, u\mapsto f(u)+v.
+\]
+\item Let $X$ be a $G$-space. Its \textit{suspension spectrum}
+$\Sigma^\infty X$ is defined by $(\Sigma^\infty X)(U) = S^U\wedge X$.
+On morphisms it is defined analogously to the sphere spectrum.
+\end{enumerate}
+\end{bsp}
+
+The previous examples are special cases of a more general construction,
+which we will frequently use.
+\begin{mydef}
+Let $X$ be a pointed $G$-space and $T$ a $G$-spectrum. Their
+smash product $T\wedge X$ is the composition
+\[
+\mathbf{Th}_G\xrightarrow{T}\mathbf{Top}_{\ast G}
+\xrightarrow{-\wedge X} \mathbf{Top}_{\ast G}.
+\]
+The mapping spectrum $\map(X,T)$ is defined as the composition
+\[
+\mathbf{Th}_G\xrightarrow{T}\mathbf{Top}_{\ast G}
+\xrightarrow{\map(X,-)} \mathbf{Top}_{\ast G}.
+\]
+These operations assemble to $\mathbf{Top}_{\ast G}$-functors
+\begin{align*}
+-\wedge X: \mathbf{Sp}^G&\to \mathbf{Sp}^G,\\
+\map(X,-):\mathbf{Sp}^G &\to \mathbf{Sp}^G,
+\end{align*}
+which form an adjoint pair.
+In the case of a finite dimensional $G$-representation $U$
+we write $\Sigma^U T$ and $\Omega^U T$ instead
+of $T\wedge S^U$ and $\map(S^U,T)$ respectively. We refer to the corresponding functors
+as the suspension and loop functors.
+\end{mydef}
+\begin{mydef}
+A $G$-homotopy is a map of $G$-spectra $f:T\wedge I_+\to T'$. Just as for spaces,
+we have the notion of $G$-homotopic maps of spectra and $G$-homotopy
+equivalences.
+\end{mydef}
+
+
+
+
+%\begin{prop}
+%The categories of naive orthogonal $G$-spectra and of orthogonal spectra with $G$-action are isomorphic.
+%\end{prop}
+%
+%\begin{proof}
+%Let $T$ be a naive orthogonal $G$-spectrum. We put $X_n=T(\RR^n)$. To define the $O(n)\times G$-action, note that $f\in O(n)$ implies
+%$(f,0)\in \mathcal{Th}(\RR^n, \RR^n)$ and that $$T(f,0): X_n\rightarrow X_n$$ is $G$-equivariant. This means we can define the action by
+%$$O(n)\times G\times X_n\rightarrow X_n, (f,g,x)\rightarrow T(f,0)(gx).$$
+%
+%Next, we define the structure map
+%$$\sigma_n: X_n\wedge S^1\rightarrow X_{n+1}$$
+%as the adjoint of the map
+%$$S^1\rightarrow \mathcal{Th}(\RR^n,\RR^{n+1})\rightarrow \text{Map}_{\mathcal{T}^G}(T(\RR^n),T(\RR^{n+1}))=\text{Map}_{\mathcal{T}^G}(X_n,X_{n+1}).$$
+%Then $\sigma_n$ is $G$-equivariant and the iterated structure maps are as well. 
+%
+%Conversely, if $X$ is an orthogonal spectrum with a $G$-action, we will a naive orthogonal spectrum $T$. Note that on objects it suffices to define
+%$T(R^n)$ for all $n\in N$. For if $V$ is an inner product space of dimension $n$ and $f:V\rightarrow \RR^n$ an isometric isomorphism, it
+%is easy to see that $(f,0)\in \mathcal{Th}(V,\RR^n)$ is an isomorphism.
+%\end{proof}
+
+\subsection{Homotopy theory of equivariant orthogonal spectra.}
+The definition of the homotopy groups of a spectrum requires the notion of a 
+(complete) $G$-universe \cite[Definition~II.2.2, \pno~30]{mandellmay}.
+In the setup of \cite{mandellmay} the universe is built into the definition
+of a $G$-spectrum, but we find it more convenient to define $G$-spectra
+without universes. The downside is that we need a choice of universe
+to define homotopy groups. For complete $G$-universes, this choice is
+irrelevant, see for example the discussion in \cite[\pno~1510-1511]{rvadams}.
+\begin{mydef}
+Let $T$ be a $G$-spectrum and $H$ a closed subgroup of $G$. Choose
+a complete $G$-universe $\mathcal{U}$ and denote by $\mathcal{P}(\mathcal{U})$
+the poset of all finite dimensional subrepresentations of $\mathcal{U}$. Define
+\begin{equation}\label{eq:equivarianthomotopygroup}
+\pi_q^H(T) = 
+\begin{cases}
+\underset{U\in \mathcal{P}(\mathcal{U})}{\colim} \pi_q\left(\left(\Omega^UT(U)\right)^H\right) &\text{ if } q\ge 0,\\
+\underset{U\in \mathcal{P}(\mathcal{U})}{\colim} \pi_q\left(\left(\Omega^UT(U\oplus \RR^{-q})\right)^H\right) &\text{ if } q< 0.
+\end{cases}
+\end{equation}
+The structure maps for the colimits above are obtained by first applying $H$-fixed points and then $\pi_q(-)$
+to the maps
+\begin{align}
+\Omega^UT(U)&\xrightarrow{\Omega^U \tilde \sigma_{U\subseteq V}} \Omega^U\Omega^{V-U} T(V)\cong \Omega^{V} T(V)
+&\text{ if } q\ge 0,\label{eq:homotopygroupstructuremap1}\\
+\Omega^UT(U\oplus \RR^{-q})&\xrightarrow{\Omega^U \tilde \sigma_{U\oplus \RR^{-q}\subseteq V\oplus \RR^{-q}}} 
+\Omega^U\Omega^{V-U} T(V\oplus \RR^{-q})\cong \Omega^{V} T(V\oplus \RR^{-q})
+&\text{ if } q<0 \label{eq:homotopygroupstructuremap2},
+\end{align}
+after noting that $V\oplus \RR^{-q}-U\oplus \RR^{-q} = V-U$.
+\end{mydef}
+\begin{mydef}
+Let $f:T\to T'$ be a map of $G$-spectra.
+\begin{enumerate}[(i)]
+\item We say $f$ is a weak equivalence of $G$-spectra
+if the map
+\[
+f_\ast:\pi_q^H(T)\to \pi_q^H(T')
+\]
+is an isomorphism for all $q\in \ZZ$ and all closed subgroups $H$
+of $G$.
+\item We say $f$ is a level equivalence if $f:T(U)\to T'(U)$
+is a weak equivalence of $G$-spaces for any finite dimensional
+$G$-representation $U$.
+\end{enumerate}
+\end{mydef}
+For brevity we will often drop the adjective weak when
+talking about weak equivalences of $G$-spectra.
+We will often denote an equivalence of $G$-spectra by
+$T\xrightarrow{\sim} T'$ or by $T\simeq T'$. In equivariant
+stable homotopy theory one is mostly interested in the weak
+equivalences. The usefulness of the level equivalences comes
+from the following basic result from \cite[Lemma~III.3.3, \pno~45]{mandellmay}.
+\begin{lem}
+A level equivalence of $G$-spectra is a weak equivalence of $G$-spectra.
+\end{lem}
+
+The category $\mathbf{Sp}^G$ can be given the structure of a model
+category \cite[Theorem~III.4.2, \pno~47]{mandellmay} such that the weak equivalences
+of $G$-spectra are exactly the weak equivalences of the model structure. 
+It is referred to as the \textit{stable model structure}
+and admits Quillen's
+small object argument. By \cite[Theorem~2.1.14, \pno~33]{hoveymodelcats} 
+this implies the existence of a fibrant replacement 
+functor $Q$ and a cofibrant replacement functor $\Gamma$
+together with weak equivalences of $G$-spectra
+\[
+r_T: T\xrightarrow{\sim} QT
+\]
+and
+\[
+\gamma_T:\Gamma T\xrightarrow{\sim} T,
+\]
+which are both natural in $T$. The next result justifies the expression
+stable model structure.
+
+
+\begin{lem}\label{lem:spectrumsuspensionshift}
+\begin{enumerate}[(i)]
+\item For any finite dimensional $G$-representation $U$
+the unit $\eta:T\to \Omega^U\Sigma^UT$ is an equivalence
+of $G$-spectra.
+\item There is a natural isomorphism $\pi^H_q(\Sigma T)\cong \pi_{q+1}(T)$
+\end{enumerate}
+\end{lem}
+\begin{proof}
+The first assertion is \cite[Lemma~3.8, \pno~46]{mandellmay}. For (ii)
+we show there is a natural isomorphism $\pi_q^H(\Omega^1 T)\cong \pi_{q+1}^H(T)$
+and apply (i). The natural isomorphisms 
+\[
+(\Omega^U\Omega^1T(U))^H\cong\Omega^1(\Omega^UT(U))^H
+\]
+and 
+\[
+(\Omega^U\Omega^1T(U\oplus \RR^{-q}))^H\cong\Omega^1(\Omega^UT(U\oplus\RR^{-q}))^H
+\]
+commute with \eqref{eq:homotopygroupstructuremap1} and  \eqref{eq:homotopygroupstructuremap2} 
+and by adjointness we have the isomorphisms
+\[
+\pi_q(\Omega^1(\Omega^UT(U))^H)\cong \pi_{q+1}((\Omega^UT(U))^H)
+\]
+and
+\[
+\pi_q(\Omega^1(\Omega^UT(U\oplus\RR^{-q}))^H)\cong \pi_{q+1}((\Omega^UT(U\oplus\RR^{-q}))^H).
+\]
+The claim now follows by passing to the colimits.
+\end{proof}
+
+The fibrant objects in the stable model structure can be easily
+characterized and possess good homotopical properties.
+\begin{mydef}
+Let $T$ be a $G$-spectrum.
+\begin{enumerate}[(i)]
+\item We call $T$ good if the structure map \eqref{eq:structuremap}
+is a closed embedding.
+\item $T$ is a $G$-$\Omega$-spectrum if the adjoint
+\begin{equation}
+\tilde \sigma_{U\subseteq V}: T(U)\to \Omega^{V-U}T(V)\label{eq:adjointinternalstructuremap}
+\end{equation}
+of the internal structure map \eqref{eq:internalstructuremap} is
+a weak equivalence of $G$-spaces.
+\end{enumerate}
+\end{mydef}
+
+\begin{lem}
+Let $T$ be a $G$-spectrum.
+\begin{enumerate}[(i)]
+\item $T$ is a $G$-$\Omega$-spectrum iff it is fibrant
+in the stable model structure on $\mathbf{Sp}^G$.
+\item If $T$ is a $G$-$\Omega$-spectrum, there is a natural isomorphism
+\begin{equation}\label{eq:homotopygroupomegaspectrum}
+\pi_q^H(T)\cong
+\begin{cases}
+\pi_q\left(T(0)^H\right) &\text{ if } q\ge 0,\\
+\pi_q\left(T(\RR^{-q})^H\right) &\text{ if } q<0.
+\end{cases}
+\end{equation}
+\end{enumerate}
+\end{lem}
+\begin{proof}
+For (i) see \cite[Proposition~III.4.12, \pno~50]{mandellmay}.
+The proof of \cite[Lemma~III.3.3, \pno~45]{mandellmay} implies that
+\eqref{eq:homotopygroupstructuremap1} and \eqref{eq:homotopygroupstructuremap2}
+are weak equivalences of $G$-spaces if $T$ is a $G$-$\Omega$-spectrum,
+hence the structure maps for the colimit in \eqref{eq:equivarianthomotopygroup}
+are all isomorphisms. This yields (ii).
+\end{proof}
+In the remainder of this subsection we explain how to obtain a reduced homology
+theory from a $G$-spectrum. For the axioms of a reduced homology
+theory we refer to \cite[\pno~110]{mayconcise}. We fix a $G$-spectrum $T$
+and a subgroup $H$. Given a pointed $G$-CW-complex $X$
+we put
+\begin{equation}\label{eq:spectrumhomology}
+\tilde E_q(X) = \pi_q^H(T\wedge X).
+\end{equation}
+To apply the above definition to non-equivariant CW-complexes, we equip
+these with the trivial action.
+We have the following result from \cite[Theorem~III.3.5]{mandellmay}.
+\begin{lem}\label{lem:spectrumwedge}
+Let $\{T_i:i\in I\}$ be a family of $G$-spectra. The inclusion
+$\iota_j:T_j\to \bigvee_{i\in I}$ of each summand into the wedge
+induces for each subgroup $H$ and each integer $q\in \ZZ$ an isomorphism 
+\begin{equation}
+\bigoplus_{i\in I} \pi_q^H(T_i)\xrightarrow{\cong} \pi_q^H\left(\bigvee_{i\in I} T_i\right).
+\end{equation}
+\end{lem}
+
+Lemma \ref{lem:spectrumwedge} and \ref{lem:spectrumsuspensionshift} together with the isomorphism
+\[
+T\wedge \bigvee_{i\in I} X_i\cong \bigvee_{i\in I} T\wedge X_i
+\] imply that \eqref{eq:spectrumhomology} satisfies the additivity and suspension axioms. The weak equivalence axiom
+is a consequence of the fact that if $X\to Y$ is a weak equivalence of $G$-spaces,
+$T\wedge X\to T\wedge Y$ is a level equivalence. To see that the exactness
+axiom also holds we take brief detour into cofiber sequences of $G$-spectra.
+
+\begin{mydef}
+Let $f:T\to T'$ a map of $G$-spectra.
+\begin{enumerate}[(i)]
+\item The cofiber of $f$ is the $G$-spectrum $Cf$ such that 
+$(Cf)(U)$ is the cofiber of $f:T(U)\to T'(U)$ for
+any finite dimensional $G$-representation $U$.
+It comes equipped with a natural inclusion 
+$i:T'\to Cf$.
+\item We say $T\to T'\to T''$ is a cofiber sequence
+if there is a map of $G$-spectra $f:X\to Y$
+and a diagram
+\[
+\begin{tikzcd}
+T\arrow{r}\arrow{d}[anchor = center, rotate = 90, yshift = -1ex]{\sim}
+&T' \arrow{d}[anchor = center, rotate = 90, yshift = -1ex]{\sim}\arrow{r}
+&T''\arrow{d}[anchor = center, rotate = 90, yshift = -1ex]{\sim}\\
+X\arrow{r}{f}
+&Y\arrow{r}{i}
+&Cf,
+\end{tikzcd}
+\]
+which commutes up to $G$-homotopy, such that the vertical
+arrows are equivalences of $G$-spectra.
+\item The homotopy fiber of $f$ is the $G$-spectrum
+$Ff$ such that $(Ff)(U)$ is the homotopy fiber of the map
+$f:T(U)\to T'(U)$ for any finite dimensional $G$-representation $U$.
+It has a natural projection $p:Ff\to X$.
+\item We say $T\to T'\to T''$ is a fiber sequence
+if there is a map of $G$-spectra $f:X\to Y$
+and a diagram
+\[
+\begin{tikzcd}
+T\arrow{r}\arrow{d}[anchor = center, rotate = 90, yshift = -1ex]{\sim}
+&T' \arrow{d}[anchor = center, rotate = 90, yshift = -1ex]{\sim}\arrow{r}
+&T''\arrow{d}[anchor = center, rotate = 90, yshift = -1ex]{\sim}\\
+Ff\arrow{r}{p}
+&X\arrow{r}{f}
+&Y,
+\end{tikzcd}
+\]
+which commutes up to $G$-homotopy, such that the vertical
+arrows are equivalences of $G$-spectra.
+\end{enumerate}
+\end{mydef}
+Note that if $f:X\to Y$ is a map of $G$-spaces and $T$ a $G$-spectrum,
+then we have the isomorphisms 
+\[
+T\wedge Cf\cong C(\mathrm{id}\wedge f) \text{ and } T\wedge Ff\cong F(\mathrm{id}\wedge f),
+\]
+which imply that if $X\to Y\to Z$ is a (co)fiber sequence of $G$-spaces,
+$T\wedge X\to T\wedge Y\to T\wedge Z$ is a (co)fiber sequence of $G$-spectra.
+The following result is \cite[Theorem~III.3.5, \pno~45]{mandellmay}.
+Of course, by functoriality the analogous result also holds for arbitrary (co)fiber
+sequences.
+
+\begin{thm}\label{thm:(co)fibersequences}
+Let $f:T\to T'$ be a map of $G$-spectra. For any subgroup $H$
+there are natural long exact sequences
+\[
+\ldots\to\pi_q^H(T)\xrightarrow{f_\ast} \pi_q^H(T')
+\xrightarrow{i_\ast} \pi_q^H(Cf)\xrightarrow{\partial}
+\pi_{q-1}^H(T)\to \ldots
+\]
+and
+\[
+\ldots \to \pi_q^H(Ff)\xrightarrow{p_\ast} \pi_q^H(T)\xrightarrow{f_\ast} \pi_q^H(T')
+\xrightarrow{\partial} \pi_{q-1}^H(Ff)\to \ldots
+\]
+of abelian groups.
+\end{thm}
+This immediately implies that \eqref{eq:spectrumhomology} satisfies the exactness axiom,
+that is it defines a reduced homology theory. Standard results on homology theories
+(for example \cite[Theorem~10.8.1 and Proposition~10.8.4, \pno~271-272]{diecktop})
+then yield the following proposition.
+
+\begin{prop}\label{prop:colimitshomotopygroups}
+Let $X_0\to X_1\to\ldots \to X_n\to \ldots$ be a sequence of cofibrations of pointed $G$-spaces
+and let $X = \colim_n X_n$. Then for each $G$-spectrum $T$, each integer $q\in \ZZ$
+and each subgroup $H$ of $G$ the structure maps $X_n\to X$ induce an isomorphism
+\begin{equation}
+\underset{n}{\colim} \,\pi_q^H(T\wedge X_n)\xrightarrow{\cong} \pi_q^H(T\wedge X).
+\end{equation}
+
+\end{prop}
+
+
+\subsection{Change of groups.}
+Let $\alpha:\Gamma\to G$ be a group homomorphism.
+Analagously to the case of spaces, there are change of group
+functors
+\begin{align}\label{eq:spectrumrestrictioninduction}
+\begin{split}
+\alpha^\ast:\mathbf{Sp}^G  &\to \mathbf{Sp}^\Gamma,\\
+\alpha_\ast:\mathbf{Sp}^\Gamma  &\to \mathbf{Sp}^G.
+\end{split}
+\end{align}
+We refer to \cite[Construction~6.5 and Construction~6.7, \pno~1519]{rvadams}
+for details.
+%We do this first for naive spectra.
+%\begin{mydef}
+%If $T$ is a naive $G$-spectrum we define its \textit{restriction along}
+%$\alpha$ as the composite
+%\[
+%\mathbf{Th}^{\mathrm{triv}}_\Gamma = \mathbf{Th}^{\mathrm{triv}}_G\xrightarrow{T}
+%\mathbf{Top}_{\ast G}\xrightarrow{\alpha^\ast}\mathbf{Top}_{\ast \Gamma}.
+%\]
+%If $T$ is a naive $\Gamma$-spectrum its \textit{induction along} $\alpha$ is the composite
+%\[
+%\mathbf{Th}^{\mathrm{triv}}_G = \mathbf{Th}^{\mathrm{triv}}_\Gamma\xrightarrow{T}
+%\mathbf{Top}_{\ast \Gamma}\xrightarrow{\alpha_\ast}\mathbf{Top}_{\ast G}.
+%\]
+%By abuse of notation, we denote the resulting functors as
+%\begin{align}
+%\alpha^\ast:\mathbf{NSp}^G  &\to \mathbf{NSp}^\Gamma,\\
+%\alpha_\ast:\mathbf{NSp}^\Gamma  &\to \mathbf{NSp}^G.
+%\end{align}
+%\end{mydef}
+As in the case of spaces, if $H$ is a subgroup of $G$ and $\alpha:H\to G$ denotes the inclusion,
+we often write $\mathrm{res}^G_H$ and $\mathrm{ind}^G_H$ instead of
+$\alpha^\ast$ and $\alpha_\ast$.
+%Using theorem \ref{thm:naiveisnotnaive} we can extend the previous definition to non-naive
+%spectra.
+%\begin{mydef}
+%For a $G$-spectrum $T$ we define its \textit{restriction along} $\alpha$ as
+%the $\Gamma$-spectrum $\iota_!\alpha^\ast\iota^\ast T$.
+%Given a $\Gamma$-spectrum $T$ we define its \textit{induction along} $\alpha$ as
+%the $\Gamma$-spectrum $\iota_!\alpha_\ast\iota^\ast T$.
+%We abuse notation and denote the resulting functors by \eqref{eq:spectrumrestrictioninduction}.
+%\end{mydef}
+%Again, if $H$ is a subgroup of $G$ and $\alpha:H\to G$ denotes the inclusion,
+%we often write $\mathrm{res}^G_H$ and $\mathrm{ind}^G_H$ instead of
+%$\alpha^\ast$ and $\alpha_\ast$. 
+The next lemma records basic
+homotopical properties of the restriction functors.
+
+\begin{lem}
+Let $T$ be a $G$-spectrum and $H$ a subgroup of $G$.
+\begin{enumerate}[(i)]
+\item $\pi_q^H(T)\cong \pi_q^H(\mathrm{res}^G_H T)$.
+\item If $f:T\to T'$ is an equivalence of $G$-spectra, then $\mathrm{res}^G_H f:
+\mathrm{res}^G_HT\to \mathrm{res}^G_H T'$ is an equivalence of
+$H$-spectra.
+\item If $\alpha:\Gamma\to G$ is an isomorphism, then for any $G$-spectrum $T$
+and any integer $q\in \ZZ$
+we have a natural isomorphism $\pi_q^H(T)\cong \pi_q^{\alpha^{-1}(H)}(\alpha^\ast T)$.
+Consequently a map $f:T\to T'$ is an equivalence of $G$-spectra iff
+$\alpha^\ast f:\alpha^\ast T\to \alpha^\ast T'$ is an equivalence of $\Gamma$-spectra.
+\end{enumerate}
+\end{lem}
+
+
+Next, we turn to the notion of fixed-point spectra. These will play a major role in this thesis. 
+First, we introduce some notation. We denote by
+$j:\mathbf{Th}_{\{1\}}\to \mathbf{Th}_G$ the inclusion.
+The same reasoning as for 
+$\iota^\ast T$ shows that $j^\ast T$ takes values in $\mathbf{Top}_\ast^G $.
+Now let $H$ be a subgroup of $G$.
+Then $\mathbf{Th}_G^{H\mathrm{-triv}}$ denotes the full
+subcategory of $\mathbf{Th}_G$ which has as objects
+$G$-representations $U$ such that $H$ acts trivially on $U$.
+Moreover, we denote by $\mathbf{Top}_{\ast G}^H$ the subcategory
+of $\mathbf{Top}_{\ast G}$ with the same objects, but with morphisms
+$H$-equivariant maps. If we additionally assume that $H$ is normal,
+then the projection $p:G\to G/H$ induces a functor
+$p^\ast:\mathbf{Th}_{G/H}\to\mathbf{Th}_G^{H\mathrm{-triv}}$
+and one checks again that the composition
+\[
+\mathbf{Th}_{G/H}\xrightarrow{p^\ast}\mathbf{Th}_G^{H\mathrm{-triv}}
+\xrightarrow{T} \mathbf{Top}_{\ast G}
+\]
+takes values in $\mathbf{Top}_{\ast G}^H$.
+\begin{mydef}
+Let $T$ be a $G$-spectrum.
+\begin{enumerate}[(i)]
+\item The non-equivariant $H$-fixed point spectrum of $T$, denoted
+by $\mathrm{res}_1 T^H$, is given by the composition
+\[
+\mathbf{Th}_{\{1\}}\xrightarrow{j}\mathrm{Th}_G \xrightarrow{T}
+\mathbf{Top}_\ast^G \xrightarrow{(-)^H} \mathbf{Top}_\ast.
+\]
+\item Suppose additionally that $H$ is normal. We define the $H$-fixed
+point spectrum of $T$, denoted by $T^H$, as the $G/H$ spectrum
+given by the composition
+\[
+\mathbf{Th}_{G/H}\xrightarrow{p^\ast}\mathbf{Th}_G^{H\mathrm{-triv}}
+\xrightarrow{T} \mathbf{Top}_{\ast G}^H\xrightarrow{(-)^H} \mathbf{Top}_{\ast G/H}.
+\]
+\end{enumerate}
+\end{mydef}
+
+It is evident from the definition that taking fixed point spectra is functorial.
+For $G$-$\Omega$-spectra the fixed point functors have good homotopical
+properties.
+\begin{lem}\label{lem:omegaspectrafixedpoints}
+Let $T$ be a $G$-$\Omega$-spectrum.
+\begin{enumerate}[(i)]
+\item For any integer $q\in \ZZ$ and any subgroup $H$ there is a natural isomorphism $\pi_q^{\{1\}}(\mathrm{res}_1 T^H)\cong \pi_q^H(T)$.
+\item  If $H$ is a normal subgroup $T^H$ is a $G/H$-$\Omega$-spectrum. Additionally,
+if $K$ is a subgroup containing $H$, there is a natural isomorphism
+$\pi_q^{K/H}(T^H)\cong \pi_q^K(T)$ for any integer $q\in \ZZ$.
+\item If $T'$ is a $G$-$\Omega$-spectrum, then $f:T\to T'$ is an equivalence of $G$-spectra
+iff $f^H: \mathrm{res}_1 T^H\to \mathrm{res}_1 T'^H$ is an equivalence of non-equivariant spectra
+for all subgroups $H$. Moreover, if $f$ is an equivalence of $G$-spectra and $H$ is normal, the induced
+map $f^H:T^H\to T'^H$ is an equivalence of $G/H$-spectra.
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+That $T^H$ is a $G/H$-$\Omega$-spectrum if $H$ is normal 
+is proven in \cite[Lemma~6.20, \pno~24]{rvadams}. The
+proof given there also works for compact Lie groups. The rest follows
+from \eqref{eq:homotopygroupomegaspectrum} and the isomorphism 
+$
+(X^H)^{K/H}\cong X^K
+$
+for any $G$-space $X$. 
+\end{proof}
+
+We end this subsection with two technical lemma's on fixed point spectra, which we will need later on.
+
+\begin{lem}\label{lem:wedgefixed}
+Let $\{T_i\}_{i\in I}$ be a family of  orthogonal $G$-spectra and $H$ a closed normal subgroup. Then the inclusion
+$$T_j\rightarrow \bigvee_{i\in I } T_i$$ induces a map
+$$QT_i\rightarrow Q\left(\bigvee_{j \in I } T_j\right).$$ After taking fixed points
+this yields a map 
+$$\bigvee_{i\in I}(QT_i)^H\rightarrow \left(Q\bigvee_{i \in I } T_i\right)^H.$$
+This map is an equivalence of $G/H$-spectra.
+\end{lem}
+
+\begin{proof}
+Let $K$ be a closed subgroup containing $H$. The claim follows from the
+following commutative diagram
+$$
+\begin{tikzcd}
+\pi_n^{K/H}(\bigvee_{i\in I}(QT_i)^H) \arrow{r} 
+&\pi_n^{K/H}((Q(\bigvee_{i \in I } T_i))^H) \arrow{d}[swap]{\cong} \\
+\bigoplus_{i\in I} \pi_n^{K/H}((QT_i)^H) 
+\arrow{u}{\cong}[swap]{\oplus (\iota_{QT_i})_\ast} 
+\arrow{d}[swap]{\cong}
+&\pi_n^K(Q(\bigvee_{i \in I } T_i))\\
+\bigoplus_{i\in I} \pi_n^{K}(QT_i)
+& \pi_n^K(\bigvee_{i \in I } T_i) \arrow{u}{\cong}[swap]{(r_{\bigvee_{i \in I } T_i})_\ast}\\
+\bigoplus_{i\in I} \pi_n^{K}(T_i) \arrow{u}{\cong}[swap]{\oplus (r_{T_i})_\ast}  
+\arrow{ru}{\cong}[swap]{\oplus (\iota_{T_i})_\ast} 
+%& \bigoplus_{i \in I} \pi_n^K(T_i) \arrow{u}{\cong}
+\end{tikzcd}
+$$
+where the horizontal map is the map from the statement, $\iota_{QT_i}:QT_i
+\rightarrow \bigvee_{j\in I} QT_i$ is the inclusion and the undecorated vertical arrows 
+are the isomorphisms from lemma \ref{lem:omegaspectrafixedpoints} (ii).
+\end{proof}
+
+\begin{lem}\label{lem:smashfixed}
+%\todo{I'm not sure this approach for the proof is correct}
+Let $T$ be an orthogonal $G$-$\Omega$-spectrum and let $A$ be a CW-complex with trivial $G$-action.
+Then for any closed normal subgroup $H$ the map 
+$ T\wedge A\to Q(T\wedge A)
+$
+induces an equivalence of $G/H$-spectra $T^H\wedge A\simeq Q(T\wedge A)^H$.
+\end{lem}
+
+\begin{proof}
+For $A=D^n$ the claim is obvious. We now prove the claim  for $A=S^n$ by
+induction. We have $S^0\wedge T\cong T$, so the claim follows 
+from the fact that $T$ is a $G$-$\Omega$-spectrum. For the inductive step, consider the cofiber sequence
+$$S^{n-1}\rightarrow D^n\rightarrow S^n.$$
+Smashing with $T$ yields a cofiber sequence of $G$-spectra
+$$T\wedge S^{n-1}\rightarrow T\wedge D^n\rightarrow T\wedge S^n$$
+and smashing with $T^H$ yields a cofiber sequence of $G/H$-spectra
+\[
+T^H\wedge S^{n-1}\rightarrow T^H\wedge D^n\rightarrow T^H\wedge S^n.
+\]
+By theorem \ref{thm:(co)fibersequences} the top row in the following diagram
+becomes a long exact sequence after taking homotopy groups:
+$$
+\begin{tikzcd}
+\arrow{r} \arrow{d}[anchor = center, rotate = 90, yshift = -1ex]{\sim}
+T^H\wedge S^{n-1}
+&T^H\wedge D^{n}
+\arrow{r} \arrow{d}[anchor = center, rotate = 90, yshift = -1ex]{\sim}
+&T^H\wedge S^{n}
+\arrow{d}
+\\
+(Q(T\wedge S^{n-1}))^H\arrow{r}
+&(Q(T\wedge D^n))^H\arrow{r}
+&(Q(T\wedge S^{n}))^H.
+\end{tikzcd}
+$$
+Fibrant replacement preserves cofiber sequences, so by lemma \ref{lem:omegaspectrafixedpoints}
+and theorem \ref{thm:(co)fibersequences}
+the bottom row also becomes a long exact sequence after applying homotopy groups.
+By induction hypothesis the first two
+vertical arrows are equivalences of $G/H$-spectra, so the third one is as well.
+
+Now let $A$ be a general CW-complex with basepoint $a_0\in A_0$.
+Then the claim follows for $A_0$ from the isomorphism $T\wedge A_0\cong \bigvee_{a\in A_0\setminus\{a_0\}} T$ and lemma \ref{lem:wedgefixed}. Using the cofiber sequence
+\[A_{n-1}\to A_n\to A_n/A_{n-1}\]
+and lemma \ref{lem:wedgefixed}, a similar argument as above shows the claim for every
+$n$-skeleton $A_n$. For $A$ the claim follows from the following diagram
+\[
+\begin{tikzcd}
+\underset{n}{\colim}\,\pi_q^{K/H}(T^H \wedge A_n)
+\arrow{d}{\cong}\arrow{r}{\cong}
+& \underset{n}{\colim}\,\pi_q^{K/H}((Q(T \wedge A_n))^H)
+\arrow{d}
+&\underset{n}{\colim}\,\pi_q^{K}(T \wedge A_n)
+\arrow[swap]{l}{\cong}\arrow{d}{\cong}\\
+\pi_q^{K/H}(T^H \wedge A)
+\arrow{r}
+&\pi_q^{K/H}((Q(T \wedge A))^H)
+& \pi_q^{K}(T \wedge A)
+\arrow[swap]{l}{\cong},
+\end{tikzcd}
+\]
+where the outer vertical arrows are isomorphisms by proposition \ref{prop:colimitshomotopygroups},
+the two horizontal arrows on the right are isomorphisms induced by fibrant replacement and lemma
+\ref{lem:omegaspectrafixedpoints} and the upper left horizontal arrow is an isomorphism
+by the previously treated cases. 
+\end{proof}
+\subsection{The smash product of equivariant orthogonal spectra.}
+In this subsection we briefly describe the smash product of orthogonal
+$G$-spectra. It gives $\mathbf{Sp}^G$ the structure of a symmetric monoidal
+category. We are particularly interested in the monoid objects, which
+are called \textit{ring spectra}. Our main example of a ring spectrum
+is the topological Hochschild spectrum (see proposition \todo{fill in this reference} for a 
+precise statement). The homotopy groups of ring
+spectra have the structure of a graded ring, a fact we will repeatedly use.
+
+In the following definition we use that for pointed $G$-spaces
+$W,X,Y$ and $Z$ the canonical map
+\begin{equation}\label{eq:mappingspacesmash}
+\mathrm{smash}:\map(X,Y)\wedge\map(W,Z)\to \map(X\wedge W, Y\wedge Z)
+\end{equation}
+is continuous, since it is the adjoint of the map
+\[
+\map(X,Y)\wedge\map(W,Z)\wedge X\wedge W\cong
+\map(X,Y)\wedge X\wedge \map(W,Z)\wedge W
+\xrightarrow{\mathrm{ev}_X\wedge \mathrm{ev}_W}
+Y\wedge Z.
+\]
+ \begin{mydef}
+ The \textit{external smash product} of orthogonal $G$-spectra $T$ and $T'$ is
+ the $\mathbf{Top}_{\ast G}$-enriched functor given on objects by
+ \[
+T\;\bar{\wedge} \;T' : \mathbf{Th}_G\times  \mathbf{Th}_G\to \mathbf{Top}_{\ast G}, 
+(U,V)\mapsto T(U)\wedge T'(V).
+ \]
+ and on morphisms by
+\[
+\begin{tikzcd}
+\mathbf{Th}(U,V) \wedge \mathbf{Th}(U',V')
+\arrow{r}{T\wedge T'}
+&\map(T(U),T(V))\wedge \map(T'(U'), T'(V'))
+\arrow{d}{\mathrm{smash}}\\
+&\map(T(U)\wedge T'(U'), T(V)\wedge T'(V')).
+\end{tikzcd}
+\]
+ \end{mydef}
+
+\begin{mydef}
+The smash product of two orthogonal $G$ spectra $T$ and $T'$ is
+the $\mathbf{Top}_{\ast G}$-enriched left Kan extension
+of $T\;\bar{\wedge}\; T'$ along $\oplus$. It is denoted by $T\wedge T'$.
+\end{mydef}
+
+\begin{prop}
+The smash product gives $\mathbf{Sp}^G$ the structure of a symmetric monoidal
+category. The unit object is the sphere spectrum $\spherespectrum$.
+\end{prop}
+
+\begin{proof}
+We only prove the isomorphism $\spherespectrum \wedge T\cong T$. The rest
+follows formally from the calculus of Kan extensions. As part of the data of a
+left Kan extension we have a $\mathbf{Top}_{\ast G}$-enriched natural transformation
+\[
+\epsilon: \spherespectrum\;\bar{\wedge}\;T\to (\spherespectrum\wedge T)\circ \oplus.
+\]
+For any finite dimensional $G$-representation $U$ we then obtain the $G$-equivariant map
+\begin{equation}\label{eq:smashproductunit1}
+T(U)\cong S^0\wedge T(U)\xrightarrow{\epsilon_{0,U}} (\spherespectrum\wedge T)(U).
+\end{equation}
+Conversely, the structure maps \eqref{eq:structuremap} of $T$ give a map
+\[
+S^V\wedge T(U)\xrightarrow{\sigma_{U, V}} T(U\oplus V),
+\]
+which by the universal property of the Kan extension yields a map
+\begin{equation}\label{eq:smashproductunit2}
+u_T:\spherespectrum \wedge T\to T.
+\end{equation}
+One checks that \eqref{eq:smashproductunit1} is a map of $G$-spectra and using
+the universal property of Kan extensions one sees that it is inverse to
+\eqref{eq:smashproductunit2}. 
+\end{proof}
+
+
+\begin{mydef}
+A \textit{(commutative) ring} $G$-spectrum is a (commutative) monoid object in
+the symmetric monoidal category $(\mathbf{Sp}^G, \wedge, \spherespectrum)$.
+\end{mydef}
+In general, it is difficult to check if a $G$-spectrum is a ring spectrum using the above
+definition. We indicate a more direct way. For the associativity, we note that
+by the calculus of Kan extensions the triple smash product $T\wedge T'\wedge T''$
+can also be computed as the left Kan extension of the $\mathbf{Top}_{\ast G}$-functor
+\[
+T\;\bar{\wedge}\; T'\;\bar{\wedge}\; T'':\mathbf{Th}_G\times \mathbf{Th}_G\times \mathbf{Th}_G\to \mathbf{Top}_{\ast G}
+\]
+along the $\mathbf{Top}_{\ast G}$-functor
+\[
+-\oplus-\oplus-: \mathbf{Th}_G\times \mathbf{Th}_G\times \mathbf{Th}_G\to \mathbf{Th}_G.
+\]
+Then, if we have a multiplication map $\mu:T\wedge T\to T$ induced by a $\mathbf{Top}_{\ast G}$-enriched
+natural transformation $\bar \mu:T\;\bar{\wedge}\; T\to T\circ \oplus$, the associativity
+is equivalent to the commutativity of the following diagram:
+\begin{equation}
+\begin{tikzcd}[column sep = large]
+T(U)\wedge T(V)\wedge T(W)
+\arrow{d}{\bar \mu_{U,V}\wedge \mathrm{id}}\arrow{r}{\mathrm{id}\wedge \bar\mu_{V,W}}
+&T(U)\wedge T(V\oplus W)
+\arrow{d}{\bar\mu_{U,V\oplus W}}\\
+T(U\oplus V)\wedge T(W)
+\arrow{r}{\bar\mu_{U\oplus V,W}}
+&T(U\oplus V\oplus W).
+\end{tikzcd}
+\end{equation}
+Similarly, given a unit map $u: \spherespectrum\to T$ the unit law is equivalent to the condition that the composition
+\begin{equation}\label{eq:ringspectrumunit}
+T(U)\cong S^0\wedge T(U)\xrightarrow{u_0\wedge\mathrm{id}} T(0)\wedge T(U)\xrightarrow{\bar\mu_{0,U}} T(U)
+\end{equation}
+is the identity. Finally, the commutativity of the $\mu$ is equivalent to the commutativity of:
+\begin{equation}
+\begin{tikzcd}
+T(U)\wedge T(V)
+\arrow{d}{\mathrm{twist}}\arrow{r}{\bar\mu_{U,V}}
+&T(U\oplus V)
+\arrow{d}{T(\mathrm{twist})}\\
+T(V)\wedge T(U)
+\arrow{r}{\bar\mu_{V,U}}
+&T(V\oplus U).
+\end{tikzcd}
+\end{equation}
+This can again be seen by invoking the formal properties
+of Kan extensions and using \eqref{eq:smashproductunit1}. 
+We will use the remarks above in the proof that the 
+topological Hochschild spectrum is a ring spectrum.
+
+We now proceed to construct a natural pairing
+\begin{equation}\label{eq:homotopygroupspairing}
+\beta:\pi_m^H(T)\otimes \pi_n^H(T')\to \pi^H_{m+n}(T\wedge T')
+\end{equation}
+for any subgroup $H$. Given elements $x\in \pi_m^H(T)$
+and $y\in \pi_n(T')$, we choose representatives
+$f:S^m\to (\Omega^U T(U))^H$ and $g:S^n\to (\Omega^{U'}T'(U'))^H$.
+We have the canonical map
+\[
+\mathrm{smash}: (\Omega^U T(U))^H\wedge (\Omega^{U'} T'(U'))^H\to
+(\Omega^{U\oplus U'}(T(U)\wedge T'(U')))^H
+\]
+and the natural transformation $\epsilon:T\;\bar\wedge\; T'\to (T\wedge T')\circ \oplus$.
+We define $\beta(x,y)\in \pi_{m+n}^H(T\wedge T')$ as the class of the map
+\[
+\begin{tikzcd}[column sep = huge]
+S^{m+n}\arrow{r}{\cong}
+&S^m\wedge S^n
+\arrow{r}{f\wedge g}
+&(\Omega^U T(U))^H\wedge (\Omega^{U'} T'(U'))^H
+\arrow{d}{\mathrm{smash}}\\
+&(\Omega^{U\oplus U'} ((T\wedge T')(U\oplus U')))^H
+&\Omega^{U\oplus U'}(T(U)\wedge T'(U'))^H
+\arrow[swap]{l}{\Omega^{U\oplus U'}\epsilon_{U, U'}}
+\end{tikzcd}
+\]
+We need to show this is well defined. It is clearly independent of the homotopy
+class of $f$ and $g$, so we only need to show it is independent of
+the choice of representatives in the colimit in \eqref{eq:equivarianthomotopygroup}.
+To see this, let $V$ and $V'$ be $G$-representations containing $U$ and $U'$
+respectively and note the following diagram commutes by naturality of $\epsilon$:
+\[
+\begin{tikzcd}[column sep=13em]
+(\Omega^U T(U))^H\wedge (\Omega^{U'} T'(U'))^H
+\arrow{d}{\mathrm{smash}}\arrow{r}{(\Omega^{V-U}\tilde \sigma_{U\subseteq V})^H\wedge(\Omega^{V'-U'}\tilde \sigma'_{U'\subset V'})^H}
+&(\Omega^V T(V))^H\wedge (\Omega^{V'} T'(V'))^H
+\arrow{d}{\mathrm{smash}}\\
+(\Omega^{U\oplus U'}(T(U)\wedge T'(U')))^H
+\arrow{d}{(\Omega^{U\oplus U'}\epsilon_{U,U'})^H}
+&(\Omega^{V\oplus V'}(T(V)\wedge T'(V')))^H
+\arrow{d}{(\Omega^{V\oplus V'}\epsilon_{V,V'})^H}\\
+(\Omega^{U\oplus U'} ((T\wedge T')(U\oplus U')))^H
+\arrow{r}{(\Omega^{V\oplus V'-U\oplus U'}\sigma^{T\wedge T'}_{U\oplus U'\subseteq V\oplus V'})^H}
+&(\Omega^{V\oplus V'} ((T\wedge T')(V\oplus V')))^H.
+\end{tikzcd}
+\]
+Using the definition we see that the assignment $\beta(x,y)$ is additive in each
+variable, so that \eqref{eq:homotopygroupspairing} really gives a pairing.
+Moreover, if $T$ is a ring spectrum, we can compose with the map induced
+by the multiplication:
+\begin{equation}\label{eq:homotopygroupmultiplication}
+\cdot:\pi_m^H(T)\otimes \pi_n^H(T)\xrightarrow{\beta}\pi_{m+n}^H(T\wedge T)
+\xrightarrow{\mu_\ast} \pi_{m+n}^H(T).
+\end{equation}
+\begin{prop}
+Let $T$ be a ring $G$-spectrum and $H$ a subgroup.
+\begin{enumerate}[(i)]
+\item The homotopy groups $\pi_\ast^H(T)$
+form a graded ring with multiplication \eqref{eq:homotopygroupmultiplication}.
+\item If $T$ is additionally commutative, $\pi_\ast^H(T)$ is graded anti-commutative,
+i.e. $x\cdot y = (-1)^{mn}y\cdot x$ for $x\in \pi_m^H(T)$ and $y\in \pi_n^H(T)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+(i) Since $\mu$ is associative, the multiplication on $\pi_\ast^H(T)$ is as well. Since \eqref{eq:homotopygroupspairing}
+is additive, we obtain distributivity. It remains to show the existence of a unit. By the Freudenthal suspension
+theorem we have $\pi_0^{\{1\}}(\spherespectrum)\cong \ZZ$ and the class of the map
+$S^0\to \Omega^{\RR^1}\spherespectrum(\RR^1)$, which sends the non-basepoint to the
+identity is a generator. Since $G$ acts trivially on $\Omega^{\RR^1}\spherespectrum(\RR^1)$,
+this map is also an element of $\pi_0^H(\spherespectrum)$, so we have a canonical map
+$\pi_0^{\{1\}}(\spherespectrum)\to \pi_0^H(\spherespectrum)$. 
+Using \eqref{eq:ringspectrumunit} and the definition of the multiplication
+we see that
+\[
+\pi_q^H(T)\cong \pi_q^H(T)\otimes \pi_0^{\{1\}}(\spherespectrum)
+\to  \pi_q^H(T)\otimes \pi_0^H(\spherespectrum)
+\xrightarrow{\mathrm{id}\otimes (u_T)_\ast} 
+\pi_q^H(T)\otimes \pi_q^H(T) \xrightarrow{\mu_\ast}
+\pi_q^H(T)
+\]
+is the identity, which shows that $\pi_0^{\{1\}}(\spherespectrum)\to \pi_0^H(\spherespectrum)
+\xrightarrow{(u_T)_\ast} \pi_0^H(T)$ is a unit map. 
+
+(ii) We consider the map
+\[
+\tau_{m,n}: S^{m+n}\cong S^m\wedge S^n\xrightarrow{\mathrm{twist}}
+S^n\wedge S^m\cong S^{n+m}.
+\]
+Using the definition of $\beta$ we see the following diagram commutes
+(compare \cite[Proposition~4.29, \pno~39]{schwedeequivariant}):
+\[
+\begin{tikzcd}
+\pi_m^H(T)\otimes \pi_n^H(T')
+\arrow{dd}{\mathrm{twist}}
+\arrow{r}{\beta}
+&\pi_{m+n}^H(T\wedge T')
+\arrow{d}{(\mathrm{twist})_\ast}\\
+&\pi_{m+n}^H(T'\wedge T)
+\arrow{d}{\tau_{m,n}^\ast}\\
+\pi_n^H(T')\otimes \pi_m^H(T)
+\arrow{r}{\beta}
+&\pi_{m+n}^H(T'\wedge T)
+\end{tikzcd}
+\]
+Now specialize to the case $T = T'$ and use that
+precomposing with $\tau_{m,n}$ induces multiplication
+by $(-1)^{mn}$ on homotopy groups.
+\end{proof}
+
+
+\begin{lem}\label{lem:pairing}
+Let $X$ be a wedge of $n$-spheres and $T$ an orthogonal $G$-spectrum. 
+Then there is a natural isomorphism
+\begin{equation}\label{eq:pairingspheres}
+\pi_{n}(X)\otimes \pi_q^{\{1\}}(T)\xrightarrow{\cong} \pi_{ q + n}(T\wedge X).
+\end{equation}
+\end{lem}
+\begin{proof}
+We define \eqref{eq:pairingspheres} in the same way as \eqref{eq:homotopygroupspairing}.
+By lemma \ref{lem:spectrumwedge} we only need to treat the case $X = S^n$
+to show it is an isomorphism. However, by checking the definitions we find
+that 
+\[
+\pi_q^{\{1\}}(T)\cong \pi_n(S^n)\otimes \pi_q^{\{1\}}(T)\to \pi_{q+n}^{\{1\}} (T\wedge S^n) =  \pi_{q+n}^{\{1\}} (\Sigma^n T)
+\]
+is exactly the isomorphism from lemma \ref{lem:spectrumsuspensionshift} (ii).
+\end{proof}
+\subsection{Restriction and transfer.}
+
+
+
+\begin{lem}\label{lem:switchfixedpoints}
+Let $C\subset \TT$ be a finite subgroup, $T$ a $C$-spectrum
+and $A$ a $C$-CW complex.
+%Let $\iota:C\to \TT$ denote the inclusion.
+The $C$-action on $ T\wedge A$ induces
+a $C$-action on the homotopy groups of $T\wedge A$.
+Suppose the $C$-action on $A$ is free away from
+the basepoint.
+Then the map $\pi_q^C( T\wedge A)\to 
+\pi_q^{\{1\}}(T\wedge A)$ induces an isomorphism
+\[\pi_q^C( T\wedge A)\xrightarrow{\cong} 
+\left(\pi_q^{\{1\}}(  T\wedge A)\right)^C\]
+\end{lem}
+\todo{A lot of the notation in the proof needs to be cleaned up}
+\begin{proof}
+We first show that the map of the statement lands in 
+$\left(\pi_q^{\{1\}}(  T\wedge A)\right)^C$. This map
+is $C$-equivariant, so it suffices to show that $C$
+acts trivially on $\pi_q^C( T\wedge A)$.
+We fix a cofibrant replacement functor $\Gamma$ for
+the stable model structure on the category of $C$-spectra
+\cite[Theorem III.4.2, \pno~47]{mandellmay}. 
+%Since $G$ acts freely on $X$,
+%the projection
+%\[\left(\Gamma T\wedge X\right)\wedge EG_+\to \Gamma T\wedge X\]
+%is a level equivalence. 
+By \cite[Lemma III.4.14, \pno~50]{mandellmay} $\Gamma T\wedge A$
+is cofibrant and by \cite[Theorem III.3.11, \pno~47]{mandellmay} the map
+$\gamma_T\wedge\mathrm{id_A}: \Gamma T\wedge A
+\to T\wedge A$ is an equivalence of $C$-spectra.
+Finally, \cite[Lemma~5.10, \pno~1514]{rvadams} implies
+that $\Gamma T\wedge A$ is good.
+%so by \cite[Theorem~6.16, \pno~1521]{rvadams} $ \Gamma T$
+%is good and 
+%$\gamma_T:
+% \Gamma T\to  T$ is an equivalence of $C$-spectra.
+%Applying \cite[Lemma~5.10, \pno~1514]{rvadams} again yields that
+%also $ \Gamma T\wedge A$ is good and 
+%$\gamma_T\wedge\mathrm{id}:
+% \Gamma T\wedge A\to  T\wedge A$ is an equivalence of
+%$C$-spectra.
+
+Let $\mathcal{U}$ be a complete $C$-universe.
+We use the bifunctorial
+replacement functor $Q$ of \cite[Theorem~1.1, \pno~1494]{rvadams}. Our assumptions 
+imply that the projection 
+\[ \Gamma T\wedge A\wedge EC_+\to  \Gamma T\wedge A\]
+ is a level equivalence of $C$-spectra, so by \cite[Main Theorem~1.7, \pno~1496]{rvadams} 
+there is a natural equivalence of non-equivariant spectra
+\[A:\left(\Gamma T\wedge A\right)\underset{C}{\wedge} EC_+\xrightarrow{\sim} Q^{\mathcal{U}}(\Gamma T\wedge A)^C.\]
+%Moreover, by the proof of \cite[Corollary~1.8, \pno~5]{rvadams} the projection
+%\[p:\left(\Gamma T\wedge X\right)\underset{G}{\wedge} EG_+\xrightarrow{\sim}
+%\left(\Gamma T\wedge X\right)/G\]
+%is an equivalence of nonequivariant spectra. 
+We obtain a zig-zag of isomorphisms
+\[
+\begin{tikzcd}
+\pi_q^C( T\wedge A)
+&\pi_q^C( \Gamma T\wedge A)\arrow{l}[swap]{(\gamma_{ T}\wedge\mathrm{id}_A)_\ast}
+\arrow{r}{(r_{ \Gamma T\wedge A})_\ast}
+&\pi_q^C\left(  Q^{\mathcal{U}}( \Gamma T\wedge A) \right)
+\\
+&\pi_q\left(  \left( \Gamma T\wedge A\right)\underset{C}{\wedge} EC_+\right)
+\arrow{r}{A_\ast}
+&\pi_q\left(   Q^{\mathcal{U}}(\Gamma T\wedge A)^C \right)\arrow{u}{\cong},
+\end{tikzcd}
+\]
+which are natural in both $T$ and $A$.
+%The upper left arrow is an isomorphism by \cite[Lemma~5.13, \pno~20]{rvadams},
+%because $\gamma_T:T\to \Gamma T$ is an equivalence of $G$-spectra. 
+That the
+upper right arrow and the vertical arrow
+are isomorphisms follows from \cite[Theorem~1.1, \pno~1494]{rvadams}.
+Because of the naturality it suffices to show the $C$-action on 
+$\pi_q\left(  \left( \Gamma T\wedge A\right)\underset{C}{\wedge} EC_+\right)$
+is trivial. For any $g\in C$, the action of $g$ is induced by the map
+\begin{equation}\label{eq:universalspaceaction}
+\mathrm{id}_{\Gamma T\wedge A}\wedge \ell_g: 
+\left( \Gamma T\wedge A\right)\underset{C}{\wedge} EC_+ 
+\to  \left( \Gamma T\wedge A\right)\underset{C}{\wedge} EC_+,
+\end{equation}
+where
+\[\ell_g:EC\to EC\]
+denotes left multiplication by $g$. 
+We show that \eqref{eq:universalspaceaction} is (non-equivariantly) homotopic to the identity
+for a suitable model of $EC$. Let $\mathcal{F}$ be the family
+of all subgroups $G$ of $\TT$ such that $G\cap C = 1$
+and let $E\mathcal{F}$ be the universal $\TT$-space
+for $\mathcal{F}$. If $\iota:C\to \TT$ denotes the inclusion,
+then $\iota^\ast E\mathcal{F} = EC$ and left multiplication
+by elements of $\TT$ makes sense.
+We choose $\varphi\in I$ such that $\mathrm{exp}(2\pi i \varphi) = g$
+and define
+\[h:EC_+\wedge I_+\to EC_+, x\wedge t\mapsto \mathrm{exp}(2\pi i (1-t)\varphi)\cdot x.\]
+After smashing with $\Gamma T\wedge A$ we obtain a 
+well-defined homotopy
+\[H: \left(\left( \Gamma T\wedge A\right)\underset{C}{\wedge} EC_+\right) \wedge I_+
+\to  \left( \Gamma T\wedge A\right)\underset{C}{\wedge} EC_+\]
+from \eqref{eq:universalspaceaction} to the identity as required.
+
+We now show the map from the statement is an isomorphism.
+We first treat the case $A = C_+$. For any $C$-space X
+there is a natural $C$-equivariant homeomorphism
+\begin{equation}\label{eq:untwist}
+X\wedge C_+\xrightarrow{\cong} \mathrm{res}^C_1 X \wedge C_+ = 
+\mathrm{ind}^C_1 \mathrm{res}^C_1 X, x\wedge g\mapsto g^{-1}x\wedge g
+\end{equation}
+and this gives rise to the natural isomorphism
+\[T\wedge C_+\cong \mathrm{ind}^C_1 \mathrm{res}^C_1 T,\]
+hence there is a commutative diagram
+\begin{equation}\label{eq:confusingdiagram}
+\begin{tikzcd}
+\pi_q^C(T\wedge C_+)\arrow{d}{\cong}\arrow{r}{\mathrm{res}^C_1}
+&\pi_q^{\{1\}}(T\wedge C_+)\arrow{d}{\cong}\arrow{r}{\cong}
+&\pi_q(\iota^\ast (T\wedge C_+))\arrow{d}{\cong}
+\\
+\pi_q^C(\mathrm{ind}^C_1 \mathrm{res}^C_1 T)\arrow{r}{\mathrm{res}^C_1}
+&\pi_q^{\{1\}}(\mathrm{ind}^C_1 \mathrm{res}^C_1 T)\arrow{r}{\cong}
+&\pi_q(\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T).
+\end{tikzcd}
+\end{equation}
+Now, we have $\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T = \iota^\ast T\wedge C_+$
+and the $C$-action on $\pi_q(\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T)$
+induced by the right vertical isomorphism is the same as the $C$-action
+induced by
+\[\mathrm{id}_{\iota^\ast T}\wedge \mu:\iota^\ast T\wedge C_+\wedge C_+\to \iota^\ast T\wedge C_+,\]
+where $\mu:C_+\wedge C_+\to C_+$ denotes the multiplication. We show that 
+the map 
+\begin{equation}\label{eq:restriction}
+\pi_q^C(\mathrm{ind}^C_1 \mathrm{res}^C_1 T)
+\to \left(\pi_q(\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T)\right)^C
+\end{equation}
+is an isomorphism. This is enough, since the vertical maps and the upper right map in \eqref{eq:confusingdiagram}
+are $C$-equivariant. Non-equivariantly, we have the isomorphism 
+\[
+\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T\cong \bigvee_{g\in C} \iota^\ast T,\]
+hence also the $C$-equivariant isomorphism
+\[
+\pi_q(\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T)\cong \bigoplus_{g\in C} \pi_q(\iota^\ast T),
+\]
+where $C$ acts on the right hand side by permuting the summands.
+Then the fixed points on the right hand side are the diagonal, so the projection
+$\mathrm{pr}:\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T = \iota^\ast T\wedge C_+\to 
+\iota^\ast T$ induces an isomorphism
+\[
+\left(\pi_q(\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T)\right)^C\xrightarrow{\cong}
+\pi_q(\iota^\ast T),
+\]
+hence it is enough to show that 
+\[
+\pi_q^C(\mathrm{ind}^C_1 \mathrm{res}^C_1 T)\xrightarrow{\mathrm{res}^C_1}
+\to \pi_q(\iota^\ast \mathrm{ind}^C_1 \mathrm{res}^C_1 T)
+\xrightarrow{\mathrm{pr}_\ast} \pi_q(\iota^\ast T)
+\]
+is an isomorphism, which is \cite[Proposition 4.11, \pno~30]{schwedeequivariant}.
+
+The case $A= S^n\wedge C_+$ follows directly, since $T\wedge S^n\wedge C_+ = 
+\Sigma^n T\wedge C_+$. This also yields the case $A = \bigvee_{j\in J} S^n\wedge C_+$.
+We now treat the general case. Since the $C$-action
+is free, we have 
+$A_0 \cong \bigvee_{j\in J} C_+$ and $A_n/A_{n-1}\cong \bigvee_{j\in J'} S^n\wedge C_+$,
+so using the cofiber sequence
+\[A_{n-1}\to A_n\to A_n/A_{n-1} \]
+the claim follows for $A_n$ by induction.
+%\[\pi_q\left( \left(\Gamma T\wedge X\right)/G \right) \xleftarrow{\cong}
+%\pi_q\left(  \left(\Gamma T\wedge X\right)\underset{G}{\wedge} EG_+\right)
+%\xrightarrow{\cong} \pi_q\left(   \mathcal{Q}^{\mathcal{U}}(\Gamma T\wedge X)^G \right)
+%\xleftarrow{\cong} \pi^{G}_q(\Gamma T\wedge X) \xleftarrow{\cong}
+%\pi_q^G(T\wedge X)\]
+\end{proof}
+
+
+\begin{lem}\label{lem:separatefixed}
+\begin{enumerate}[(i)]
+Let $n,\nu \in \NN_0$ such that $ \nu\le n$.
+\item If $X$ is $\TT$-space, then there is a natural isomorphism 
+$$\rho_{ p^n }^\ast X^{ C_{ p^n } } \cong \rho_{ p^{ n - \nu } }^\ast
+\left( \rho_{ p^\nu }^\ast X^{ C_{ p^\nu } }\right)^{ C_{ p^{ n - \nu } } }.$$
+\item For any $\TT$-spectrum $T$ there is a natural isomorphism
+$$\rho_{ p^n }^\ast T^{ C_{ p^n } } \cong \rho_{ p^{ n - \nu } }^\ast
+\left(\rho_{ p^\nu }^\ast T^{ C_{ p^\nu } }\right)^{ C_{ p^{ n - \nu } } }.$$
+\end{enumerate}
+\end{lem}
+
+\begin{proof}
+The second statement follows immediately from the first. To see the first claim, 
+use the adjunctions between restriction and (co)induction and prove the claim
+by Yoneda lemma. %Still need to fill out the details here, but it shouldn't be hard
+\end{proof}
+
+%\begin{lem}\label{lem:cycretract}
+%\todo{Fix this statement to involve the free loop space}
+%This will be the lemma with cyclic nerve and deformation retraction onto the circle group.
+%
+%The diagram
+%\begin{equation}\label{eq:multiplicativity}
+%\begin{tikzcd}
+%\TT/C_{|i|+}\wedge \TT/C_{|j|+}\arrow{r}\arrow{d}{\simeq}
+%&\TT/C_{|i+j|+}\arrow{d}{\simeq}\\
+%\left| N^{ \text{cy} }( \Pi, i )_\bullet \right|\wedge \left| N^{ \text{cy} }( \Pi, j )_\bullet \right|
+%\arrow{r}{\mu}
+%& \left| N^{ \text{cy} }( \Pi, i+j )_\bullet \right|,
+%\end{tikzcd}
+%\end{equation}
+%where the upper horizontal arrow is defined by $zC_{|i|}\wedge wC_{|j|}\mapsto
+%zw^{ \frac{1}{|i + j|} }C_{|i + j|}$, is homotopy commutative.
+%\end{lem}
+
+

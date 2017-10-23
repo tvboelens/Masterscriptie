@@ -1,0 +1,293 @@
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+This thesis concerns itself with topological Hochschild homology,
+which is a refinement for ordinary Hochschild homology.
+More precisely, one can associate to a ring $A$ (or more generally, a symmetric ring spectrum)
+ the topological Hochschild spectrum $T(A)$, which is a $\TT$-orthogonal
+spectrum, where $\TT$ denotes the circle group. If $A$ is an $\mathbb{F}_p$-algebra,
+\cite[Proposition~1.4.6, \pno~14]{hesselholtacta} proves there is a commutative diagram
+\[
+\begin{tikzcd}
+\pi_n^{\{1\}}(T(A))
+\arrow{d}{d}\arrow{r}
+&\mathrm{HH}_n(A)
+\arrow{d}{B}\\
+\pi_{n+1}^{\{1\}}(T(A))
+\arrow{r}
+&\mathrm{HH}_{n+1}(A),
+\end{tikzcd}
+\]
+where $d$ is a differential, $B$ is Connes' operator
+on Hochschild homology and the horizontal maps are
+linearization operators.
+
+The homotopy groups of $T(A)$ come equipped with
+a great deal of algebraic structure. We define
+\[\mathrm{TR}^n_q(A;p) = \pi_q^{C_{p^{n-1}}}(T(A)).\]
+Then there are operators
+\begin{align*}
+&F:\mathrm{TR}^n_q(A;p)\rightarrow \mathrm{TR}^{n-1}_q(A;p) &(\mathrm{Frobenius}),\\
+&V:\mathrm{TR}^{n-1}_q(A;p)\rightarrow \mathrm{TR}^{n}_q(A;p) &(\mathrm{Verschiebung}),\\
+&d:\mathrm{TR}^n_q(A;p)\rightarrow \mathrm{TR}^n_{q+1}(A;p),\\
+&R:\mathrm{TR}^n_q(A ;p)\to \mathrm{TR}^{n-1}_q(A;p) &(\mathrm{Restriction}),\\
+&[-]_n :A\to \mathrm{TR}^n_0(A;p) &(\text{Teichm\"uller}),
+\end{align*}
+where $d$ is a differential and these satisfy certain relations (see lemma
+\ref{lem:wittcomplexrelations} and lemma \ref{lem:restrictionrelations}
+for a precise statement). The differential gives $\mathrm{TR}^n_\ast(A;p)$
+the structure of a differential graded ring for each $n$ and the restriction maps are maps of
+differential graded rings, giving $\mathrm{TR}^\bullet_\ast(A;p)$
+the structure of a pro-differential graded ring.
+
+For ordinary Hochschild homology, the Hochschild-Kostant-Rosenberg
+theorem (see for example \cite[Theorem~9.4.7, \pno~322]{weibel})
+states that for a smooth $k$-algebra $A$ satisfying some finiteness conditions
+there is an isomorphism of differential graded rings between the Hochschild homology
+$\mathrm{HH}_{\ast}(A)$ and
+the de Rham complex $\Omega^\ast_{A/k}$, where $k$ denotes a noetherian ring.
+A similar result holds for $\mathrm{TR}^\bullet_\ast$ if
+we assume that $A$ is a smooth $\mathbb{F}_p$-algebra
+and we replace the de Rham complex by the de Rham-Witt complex
+$W_\bullet\Omega^\ast_A$ of Bloch-Deligne-Illusie (see \cite[Theorem~B, \pno~3]{hesselholtacta}).
+
+Both statements can be proven by the following strategy.
+First, one establishes the result for the base case $A = \mathbb{F}_p$.
+Then one calculates a polynomial extension formula for both sides,
+i.e. one determines $\mathrm{HH}_\ast(A[x_1,\ldots, x_n])$ in terms of
+$\mathrm{HH}_\ast (A)$ and $\Omega^\ast_{A[x_1,\ldots, x_n]/k}$
+in terms of $\Omega^\ast_{A/k}$ (respectively $\mathrm{TR}^\bullet_\ast(A[x_1,\ldots, x_n];p)$
+in terms of $\mathrm{TR}^\bullet_\ast(A;p)$
+and $W_\bullet \Omega^\ast_{A[x_1,\ldots, x_n]}$ in terms of
+$W_\bullet \Omega^\ast_{A}$). Finally, one proves that both
+statements have inheritance properties under \'etale extensions
+and uses that any smooth $\mathbb{F}_p$-algebra
+is \'etale over a polynomial $\mathbb{F}_p$-algebra.
+
+We focus on the step that computes the polynomial extension.
+More precisely, the aim of this thesis is to prove a polynomial extension formula
+for the topological Hochschild homology of the group ring of the infinite cyclic group $A[C_\infty]$, 
+i.e. we want to compute $\mathrm{TR}^\bullet_\ast(A[C_\infty];p)$
+in terms of $\mathrm{TR}^\bullet_\ast(A;p)$.
+For Hochschild homology we have by
+\cite[Theorem~0.1, \pno~368]{wghochschilddescent}
+the isomorphism $\mathrm{HH}_\ast(A[C_\infty])\cong \mathrm{HH}_\ast(A)\otimes_A A[C_\infty]$.
+Now, the inclusion of the constant terms $A\to A[C_\infty]$ induces a map
+\[f:\mathrm{TR}^\bullet_\ast(A;p)\to \mathrm{TR}^\bullet_\ast(A[C_\infty];p)\]
+of pro-differential graded rings.
+The naive guess would then be to prove the map
+\[
+\mathrm{TR}^n_\ast(A;p)\otimes_A A[C_\infty]\to \mathrm{TR}^n_\ast(A[C_\infty];p),
+\]
+which sends $[1]_n\otimes x$ to $[x]_n$ and $a\otimes 1$ to $f(a)$ is an isomorphism,
+but one the left hand side the expression $d([1]_n\otimes x)$ does not make
+sense, since $A[C_\infty]$ is not equipped with a differential. Another
+reasonable guess is to take the map of differential graded rings
+\[
+\mathrm{TR}^n_\ast(A;p)\otimes \Omega^\ast_{\ZZ[C_\infty]}\to \mathrm{TR}^n_\ast(A[C_\infty];p),
+\]
+which sends $a\otimes 1$ to $f(a)$ and $[1]_n\otimes x$ to $[x]_n$. This is almost correct,
+but the left hand side does not admit a Verschiebung operator which satisfies
+the relations of lemma \ref{lem:wittcomplexrelations}. Instead, we have to enlarge
+the source a little bit and obtain the following statement from \cite[Theorem~2, \pno~139]{hesselholtwhitehead}
+(but see also
+\cite[Theorem~C, \pno~4]{hmmixed}, where the corresponding statement for $A[x]$ is given). 
+The main goal of this thesis is to give a complete proof of this theorem.
+%For a fixed odd prime $p$, the fixed points of
+%topological Hochschild homology are related by maps
+%\[
+%F,R:T(A)^C_{p^n}\to T(A)^{C_{p^{-1}}},
+%\]
+%called Frobenius and restriction. These maps can be used
+%to construct the topological cyclic homology spectrum
+%$TC(A;p)$. One of the main features of topological
+%Hochschild homology and topological cyclic homology
+%is the existence of trace maps
+%
+%which play an important role in computations in $K$-theory.
+%
+%We do not concern ourself with topological cyclic homology
+%in this thesis. Instead, our goal is to understand the homotopy
+%groups $\pi^{C_{p^n}}_q(T(A[C_\infty]))$ in terms of
+%the homotopy groups $\pi^{C_{p^n}}_q(T(A))$
+%In fact, we do even more. If $A$ is commutative,
+%$T(A)$ is a ring spectrum and the restriction map
+%is a map of ring spectra. If we define $\mathrm{TR}^n_q (A;p)= \pi_q^{C_{p^n-1}}(T(A))$,
+%then $\mathrm{TR}^\bullet_\ast(A;p)$ has the structure of a pro-graded ring.
+%Furthermore, it is possible to equip $\mathrm{TR}^\bullet_\ast(A;p)$ with a
+%differential such that it obtains the structure of a pro-differential
+%graded ring.
+%
+%In \cite{hmmixed} $\mathrm{TR}^\bullet_\ast(A;p)$
+%is computed in terms of $\mathrm{TR}^\bullet_\ast(A[x];p)$.
+%In \cite[Theorem~2, \pno~139]{hesselholtwhitehead} the corresponding
+%statement for $\mathrm{TR}^\bullet_\ast(A[C_\infty];p)$ is given without
+%proof. The main objective of this thesis is to prove the last statement.
+
+
+
+\begin{thm}
+%The inclusion of the constant terms $A\to A[C_\infty]$ induces
+%a map of pro-differential graded rings
+%\[
+%f:\mathrm{TR}^\bullet_\ast(A;p)\to \mathrm{TR}^\bullet_\ast(A[C_\infty];p).
+%\]
+Choose a generator $x\in C_\infty$ and assume
+$A$ is a $\ZZ_{(p)}$-algebra. The map $$\bigoplus_{j\in \ZZ} \left(\mathrm{TR}^n_q(A;p)\oplus \mathrm{TR}^n_{q-1}(A;p) \right)
+\oplus \bigoplus_{s=0}^{n-1}\bigoplus_{j\in \ZZ\setminus p\ZZ}
+\left( \mathrm{TR}^{s}_q(A;p)\oplus \mathrm{TR}^{s}_{q-1}(A;p)\right)
+\rightarrow \mathrm{TR}^n_q(A[C_\infty];p)$$
+which sends
+$$(a_j, b_j , a_{j'}^{(s)} ,b_{j'}^{(s)}),$$
+to
+\begin{equation}\label{eq:maintheoremsummands1}
+f(a_j)[x]^j_n + f(b_j)d([x]^j_n)
++V^{n-s}(f(a_{j'}^{(s)})[x]^{j'}_{s}) + dV^{n-s}(f(b_{j'}^{(s)})[x]^{j'}_{s})
+\end{equation}
+ is an isomorphism.
+\end{thm}
+We remark here that the first two summands of \eqref{eq:maintheoremsummands1}
+correspond exactly to the elements of $\mathrm{TR}^n_\ast(A;p)\otimes \Omega^\ast_{\ZZ[C_\infty]}$.
+
+We give a brief overview of the structure of this thesis.
+Chapter 1 summarizes basic facts from equivariant stable homotopy
+theory and fixes notation. This material is well-known, but scattered across the literature.
+We also prove several technical statements, which we will need in chapter 4.
+
+Chapter 2 briefly discusses the theory of cyclic spaces, which
+form a generalization of simplicial spaces. Cyclic spaces have the
+additional feature that their geometric realization come equipped with
+a canonical $\TT$-action. It is for this reason that the topological
+Hochschild spectrum is a $\TT$-spectrum. We also discuss the cyclic
+nerve of a topological monoid, which plays an important part in the 
+comparison of $T(A)$ with $T(A[C_\infty])$.
+We end this chapter by computing the cyclic nerve of the integers.
+
+In chapter 3 we construct the topological Hochschild spectrum,
+the pro-differential graded ring $\mathrm{TR}^\bullet_\ast(A;p)$
+and the algebraic operators described above.
+Most of this material is contained in the papers
+\cite{hesselholtacta}, \cite{hmperfect} and \cite{hmmixed}.
+We try to be detailed in order to give a unified treatment.
+
+Chapter 4 finally contains the computation of $\mathrm{TR}^\bullet_\ast(A[C_\infty];p)$
+in terms of $\mathrm{TR}^\bullet_\ast(A;p)$.
+The proof is modeled for the most part on the proof
+given in \cite[Section~3, \pno~18-23]{hmmixed}.
+\section*{Notations and conventions.}
+\addcontentsline{toc}{section}{Notations and conventions.}
+\subsection*{Category theory.}
+\addcontentsline{toc}{subsection}{Category theory.}
+We use some notions from the theory of enriched categories.
+Most of these are basic, e.g. the definition of a category
+enriched over a (closed) symmetric monoidal category, enriched
+functors and enriched natural transformations. One more
+advanced concept we need for our discussion of the 
+smash product of spectra is the enriched Kan extension of enriched functors.
+We refer to \cite{kellyenriched} for a treatment of enriched categories.
+
+If a category  $\mathcal{V}$ has products and a final object, this gives
+$\mathcal{V}$ the structure of a symmetric monoidal category.
+In this case we call $\mathcal{V}$ cartesian monoidal.
+If $(\mathcal{V},\wedge, \ast)$ is a symmetric monoidal category,
+then we usually refer to categories and functors enriched over $\mathcal{V}$
+as $\mathcal{V}$-categories and $\mathcal{V}$-functors. 
+We denote (enriched) categories by symbols such as $\mathcal{C}, \mathcal{D}
+, \mathcal{I}$ and  $\mathcal{J}$.
+Specific categories are usually denoted by boldface letters.
+We will often use the expressions morphism
+and map interchangeably. Finally, if $F:\mathcal{J}\to \mathcal{C}$
+and $\alpha:\mathcal{I}\to \mathcal{J}$
+are enriched functors, we denote by $\alpha^\ast F$ the composite
+\[
+\mathcal{I}\xrightarrow{\alpha} \mathcal{J}\xrightarrow{F} \mathcal{C}
+\]
+and we interpret this as a change of index categories for $F$.
+
+\subsection*{Topology.}
+\addcontentsline{toc}{subsection}{Topology.}
+By space we mean a compactly generated weak Hausdorff (CGWH) space.
+A comprehensive treatment of CGWH spaces
+can be found in \cite{stricklandcgwh}.
+We denote the category of (pointed) spaces by $\mathbf{Top}$ and $\mathbf{Top}_\ast$.
+We then have the basic fact that $\mathbf{Top}$ is cartesian closed
+and $\mathbf{Top}_\ast$ is closed symmetric monoidal. In the latter case,
+the monoidal structure comes from the smash product and the unit is $S^0$.
+The internal hom is given by the (pointed) mapping space, which we denote by
+$\map(X,Y)$. For (pointed)
+spaces $X$ and $Y$, a compact subset $K\subset X$ and an open subset
+$V\subset Y$ we use the notation $M(K,V)$ for the subset $\{f\in \map(X,Y):f(K)\subset V\}$.
+Sets of this form are open in $\map(X,Y)$.
+
+Throughout this thesis $G$ will denote a topological group. We will always assume
+subgroups to be closed. In the context
+of stable homotopy theory we additionally assume $G$ to be a compact Lie group.
+Our main cases of interest are the circle group $\TT$ and its finite cyclic subgroups
+$C\subset \TT$. If we want to emphasize the order of a cyclic group we write
+$C_a$, with $a$ a non-negative integer or $a = \infty$. The circle group
+has the property that the map
+\[
+\TT/C_a\to \TT, z\cdot C_a\mapsto z^a
+\]
+is a homeomorphism. Its inverse is given by taking $a$-th roots
+and we denote this map by $\rho_a:\TT\to \TT/C_a$.
+
+For a compact Lie group $G$ the expression $G$-\textit{representation} refers to
+an orthogonal representation of finite or countable dimension, i.e. a real inner product
+space $U$ on which $G$ acts smoothly via linear isometries. If $V$ is an inner product
+space containing $U$, we denote by $V-U$ the orthogonal complement.
+Moreover, if $U$ is a real inner product space of finite dimension, we have the
+one-point compactification $S^U$. We take the point at infinity as the basepoint.
+If $G$ acts on $U$, this action extends to a $G$-action
+on $S^U$. We interpret $S^n$ as the one-point compactification
+of $\RR^n$, where $G$ acts trivially. Finally, we have the basic fact 
+\[
+S^U\wedge S^V\cong S^{U\oplus V}
+\]
+for finite dimensional inner product spaces $U$ and $V$.
+
+\subsection*{Homotopy colimits and natural modules.}
+\label{sec:naturalmodules}
+\addcontentsline{toc}{subsection}{Homotopy colimits and natural modules.}
+We use the model described in \cite{duggerhocolim} for the homotopy colimit.
+This is constructed as follows. Let $F:\mathcal{I}\to \mathbf{Top}$ be a small diagram.
+The simplicial replacement of $F$ is the simplicial space $\mathrm{srep}\, F$,
+which has $n$-simplices
+\begin{equation}\label{eq:simplicialreplacement}
+(\mathrm{srep}\, F)_n = \coprod_{i_n\to i_{n-1}\to\ldots\to i_1\to i_0} F(i_n)
+\end{equation}
+and $\hocolim_{\mathcal{I}} F$ is defined as the geometric realization of this
+simplicial space. A description of the face and degeneracy maps can be found
+in \cite[\pno~16]{duggerhocolim}. If the target category is $\mathbf{Top}_\ast$ instead
+of $\mathbf{Top}$, we replace the coproduct in \eqref{eq:simplicialreplacement}
+by a wedge (which is of course the coproduct in $\mathbf{Top}_\ast$).
+
+A natural module is a pair $(\mathcal{I}, F)$, where $\mathcal{I}$ is a small category
+and $F:\mathcal{I} \to \mathbf{Top}_\ast$ is a functor. A morphism $(\alpha, f):(\mathcal{I}, F)
+\to (\mathcal{J}, G)$ consists of a functor $\alpha:\mathcal{I}\to \mathcal{J}$
+and a natural transformation $f:F\to \alpha^\ast G$. In some situations where the indexing
+categories are clear we also refer only to the natural transformation $f:F\to \alpha^\ast G$
+as the morphism of natural modules. We denote the corresponding
+category by $\mathbf{Mod}_{\mathbf{Top}_\ast}$.
+There always exists a natural map
+\[
+\underset{I}{\hocolim} \, \alpha^\ast G\to \underset{J}{\hocolim} \,  G,
+\]
+and we can compose this with the map induced by $f$ to obtain
+a map
+\[
+\underset{\mathcal{I}}{\hocolim}\, F \xrightarrow{f_\ast}\underset{I}{\hocolim} \, \alpha^\ast G\to \underset{J}{\hocolim} \,  G.
+\]
+This turns the homotopy colimit into a functor
+\[
+\hocolim: \mathbf{Mod}_{\mathbf{Top}_\ast}\to \mathbf{Top}_\ast
+\]
+\subsection*{Algebra.}
+\addcontentsline{toc}{subsection}{Algebra.}
+We denote by $p$ an \textit{odd} prime. We use the symbols $\NN, \NN_0$ and $\ZZ$
+for the natural numbers, non-negative integers and integers respectively. We write
+$\ZZ_{(p)}$ for the localization at the prime ideal $(p)$, that is we invert all integers
+not divisible by $p$. We usually denote rings by $A$. Unless otherwise stated, ring
+means commutative ring with unit. Undecorated tensor products are taken
+over $\ZZ$. Finally, we can interpret $\NN_0$ as a category with an arrow
+$m\to n$ iff $m\le n$. By a pro-object in a category $\mathcal{C}$
+we mean a functor $F:\NN^{\mathrm{op}}\to \mathcal{C}$.
